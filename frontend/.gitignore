@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Datasetet: ruaj vetëm listat e ndarjes
+dataset/*
+!dataset/splits/
+dataset/splits/*
+!dataset/splits/*.csv
+
+# Modelet dhe parashikimet e ruajtura
+backend/artifacts/models/
+*.keras
+*.h5
+*.npz
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Frontend
+node_modules/
+dist/
+
+# Konfigurime private
+.env
+.env.*
+!.env.example
