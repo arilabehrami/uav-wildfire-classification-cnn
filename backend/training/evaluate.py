@@ -34,11 +34,12 @@ def main():
     dataset = dataset.batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
 
     model = tf.keras.models.load_model(
-        ARTIFACTS_DIR / "models" / "fire_cnn_v2.keras"
+        ARTIFACTS_DIR / "models" / "fire_cnn_v5.keras"
     )
 
     probabilities = model.predict(dataset).reshape(-1)
-    predictions = (probabilities >= 0.8).astype(int)
+    threshold = 0.6
+    predictions = (probabilities >= threshold).astype(int)
 
     report = classification_report(
         labels,
@@ -66,17 +67,17 @@ def main():
     output_dir = ARTIFACTS_DIR / "reports"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    with (output_dir / "test_results_v2_threshold08.json").open(
+    with (output_dir / "test_results_v5.json").open(
         "w", encoding="utf-8"
     ) as file:
         json.dump({
-            "threshold": 0.8,
+            "threshold": threshold,
             "report": report,
             "confusion_matrix": matrix.tolist(),
         }, file, indent=2)
 
     np.savez(
-        output_dir / "test_predictions_v2_threshold08.npz",
+        output_dir / "test_predictions_v5.npz",
         paths=np.array(paths),
         labels=np.array(labels),
         probabilities=probabilities,

@@ -22,7 +22,7 @@ def main():
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-    train_data = load_weighted_train()
+    train_data = load_weighted_train("train_v5")
     validation_data = load_dataset("validation_v2")
 
     # Peshat llogariten vetëm nga pjesa train.
@@ -41,7 +41,7 @@ def main():
 
     callbacks = [
         tf.keras.callbacks.ModelCheckpoint(
-            filepath=str(MODEL_DIR / "fire_cnn_v4.keras"),
+            filepath=str(MODEL_DIR / "fire_cnn_v5.keras"),
             monitor="val_loss",
             save_best_only=True,
         ),
@@ -51,7 +51,7 @@ def main():
             restore_best_weights=True,
         ),
         tf.keras.callbacks.CSVLogger(
-            str(REPORT_DIR / "training_log_v4.csv")
+            str(REPORT_DIR / "training_log_v5.csv")
         ),
     ]
 
@@ -62,12 +62,12 @@ def main():
         callbacks=callbacks,
     )
 
-    with (REPORT_DIR / "history_v4.json").open(
+    with (REPORT_DIR / "history_v5.json").open(
         "w", encoding="utf-8"
     ) as file:
         json.dump(history.history, file, indent=2)
 
-    print(f"Modeli më i mirë u ruajt te: {MODEL_DIR / 'fire_cnn_v4.keras'}")
+    print(f"Modeli më i mirë u ruajt te: {MODEL_DIR / 'fire_cnn_v5.keras'}")
 
 
 if __name__ == "__main__":

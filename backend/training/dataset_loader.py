@@ -10,7 +10,10 @@ LABELS = {"No_Fire": 0, "Fire": 1}
 
 def load_image(path, label):
     image = tf.io.read_file(path)
-    image = tf.io.decode_jpeg(image, channels=3)
+    image = tf.io.decode_image(
+        image, channels=3, expand_animations=False
+    )
+    image.set_shape([None, None, 3])
     image = tf.image.resize(image, IMAGE_SIZE)
     image = image / 255.0
     return image, tf.cast(label, tf.float32)
@@ -48,10 +51,10 @@ if __name__ == "__main__":
         images, labels = next(iter(dataset))
         print(f"{split}: images={images.shape}, labels={labels.shape}")
 
-def load_weighted_train():
+def load_weighted_train(split="train_v2"):
     from collections import Counter
 
-    with (DATA_DIR / "splits/train_v2.csv").open(
+    with (DATA_DIR / "splits" / f"{split}.csv").open(
         encoding="utf-8", newline=""
     ) as file:
         rows = list(csv.DictReader(file))
