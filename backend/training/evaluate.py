@@ -34,11 +34,11 @@ def main():
     dataset = dataset.batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
 
     model = tf.keras.models.load_model(
-        ARTIFACTS_DIR / "models" / "fire_cnn_v5.keras"
+        ARTIFACTS_DIR / "models" / "fire_cnn_compare_brightness_maxpool.keras"
     )
 
     probabilities = model.predict(dataset).reshape(-1)
-    threshold = 0.6
+    threshold = 0.5
     predictions = (probabilities >= threshold).astype(int)
 
     report = classification_report(
@@ -67,7 +67,7 @@ def main():
     output_dir = ARTIFACTS_DIR / "reports"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    with (output_dir / "test_results_v5.json").open(
+    with (output_dir / "test_results_brightness_maxpool.json").open(
         "w", encoding="utf-8"
     ) as file:
         json.dump({
@@ -77,7 +77,7 @@ def main():
         }, file, indent=2)
 
     np.savez(
-        output_dir / "test_predictions_v5.npz",
+        output_dir / "test_predictions_brightness_maxpool.npz",
         paths=np.array(paths),
         labels=np.array(labels),
         probabilities=probabilities,

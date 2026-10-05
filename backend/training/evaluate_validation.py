@@ -9,7 +9,7 @@ from dataset_loader import DATA_DIR, LABELS, load_dataset
 
 MODEL_PATH = (
     Path(__file__).resolve().parents[1]
-    / "artifacts/models/fire_cnn_v5.keras"
+    / "artifacts/models/fire_cnn_compare_brightness.keras"
 )
 
 
