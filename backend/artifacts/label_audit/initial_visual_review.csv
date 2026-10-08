@@ -1,0 +1,25 @@
+split,path,original_label,reviewed_label,reason
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1592.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1606.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1620.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1634.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1648.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1662.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1676.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1690.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1704.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1718.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1732.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1746.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1759.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1773.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1787.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1801.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1815.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1829.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1843.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1857.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1871.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1885.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1899.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.
+test_adapt_val,Test/No_Fire/resized_test_nofire_frame1913.jpg,No_Fire,Uncertain,Blue/grey haze above forest; no visible flames in thumbnail. Fire origin requires recording context; no relabel applied.

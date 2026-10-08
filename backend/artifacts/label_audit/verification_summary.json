@@ -1,0 +1,38 @@
+{
+  "real_images": [
+    {
+      "path": "Training/No_Fire/lake_resized_lake_frame4738.jpg",
+      "result": {
+        "label": "No_Fire",
+        "fire_score": 0.0001867645769380033,
+        "threshold": 0.02003161795437336,
+        "model_version": "mobilenet_v3_smoke_development_v1"
+      }
+    },
+    {
+      "path": "Test/No_Fire/resized_test_nofire_frame1592.jpg",
+      "result": {
+        "label": "Fire",
+        "fire_score": 0.997075080871582,
+        "threshold": 0.02003161795437336,
+        "model_version": "mobilenet_v3_smoke_development_v1"
+      }
+    },
+    {
+      "path": "Test/Fire/resized_test_fire_frame2254.jpg",
+      "result": {
+        "label": "Fire",
+        "fire_score": 0.9999119639396667,
+        "threshold": 0.02003161795437336,
+        "model_version": "mobilenet_v3_smoke_development_v1"
+      }
+    }
+  ],
+  "invalid_images_rejected": true,
+  "grayscale_and_rgba_accepted": true,
+  "frontend_build": "passed",
+  "frontend_lint": "passed",
+  "http_server_check": "not completed: temporary server did not start within timeout",
+  "training_preflight": "passed; no model weights trained",
+  "test_final_accessed": false
+}

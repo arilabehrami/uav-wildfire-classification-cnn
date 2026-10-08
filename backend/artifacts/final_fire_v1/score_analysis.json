@@ -1,0 +1,1109 @@
+{
+  "run": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\final_fire_v1",
+  "sets": {
+    "validation": {
+      "file": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\final_fire_v1\\validation_predictions.csv",
+      "count": 8086,
+      "fire_count": 5235,
+      "no_fire_count": 2851,
+      "roc_auc": 0.9927465923751347,
+      "average_precision": 0.9954962574964455,
+      "at_threshold_0.5": {
+        "threshold": 0.5,
+        "TP": 4882,
+        "FN": 353,
+        "TN": 2775,
+        "FP": 76,
+        "fire_recall": 0.9325692454632283,
+        "no_fire_specificity": 0.9733426867765697,
+        "fire_precision": 0.9846712384025816,
+        "balanced_accuracy": 0.952955966119899,
+        "accuracy": 0.9469453376205788
+      },
+      "threshold_sweep": [
+        {
+          "threshold": 0.05,
+          "TP": 5213,
+          "FN": 22,
+          "TN": 2686,
+          "FP": 165,
+          "fire_recall": 0.9957975167144222,
+          "no_fire_specificity": 0.9421255699754472,
+          "fire_precision": 0.9693194496095203,
+          "balanced_accuracy": 0.9689615433449347,
+          "accuracy": 0.9768736087064062
+        },
+        {
+          "threshold": 0.1,
+          "TP": 5190,
+          "FN": 45,
+          "TN": 2730,
+          "FP": 121,
+          "fire_recall": 0.9914040114613181,
+          "no_fire_specificity": 0.957558751315328,
+          "fire_precision": 0.9772170965919789,
+          "balanced_accuracy": 0.9744813813883231,
+          "accuracy": 0.9794706900816226
+        },
+        {
+          "threshold": 0.2,
+          "TP": 5079,
+          "FN": 156,
+          "TN": 2762,
+          "FP": 89,
+          "fire_recall": 0.9702005730659026,
+          "no_fire_specificity": 0.9687828831988776,
+          "fire_precision": 0.9827786377708978,
+          "balanced_accuracy": 0.96949172813239,
+          "accuracy": 0.9697007172891418
+        },
+        {
+          "threshold": 0.3,
+          "TP": 4994,
+          "FN": 241,
+          "TN": 2770,
+          "FP": 81,
+          "fire_recall": 0.95396370582617,
+          "no_fire_specificity": 0.971588916169765,
+          "fire_precision": 0.984039408866995,
+          "balanced_accuracy": 0.9627763109979675,
+          "accuracy": 0.9601780855800148
+        },
+        {
+          "threshold": 0.4,
+          "TP": 4936,
+          "FN": 299,
+          "TN": 2772,
+          "FP": 79,
+          "fire_recall": 0.9428844317096466,
+          "no_fire_specificity": 0.9722904244124868,
+          "fire_precision": 0.984247258225324,
+          "balanced_accuracy": 0.9575874280610668,
+          "accuracy": 0.9532525352461044
+        },
+        {
+          "threshold": 0.5,
+          "TP": 4882,
+          "FN": 353,
+          "TN": 2775,
+          "FP": 76,
+          "fire_recall": 0.9325692454632283,
+          "no_fire_specificity": 0.9733426867765697,
+          "fire_precision": 0.9846712384025816,
+          "balanced_accuracy": 0.952955966119899,
+          "accuracy": 0.9469453376205788
+        },
+        {
+          "threshold": 0.6,
+          "TP": 4766,
+          "FN": 469,
+          "TN": 2779,
+          "FP": 72,
+          "fire_recall": 0.9104106972301814,
+          "no_fire_specificity": 0.9747457032620134,
+          "fire_precision": 0.9851178172798677,
+          "balanced_accuracy": 0.9425782002460974,
+          "accuracy": 0.9330942369527578
+        },
+        {
+          "threshold": 0.7,
+          "TP": 4672,
+          "FN": 563,
+          "TN": 2781,
+          "FP": 70,
+          "fire_recall": 0.8924546322827125,
+          "no_fire_specificity": 0.9754472115047352,
+          "fire_precision": 0.9852382960776044,
+          "balanced_accuracy": 0.9339509218937239,
+          "accuracy": 0.9217165471184764
+        },
+        {
+          "threshold": 0.8,
+          "TP": 4563,
+          "FN": 672,
+          "TN": 2783,
+          "FP": 68,
+          "fire_recall": 0.8716332378223496,
+          "no_fire_specificity": 0.976148719747457,
+          "fire_precision": 0.985316346361477,
+          "balanced_accuracy": 0.9238909787849032,
+          "accuracy": 0.9084837991590403
+        },
+        {
+          "threshold": 0.9,
+          "TP": 4401,
+          "FN": 834,
+          "TN": 2785,
+          "FP": 66,
+          "fire_recall": 0.8406876790830946,
+          "no_fire_specificity": 0.9768502279901788,
+          "fire_precision": 0.9852249832102082,
+          "balanced_accuracy": 0.9087689535366368,
+          "accuracy": 0.8886965124907247
+        },
+        {
+          "threshold": 0.95,
+          "TP": 4102,
+          "FN": 1133,
+          "TN": 2799,
+          "FP": 52,
+          "fire_recall": 0.7835721107927411,
+          "no_fire_specificity": 0.9817607856892319,
+          "fire_precision": 0.9874819451131439,
+          "balanced_accuracy": 0.8826664482409865,
+          "accuracy": 0.8534504081127875
+        },
+        {
+          "threshold": 0.99,
+          "TP": 3162,
+          "FN": 2073,
+          "TN": 2850,
+          "FP": 1,
+          "fire_recall": 0.6040114613180516,
+          "no_fire_specificity": 0.9996492458786391,
+          "fire_precision": 0.9996838444514701,
+          "balanced_accuracy": 0.8018303535983453,
+          "accuracy": 0.7435072965619589
+        }
+      ],
+      "best_balanced_accuracy": {
+        "threshold": 0.1,
+        "TP": 5190,
+        "FN": 45,
+        "TN": 2730,
+        "FP": 121,
+        "fire_recall": 0.9914040114613181,
+        "no_fire_specificity": 0.957558751315328,
+        "fire_precision": 0.9772170965919789,
+        "balanced_accuracy": 0.9744813813883231,
+        "accuracy": 0.9794706900816226
+      },
+      "at_fixed_fire_recall": {
+        "0.95": {
+          "threshold": 0.33446767926216125,
+          "TP": 4974,
+          "FN": 261,
+          "TN": 2771,
+          "FP": 80,
+          "fire_recall": 0.9501432664756447,
+          "no_fire_specificity": 0.9719396702911259,
+          "fire_precision": 0.9841709537000396,
+          "balanced_accuracy": 0.9610414683833853,
+          "accuracy": 0.9578283452881524
+        },
+        "0.98": {
+          "threshold": 0.1587551087141037,
+          "TP": 5131,
+          "FN": 104,
+          "TN": 2755,
+          "FP": 96,
+          "fire_recall": 0.9801337153772683,
+          "no_fire_specificity": 0.966327604349351,
+          "fire_precision": 0.9816338243734456,
+          "balanced_accuracy": 0.9732306598633097,
+          "accuracy": 0.9752658916646055
+        },
+        "0.99": {
+          "threshold": 0.10858225077390671,
+          "TP": 5183,
+          "FN": 52,
+          "TN": 2737,
+          "FP": 114,
+          "fire_recall": 0.9900668576886342,
+          "no_fire_specificity": 0.9600140301648544,
+          "fire_precision": 0.9784783839909382,
+          "balanced_accuracy": 0.9750404439267444,
+          "accuracy": 0.9794706900816226
+        }
+      },
+      "score_quantiles": {
+        "Fire": {
+          "min": 0.01258587185293436,
+          "p10": 0.6547122240066527,
+          "p25": 0.9656153321266174,
+          "median": 0.9936309456825256,
+          "p75": 0.997273325920105,
+          "p90": 0.9985491752624511,
+          "max": 0.9999446868896484
+        },
+        "No_Fire": {
+          "min": 7.922338227217551e-06,
+          "p10": 7.776929851388559e-05,
+          "p25": 0.0004730181099148467,
+          "median": 0.002108172280713916,
+          "p75": 0.007925527635961771,
+          "p90": 0.021395819261670113,
+          "max": 0.9906442165374756
+        }
+      },
+      "by_folder": {
+        "Training/Fire": {
+          "n": 5112,
+          "errors": 353,
+          "label": "Fire",
+          "error_rate": 0.06905320813771518
+        },
+        "Training/No_Fire": {
+          "n": 2763,
+          "errors": 76,
+          "label": "No_Fire",
+          "error_rate": 0.027506333695258775
+        },
+        "extra_raw/Evening Forest condition_raw_img": {
+          "n": 58,
+          "errors": 0,
+          "label": "No_Fire",
+          "error_rate": 0.0
+        },
+        "extra_raw/Pre-Evening Fire Incident_raw_img": {
+          "n": 123,
+          "errors": 0,
+          "label": "Fire",
+          "error_rate": 0.0
+        },
+        "extra_raw/Pre-evening Forest condition_raw_img": {
+          "n": 30,
+          "errors": 0,
+          "label": "No_Fire",
+          "error_rate": 0.0
+        }
+      },
+      "false_positive_bands": [
+        {
+          "frame_range": [
+            120,
+            4887
+          ],
+          "no_fire_images": 238,
+          "false_positives": 2,
+          "false_positive_rate": 0.008403361344537815
+        },
+        {
+          "frame_range": [
+            4887,
+            5125
+          ],
+          "no_fire_images": 237,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            5125,
+            5362
+          ],
+          "no_fire_images": 238,
+          "false_positives": 5,
+          "false_positive_rate": 0.02100840336134454
+        },
+        {
+          "frame_range": [
+            5362,
+            5600
+          ],
+          "no_fire_images": 237,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            5600,
+            5837
+          ],
+          "no_fire_images": 238,
+          "false_positives": 1,
+          "false_positive_rate": 0.004201680672268907
+        },
+        {
+          "frame_range": [
+            5837,
+            6075
+          ],
+          "no_fire_images": 237,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            6075,
+            6312
+          ],
+          "no_fire_images": 238,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            6312,
+            6550
+          ],
+          "no_fire_images": 237,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            6550,
+            6787
+          ],
+          "no_fire_images": 238,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            6787,
+            7025
+          ],
+          "no_fire_images": 237,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            7025,
+            11781
+          ],
+          "no_fire_images": 238,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            11781,
+            13489
+          ],
+          "no_fire_images": 238,
+          "false_positives": 68,
+          "false_positive_rate": 0.2857142857142857
+        }
+      ]
+    },
+    "known_test": {
+      "file": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\final_fire_v1\\known_test_predictions.csv",
+      "count": 8617,
+      "fire_count": 5137,
+      "no_fire_count": 3480,
+      "roc_auc": 0.8187999671081337,
+      "average_precision": 0.885546960912022,
+      "at_threshold_0.5": {
+        "threshold": 0.5,
+        "TP": 4682,
+        "FN": 455,
+        "TN": 1132,
+        "FP": 2348,
+        "fire_recall": 0.9114269028615923,
+        "no_fire_specificity": 0.3252873563218391,
+        "fire_precision": 0.6660028449502133,
+        "balanced_accuracy": 0.6183571295917157,
+        "accuracy": 0.6747127770685853
+      },
+      "threshold_sweep": [
+        {
+          "threshold": 0.05,
+          "TP": 4998,
+          "FN": 139,
+          "TN": 232,
+          "FP": 3248,
+          "fire_recall": 0.9729414054895854,
+          "no_fire_specificity": 0.06666666666666667,
+          "fire_precision": 0.6061120543293718,
+          "balanced_accuracy": 0.5198040360781261,
+          "accuracy": 0.6069397702216549
+        },
+        {
+          "threshold": 0.1,
+          "TP": 4874,
+          "FN": 263,
+          "TN": 301,
+          "FP": 3179,
+          "fire_recall": 0.9488028031925249,
+          "no_fire_specificity": 0.08649425287356322,
+          "fire_precision": 0.6052402831243014,
+          "balanced_accuracy": 0.5176485280330441,
+          "accuracy": 0.6005570384124406
+        },
+        {
+          "threshold": 0.2,
+          "TP": 4821,
+          "FN": 316,
+          "TN": 395,
+          "FP": 3085,
+          "fire_recall": 0.938485497372007,
+          "no_fire_specificity": 0.11350574712643678,
+          "fire_precision": 0.6097900328864154,
+          "balanced_accuracy": 0.5259956222492219,
+          "accuracy": 0.6053150748520366
+        },
+        {
+          "threshold": 0.3,
+          "TP": 4811,
+          "FN": 326,
+          "TN": 547,
+          "FP": 2933,
+          "fire_recall": 0.9365388358964376,
+          "no_fire_specificity": 0.157183908045977,
+          "fire_precision": 0.6212551652892562,
+          "balanced_accuracy": 0.5468613719712073,
+          "accuracy": 0.6217941278867355
+        },
+        {
+          "threshold": 0.4,
+          "TP": 4762,
+          "FN": 375,
+          "TN": 816,
+          "FP": 2664,
+          "fire_recall": 0.9270001946661476,
+          "no_fire_specificity": 0.23448275862068965,
+          "fire_precision": 0.6412604363048747,
+          "balanced_accuracy": 0.5807414766434186,
+          "accuracy": 0.647325055123593
+        },
+        {
+          "threshold": 0.5,
+          "TP": 4682,
+          "FN": 455,
+          "TN": 1132,
+          "FP": 2348,
+          "fire_recall": 0.9114269028615923,
+          "no_fire_specificity": 0.3252873563218391,
+          "fire_precision": 0.6660028449502133,
+          "balanced_accuracy": 0.6183571295917157,
+          "accuracy": 0.6747127770685853
+        },
+        {
+          "threshold": 0.6,
+          "TP": 4616,
+          "FN": 521,
+          "TN": 1480,
+          "FP": 2000,
+          "fire_recall": 0.8985789371228343,
+          "no_fire_specificity": 0.42528735632183906,
+          "fire_precision": 0.6977025392986699,
+          "balanced_accuracy": 0.6619331467223367,
+          "accuracy": 0.7074387837994661
+        },
+        {
+          "threshold": 0.7,
+          "TP": 4505,
+          "FN": 632,
+          "TN": 1851,
+          "FP": 1629,
+          "fire_recall": 0.876970994744014,
+          "no_fire_specificity": 0.531896551724138,
+          "fire_precision": 0.7344310401043365,
+          "balanced_accuracy": 0.704433773234076,
+          "accuracy": 0.7376116978066612
+        },
+        {
+          "threshold": 0.8,
+          "TP": 4297,
+          "FN": 840,
+          "TN": 2182,
+          "FP": 1298,
+          "fire_recall": 0.8364804360521705,
+          "no_fire_specificity": 0.6270114942528736,
+          "fire_precision": 0.7680071492403933,
+          "balanced_accuracy": 0.731745965152522,
+          "accuracy": 0.7518858071254497
+        },
+        {
+          "threshold": 0.9,
+          "TP": 3812,
+          "FN": 1325,
+          "TN": 2663,
+          "FP": 817,
+          "fire_recall": 0.7420673544870547,
+          "no_fire_specificity": 0.7652298850574712,
+          "fire_precision": 0.8235039965435299,
+          "balanced_accuracy": 0.7536486197722629,
+          "accuracy": 0.7514216084484159
+        },
+        {
+          "threshold": 0.95,
+          "TP": 3126,
+          "FN": 2011,
+          "TN": 3054,
+          "FP": 426,
+          "fire_recall": 0.608526377262994,
+          "no_fire_specificity": 0.8775862068965518,
+          "fire_precision": 0.8800675675675675,
+          "balanced_accuracy": 0.7430562920797729,
+          "accuracy": 0.7171869560171753
+        },
+        {
+          "threshold": 0.99,
+          "TP": 1063,
+          "FN": 4074,
+          "TN": 3475,
+          "FP": 5,
+          "fire_recall": 0.20693011485302706,
+          "no_fire_specificity": 0.9985632183908046,
+          "fire_precision": 0.9953183520599251,
+          "balanced_accuracy": 0.6027466666219159,
+          "accuracy": 0.5266333990948125
+        }
+      ],
+      "best_balanced_accuracy": {
+        "threshold": 0.9,
+        "TP": 3812,
+        "FN": 1325,
+        "TN": 2663,
+        "FP": 817,
+        "fire_recall": 0.7420673544870547,
+        "no_fire_specificity": 0.7652298850574712,
+        "fire_precision": 0.8235039965435299,
+        "balanced_accuracy": 0.7536486197722629,
+        "accuracy": 0.7514216084484159
+      },
+      "at_fixed_fire_recall": {
+        "0.95": {
+          "threshold": 0.09712184220552444,
+          "TP": 4881,
+          "FN": 256,
+          "TN": 296,
+          "FP": 3184,
+          "fire_recall": 0.9501654662254234,
+          "no_fire_specificity": 0.08505747126436781,
+          "fire_precision": 0.6052076875387477,
+          "balanced_accuracy": 0.5176114687448956,
+          "accuracy": 0.6007891377509574
+        },
+        "0.98": {
+          "threshold": 0.04135430231690407,
+          "TP": 5035,
+          "FN": 102,
+          "TN": 212,
+          "FP": 3268,
+          "fire_recall": 0.9801440529491922,
+          "no_fire_specificity": 0.06091954022988506,
+          "fire_precision": 0.6064073226544623,
+          "balanced_accuracy": 0.5205317965895386,
+          "accuracy": 0.6089126145990484
+        },
+        "0.99": {
+          "threshold": 0.03174803778529167,
+          "TP": 5086,
+          "FN": 51,
+          "TN": 181,
+          "FP": 3299,
+          "fire_recall": 0.990072026474596,
+          "no_fire_specificity": 0.05201149425287356,
+          "fire_precision": 0.6065593321407274,
+          "balanced_accuracy": 0.5210417603637348,
+          "accuracy": 0.6112336079842172
+        }
+      },
+      "score_quantiles": {
+        "Fire": {
+          "min": 0.00693863769993186,
+          "p10": 0.5923295736312867,
+          "p25": 0.8957977890968323,
+          "median": 0.968206524848938,
+          "p75": 0.9876987934112549,
+          "p90": 0.9955062627792358,
+          "max": 0.9999021291732788
+        },
+        "No_Fire": {
+          "min": 0.0029658423736691475,
+          "p10": 0.1634804606437683,
+          "p25": 0.415878102183342,
+          "median": 0.6730058193206787,
+          "p75": 0.8895737379789352,
+          "p90": 0.9565157353878021,
+          "max": 0.9956610798835754
+        }
+      },
+      "by_folder": {
+        "Test/Fire": {
+          "n": 5137,
+          "errors": 455,
+          "label": "Fire",
+          "error_rate": 0.08857309713840764
+        },
+        "Test/No_Fire": {
+          "n": 3480,
+          "errors": 2348,
+          "label": "No_Fire",
+          "error_rate": 0.674712643678161
+        }
+      },
+      "false_positive_bands": [
+        {
+          "frame_range": [
+            1,
+            290
+          ],
+          "no_fire_images": 290,
+          "false_positives": 92,
+          "false_positive_rate": 0.31724137931034485
+        },
+        {
+          "frame_range": [
+            290,
+            580
+          ],
+          "no_fire_images": 290,
+          "false_positives": 228,
+          "false_positive_rate": 0.7862068965517242
+        },
+        {
+          "frame_range": [
+            580,
+            870
+          ],
+          "no_fire_images": 290,
+          "false_positives": 195,
+          "false_positive_rate": 0.6724137931034483
+        },
+        {
+          "frame_range": [
+            870,
+            1160
+          ],
+          "no_fire_images": 290,
+          "false_positives": 202,
+          "false_positive_rate": 0.696551724137931
+        },
+        {
+          "frame_range": [
+            1160,
+            1450
+          ],
+          "no_fire_images": 290,
+          "false_positives": 280,
+          "false_positive_rate": 0.9655172413793104
+        },
+        {
+          "frame_range": [
+            1450,
+            1740
+          ],
+          "no_fire_images": 289,
+          "false_positives": 289,
+          "false_positive_rate": 1.0
+        },
+        {
+          "frame_range": [
+            1740,
+            2029
+          ],
+          "no_fire_images": 290,
+          "false_positives": 188,
+          "false_positive_rate": 0.6482758620689655
+        },
+        {
+          "frame_range": [
+            2029,
+            2319
+          ],
+          "no_fire_images": 290,
+          "false_positives": 137,
+          "false_positive_rate": 0.4724137931034483
+        },
+        {
+          "frame_range": [
+            2319,
+            2609
+          ],
+          "no_fire_images": 290,
+          "false_positives": 159,
+          "false_positive_rate": 0.5482758620689655
+        },
+        {
+          "frame_range": [
+            2609,
+            2899
+          ],
+          "no_fire_images": 290,
+          "false_positives": 290,
+          "false_positive_rate": 1.0
+        },
+        {
+          "frame_range": [
+            2899,
+            3189
+          ],
+          "no_fire_images": 290,
+          "false_positives": 285,
+          "false_positive_rate": 0.9827586206896551
+        },
+        {
+          "frame_range": [
+            3189,
+            3479
+          ],
+          "no_fire_images": 290,
+          "false_positives": 3,
+          "false_positive_rate": 0.010344827586206896
+        }
+      ]
+    },
+    "diagnostic_202": {
+      "file": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\final_fire_v1\\diagnostic_202_predictions.csv",
+      "count": 202,
+      "fire_count": 159,
+      "no_fire_count": 43,
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "at_threshold_0.5": {
+        "threshold": 0.5,
+        "TP": 159,
+        "FN": 0,
+        "TN": 40,
+        "FP": 3,
+        "fire_recall": 1.0,
+        "no_fire_specificity": 0.9302325581395349,
+        "fire_precision": 0.9814814814814815,
+        "balanced_accuracy": 0.9651162790697674,
+        "accuracy": 0.9851485148514851
+      },
+      "threshold_sweep": [
+        {
+          "threshold": 0.05,
+          "TP": 159,
+          "FN": 0,
+          "TN": 8,
+          "FP": 35,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.18604651162790697,
+          "fire_precision": 0.8195876288659794,
+          "balanced_accuracy": 0.5930232558139534,
+          "accuracy": 0.8267326732673267
+        },
+        {
+          "threshold": 0.1,
+          "TP": 159,
+          "FN": 0,
+          "TN": 12,
+          "FP": 31,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.27906976744186046,
+          "fire_precision": 0.8368421052631579,
+          "balanced_accuracy": 0.6395348837209303,
+          "accuracy": 0.8465346534653465
+        },
+        {
+          "threshold": 0.2,
+          "TP": 159,
+          "FN": 0,
+          "TN": 17,
+          "FP": 26,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.3953488372093023,
+          "fire_precision": 0.8594594594594595,
+          "balanced_accuracy": 0.6976744186046512,
+          "accuracy": 0.8712871287128713
+        },
+        {
+          "threshold": 0.3,
+          "TP": 159,
+          "FN": 0,
+          "TN": 28,
+          "FP": 15,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.6511627906976745,
+          "fire_precision": 0.9137931034482759,
+          "balanced_accuracy": 0.8255813953488372,
+          "accuracy": 0.9257425742574258
+        },
+        {
+          "threshold": 0.4,
+          "TP": 159,
+          "FN": 0,
+          "TN": 35,
+          "FP": 8,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.813953488372093,
+          "fire_precision": 0.9520958083832335,
+          "balanced_accuracy": 0.9069767441860466,
+          "accuracy": 0.9603960396039604
+        },
+        {
+          "threshold": 0.5,
+          "TP": 159,
+          "FN": 0,
+          "TN": 40,
+          "FP": 3,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 0.9302325581395349,
+          "fire_precision": 0.9814814814814815,
+          "balanced_accuracy": 0.9651162790697674,
+          "accuracy": 0.9851485148514851
+        },
+        {
+          "threshold": 0.6,
+          "TP": 159,
+          "FN": 0,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 1.0,
+          "accuracy": 1.0
+        },
+        {
+          "threshold": 0.7,
+          "TP": 159,
+          "FN": 0,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 1.0,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 1.0,
+          "accuracy": 1.0
+        },
+        {
+          "threshold": 0.8,
+          "TP": 157,
+          "FN": 2,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9874213836477987,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9937106918238994,
+          "accuracy": 0.9900990099009901
+        },
+        {
+          "threshold": 0.9,
+          "TP": 157,
+          "FN": 2,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9874213836477987,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9937106918238994,
+          "accuracy": 0.9900990099009901
+        },
+        {
+          "threshold": 0.95,
+          "TP": 156,
+          "FN": 3,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9811320754716981,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9905660377358491,
+          "accuracy": 0.9851485148514851
+        },
+        {
+          "threshold": 0.99,
+          "TP": 150,
+          "FN": 9,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9433962264150944,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9716981132075472,
+          "accuracy": 0.9554455445544554
+        }
+      ],
+      "best_balanced_accuracy": {
+        "threshold": 0.6,
+        "TP": 159,
+        "FN": 0,
+        "TN": 43,
+        "FP": 0,
+        "fire_recall": 1.0,
+        "no_fire_specificity": 1.0,
+        "fire_precision": 1.0,
+        "balanced_accuracy": 1.0,
+        "accuracy": 1.0
+      },
+      "at_fixed_fire_recall": {
+        "0.95": {
+          "threshold": 0.9863909482955933,
+          "TP": 152,
+          "FN": 7,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9559748427672956,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9779874213836478,
+          "accuracy": 0.9653465346534653
+        },
+        "0.98": {
+          "threshold": 0.9762274026870728,
+          "TP": 156,
+          "FN": 3,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9811320754716981,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9905660377358491,
+          "accuracy": 0.9851485148514851
+        },
+        "0.99": {
+          "threshold": 0.7929574251174927,
+          "TP": 158,
+          "FN": 1,
+          "TN": 43,
+          "FP": 0,
+          "fire_recall": 0.9937106918238994,
+          "no_fire_specificity": 1.0,
+          "fire_precision": 1.0,
+          "balanced_accuracy": 0.9968553459119497,
+          "accuracy": 0.995049504950495
+        }
+      },
+      "score_quantiles": {
+        "Fire": {
+          "min": 0.7840624451637268,
+          "p10": 0.9959336638450622,
+          "p25": 0.998222678899765,
+          "median": 0.9992302656173706,
+          "p75": 0.9995578825473785,
+          "p90": 0.9997773051261902,
+          "max": 0.999950110912323
+        },
+        "No_Fire": {
+          "min": 0.001255026669241488,
+          "p10": 0.01337379552423954,
+          "p25": 0.08346141502261162,
+          "median": 0.2258978933095932,
+          "p75": 0.3538513630628586,
+          "p90": 0.4758916556835176,
+          "max": 0.5600608587265015
+        }
+      },
+      "by_folder": {
+        "extra_raw/Pre-Evening Fire Incident_raw_img": {
+          "n": 159,
+          "errors": 0,
+          "label": "Fire",
+          "error_rate": 0.0
+        },
+        "extra_raw/Pre-evening Forest condition_raw_img": {
+          "n": 43,
+          "errors": 3,
+          "label": "No_Fire",
+          "error_rate": 0.06976744186046512
+        }
+      },
+      "false_positive_bands": [
+        {
+          "frame_range": [
+            170,
+            173
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            173,
+            177
+          ],
+          "no_fire_images": 3,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            177,
+            180
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            180,
+            184
+          ],
+          "no_fire_images": 3,
+          "false_positives": 1,
+          "false_positive_rate": 0.3333333333333333
+        },
+        {
+          "frame_range": [
+            184,
+            187
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            187,
+            191
+          ],
+          "no_fire_images": 3,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            191,
+            194
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            194,
+            198
+          ],
+          "no_fire_images": 3,
+          "false_positives": 1,
+          "false_positive_rate": 0.3333333333333333
+        },
+        {
+          "frame_range": [
+            198,
+            201
+          ],
+          "no_fire_images": 4,
+          "false_positives": 1,
+          "false_positive_rate": 0.25
+        },
+        {
+          "frame_range": [
+            201,
+            205
+          ],
+          "no_fire_images": 3,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            205,
+            208
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        },
+        {
+          "frame_range": [
+            208,
+            212
+          ],
+          "no_fire_images": 4,
+          "false_positives": 0,
+          "false_positive_rate": 0.0
+        }
+      ]
+    }
+  },
+  "auc_comparison": {
+    "validation": 0.9927465923751347,
+    "known_test": 0.8187999671081337,
+    "diagnostic_202": 1.0
+  },
+  "note": "AUC dhe average precision nuk varen nga pragu. Shperndarja e rezultateve dhe sweep-i i pragjeve tregojne nese ekziston nje prag i vetem i pranueshem. Bandat sipas frame-it tregojne grumbullim gabimesh, por numrat e frame-ve nuk jane ID skenash te verifikuara."
+}

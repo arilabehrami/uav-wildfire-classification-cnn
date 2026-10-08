@@ -10,7 +10,7 @@ function ImageUpload() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://localhost:8000/detect", {
+    const response = await fetch("http://localhost:8000/api/classify", {
       method: "POST",
       body: formData,
     });
@@ -22,6 +22,7 @@ function ImageUpload() {
   return (
     <div>
       <h2>Wildfire Detection</h2>
+      <p>Modeli aktual mund ta klasifikojë tymin si Fire. Modeli për vetëm flakë të dukshme ende nuk është aktiv.</p>
 
       <input
         type="file"
@@ -36,7 +37,7 @@ function ImageUpload() {
       {result && (
         <div>
           <p>Result: {result.label}</p>
-          <p>Confidence: {result.confidence}</p>
+          <p>Fire score: {result.fire_score?.toFixed(4)}</p>
         </div>
       )}
     </div>

@@ -1,0 +1,75 @@
+{
+  "source": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_temporal.keras",
+  "trained_candidate": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_mixed_v2_finetuned.keras",
+  "candidate_weights_identical_to_source": false,
+  "selected_model": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_mixed_v2_finetuned.keras",
+  "selection_rule": "mean of old-domain and extra-domain validation BCE losses, equal weights",
+  "baseline": {
+    "old": {
+      "accuracy": 0.9486984014511108,
+      "loss": 0.12351422011852264
+    },
+    "extra": {
+      "accuracy": 0.15032680332660675,
+      "loss": 4.172605991363525
+    },
+    "domain_loss": 2.148060105741024
+  },
+  "best_finetuned_epoch": {
+    "epoch": 1,
+    "old_loss": 0.1322147101163864,
+    "old_accuracy": 0.9626666903495789,
+    "extra_loss": 0.0040778848342597485,
+    "extra_accuracy": 1.0,
+    "domain_loss": 0.06814629747532308
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "old_loss": 0.1322147101163864,
+      "old_accuracy": 0.9626666903495789,
+      "extra_loss": 0.0040778848342597485,
+      "extra_accuracy": 1.0,
+      "domain_loss": 0.06814629747532308
+    },
+    {
+      "epoch": 2,
+      "old_loss": 0.2525290846824646,
+      "old_accuracy": 0.9465397000312805,
+      "extra_loss": 0.004595151171088219,
+      "extra_accuracy": 1.0,
+      "domain_loss": 0.1285621179267764
+    },
+    {
+      "epoch": 3,
+      "old_loss": 0.19392959773540497,
+      "old_accuracy": 0.9553015828132629,
+      "extra_loss": 0.002326099667698145,
+      "extra_accuracy": 1.0,
+      "domain_loss": 0.09812784870155156
+    }
+  ],
+  "split_counts": {
+    "train": 30068,
+    "validation_old": 7875,
+    "validation_extra": 153,
+    "holdout": 202
+  },
+  "holdout": {
+    "accuracy": 0.8316831683168316,
+    "per_class": {
+      "No_Fire": {
+        "correct": 9,
+        "total": 43,
+        "accuracy": 0.20930232558139536
+      },
+      "Fire": {
+        "correct": 159,
+        "total": 159,
+        "accuracy": 1.0
+      }
+    },
+    "threshold": 0.5
+  },
+  "limitation": "The retained extra images were inspected in an earlier experiment. This is a temporal comparison on known sources, not a new independent-source final test."
+}

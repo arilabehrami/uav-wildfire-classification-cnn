@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-10-08T07:12:01.514794+00:00",
+  "train_split": "train_flame_pilot_v1",
+  "train_count": 40,
+  "validation_splits": [
+    "validation_flame_pilot_v1"
+  ],
+  "architecture": "MobileNetV2 (ImageNet, i ngrire) -> concat(GlobalAvgPool, GlobalMaxPool) -> Dropout(0.35) -> Dense(1, sigmoid, L2 1e-4)",
+  "augmentation": "2 pamje te augmentuara per foto: flip horizontal+vertikal, rrotullim 0.08, shkelqim/kontrast 0.25",
+  "selection_rule": "Mesatarja e saktesise per klase mbi grupet e validimit, prag 0.5. test_final nuk u perdor ne asnje moment.",
+  "baseline_before_training": {
+    "group_balanced_accuracy": 0.5,
+    "per_group": {
+      "validation_flame_pilot_v1/Fire": {
+        "correct": 24,
+        "total": 24,
+        "rate": 1.0
+      },
+      "validation_flame_pilot_v1/No_Fire": {
+        "correct": 0,
+        "total": 21,
+        "rate": 0.0
+      }
+    }
+  },
+  "best_epoch": {
+    "epoch": 12,
+    "train_loss": 0.6004236340522766,
+    "validation": {
+      "group_balanced_accuracy": 0.7946428571428572,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 15,
+          "total": 21,
+          "rate": 0.7142857142857143
+        }
+      }
+    }
+  },
+  "limitation": "Pilot: 40 training and 45 development validation images, shared recordings, checkpoint chosen on validation. No independent final evaluation. Frame585 is a training sample.",
+  "label_policy": "Visible flames only; smoke without visible flames is No_Fire.",
+  "test_final_accessed": false
+}

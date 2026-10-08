@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Users\\Arila\\Downloads\\reviewed_flame_labels.csv",
+  "imported": 49,
+  "counts_by_split": {
+    "test_adapt_val": {
+      "Fire": 9,
+      "No_Fire": 2,
+      "Uncertain": 1
+    },
+    "train_with_adapt": {
+      "Uncertain": 26,
+      "Fire": 9,
+      "No_Fire": 2
+    }
+  },
+  "uncertain_excluded": 27,
+  "missing_reasons_on_uncertain": 24,
+  "total_clear": 22,
+  "training_started": false,
+  "note": "24 newly reviewed lake frames are Uncertain; exported file also includes 25 preseeded initial decisions. Clear dataset is too small for a credible training/validation experiment."
+}

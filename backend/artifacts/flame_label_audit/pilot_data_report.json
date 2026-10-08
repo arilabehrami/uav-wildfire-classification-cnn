@@ -1,0 +1,15 @@
+{
+  "train": {
+    "Fire": 18,
+    "No_Fire": 22
+  },
+  "validation": {
+    "Fire": 24,
+    "No_Fire": 21
+  },
+  "uncertain_excluded": 12,
+  "near_training_validation_excluded": 0,
+  "policy": "Visible flames only",
+  "limitations": "Small development experiment, not independent final test. Existing v3 has seen parts of these recordings. User uncertainty is respected.",
+  "test_final_accessed": false
+}

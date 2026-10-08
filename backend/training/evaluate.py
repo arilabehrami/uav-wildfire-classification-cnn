@@ -34,7 +34,7 @@ def main():
     dataset = dataset.batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
 
     model = tf.keras.models.load_model(
-        ARTIFACTS_DIR / "models" / "fire_cnn_compare_brightness_maxpool.keras"
+        ARTIFACTS_DIR / "models" / "fire_mobilenet_temporal.keras"
     )
 
     probabilities = model.predict(dataset).reshape(-1)
@@ -67,7 +67,7 @@ def main():
     output_dir = ARTIFACTS_DIR / "reports"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    with (output_dir / "test_results_brightness_maxpool.json").open(
+    with (output_dir / "test_results_mobilenet_temporal.json").open(
         "w", encoding="utf-8"
     ) as file:
         json.dump({
@@ -77,7 +77,7 @@ def main():
         }, file, indent=2)
 
     np.savez(
-        output_dir / "test_predictions_brightness_maxpool.npz",
+        output_dir / "test_predictions_mobilenet_temporal.npz",
         paths=np.array(paths),
         labels=np.array(labels),
         probabilities=probabilities,

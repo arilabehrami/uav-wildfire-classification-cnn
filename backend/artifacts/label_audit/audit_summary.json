@@ -1,0 +1,9 @@
+{
+  "target": "visible flames or confirmed fire smoke",
+  "train_negatives": 11938,
+  "validation_negatives": 322,
+  "visually_reviewed_samples": 24,
+  "labels_changed": 0,
+  "test_final_accessed": false,
+  "status": "Awaiting smoke provenance; initial sample uncertain; full audit pending"
+}

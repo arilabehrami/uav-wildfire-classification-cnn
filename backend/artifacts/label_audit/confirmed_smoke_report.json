@@ -1,0 +1,16 @@
+{
+  "source": "test_adapt_val.csv",
+  "corrected_split": "test_adapt_val_smoke_v1.csv",
+  "before": {
+    "Fire": 568,
+    "No_Fire": 322
+  },
+  "after": {
+    "Fire": 890
+  },
+  "changed": 322,
+  "confirmation_scope": "Test/No_Fire frames 1592-1913 only",
+  "training_labels_changed": 0,
+  "test_final_accessed": false,
+  "limitation": "Corrected validation has only Fire. ROC AUC and No_Fire specificity are undefined. Obtain independently confirmed No_Fire validation data before model selection."
+}

@@ -1,20 +1,27 @@
 from pathlib import Path
 import tensorflow as tf
 
-MODEL_PATH = (
+MODEL_DIR = (
     Path(__file__).resolve().parents[2]
-    / "artifacts/models/fire_cnn_v2.keras"
+    / "artifacts"
+    / "models"
 )
 
 IMAGE_SIZE = (254, 254)
-THRESHOLD = 0.8
+# Development calibration: >=95% recall in each Fire source group.
+# This is a sigmoid operating point, not a calibrated probability.
+THRESHOLD = 0.02003161795437336
+MODEL_VERSION = "mobilenet_v3_smoke_development_v1"
 
 
 class FireClassifier:
     def __init__(self):
         self.model = tf.keras.models.load_model(
-            MODEL_PATH, compile=False
+            MODEL_DIR / "fire_mobilenet_mixed_v3_finetuned.keras",
+            compile=False,
         )
+        if tuple(self.model.input_shape[1:]) != (*IMAGE_SIZE, 3) or self.model.output_shape[-1] != 1:
+            raise ValueError("Modeli duhet të pranojë RGB 254x254 dhe të japë një score sigmoid.")
 
     def classify(self, image_bytes: bytes) -> dict:
         try:
@@ -28,16 +35,16 @@ class FireClassifier:
                 "Fajlli nuk mund të lexohet si imazh."
             ) from error
 
-        # I njëjti përpunim si gjatë trajnimit.
         image = tf.image.resize(image, IMAGE_SIZE)
         image = image / 255.0
         batch = tf.expand_dims(image, axis=0)
 
         fire_score = float(self.model(batch, training=False)[0, 0])
+        label = "Fire" if fire_score >= THRESHOLD else "No_Fire"
 
         return {
-            "label": "Fire" if fire_score >= THRESHOLD else "No_Fire",
+            "label": label,
             "fire_score": fire_score,
             "threshold": THRESHOLD,
-            "model_version": "v2",
+            "model_version": MODEL_VERSION,
         }

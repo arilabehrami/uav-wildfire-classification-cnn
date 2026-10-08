@@ -1,0 +1,1371 @@
+{
+  "source": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_mixed_v3_finetuned.keras",
+  "source_sha256": "8ff3dd7f3030ce01286235a7b033a896de2e1c9be209c845ed8e31668518e209",
+  "trained_candidate": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_avgmax_v4.keras",
+  "selected_model": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\models\\fire_mobilenet_avgmax_v4.keras",
+  "candidate_selected": true,
+  "head_weights_changed": true,
+  "tensorflow_version": "2.21.0",
+  "architecture": "Frozen v3 MobileNetV2 spatial maps -> concat(global average, global max) -> Dropout(0.3) -> Dense sigmoid. Average weights initialized from v3; max weights initialized to zero.",
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "max_epochs": 20,
+    "head_batch_size": 128,
+    "sample_weight": "Same as v3: inverse class frequency, doubled for non-lake No_Fire."
+  },
+  "selection_rule": "Fixed threshold 0.5. Mean Fire recall across source groups and mean No_Fire specificity across source groups contribute equally. Require a strictly higher score and no decrease in correct count for either class in any source group relative to v3. Otherwise retain v3.",
+  "validation_baseline": {
+    "group_score": 0.9609340513695965,
+    "by_split": {
+      "validation_temporal": {
+        "count": 7875,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 4797,
+          "total": 5112,
+          "missed": 315
+        },
+        "No_Fire": {
+          "correct": 2695,
+          "total": 2763,
+          "false_alarms": 68
+        },
+        "accuracy": 0.9513650793650794,
+        "fire_recall": 0.9383802816901409,
+        "specificity": 0.9753890698516106,
+        "balanced_accuracy": 0.9568846757708758,
+        "min_fire_score": 1.4908936464053113e-05,
+        "max_no_fire_score": 0.9990738034248352,
+        "perfect_threshold_exists_on_this_group": false
+      },
+      "validation_extra_v3": {
+        "count": 211,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 122,
+          "total": 123,
+          "missed": 1
+        },
+        "No_Fire": {
+          "correct": 88,
+          "total": 88,
+          "false_alarms": 0
+        },
+        "accuracy": 0.995260663507109,
+        "fire_recall": 0.991869918699187,
+        "specificity": 1.0,
+        "balanced_accuracy": 0.9959349593495934,
+        "min_fire_score": 0.36099302768707275,
+        "max_no_fire_score": 0.0220655407756567,
+        "perfect_threshold_exists_on_this_group": true
+      }
+    },
+    "by_source": {
+      "validation_temporal / dataset_baze/lake": {
+        "count": 2370,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 0,
+          "total": 0,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 2370,
+          "total": 2370,
+          "false_alarms": 0
+        },
+        "accuracy": 1.0,
+        "fire_recall": null,
+        "specificity": 1.0,
+        "balanced_accuracy": null,
+        "min_fire_score": null,
+        "max_no_fire_score": 0.03787095844745636,
+        "perfect_threshold_exists_on_this_group": null
+      },
+      "validation_temporal / dataset_baze/te_tjera": {
+        "count": 5505,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 4797,
+          "total": 5112,
+          "missed": 315
+        },
+        "No_Fire": {
+          "correct": 325,
+          "total": 393,
+          "false_alarms": 68
+        },
+        "accuracy": 0.9304268846503179,
+        "fire_recall": 0.9383802816901409,
+        "specificity": 0.8269720101781171,
+        "balanced_accuracy": 0.882676145934129,
+        "min_fire_score": 1.4908936464053113e-05,
+        "max_no_fire_score": 0.9990738034248352,
+        "perfect_threshold_exists_on_this_group": false
+      },
+      "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+        "count": 123,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 122,
+          "total": 123,
+          "missed": 1
+        },
+        "No_Fire": {
+          "correct": 0,
+          "total": 0,
+          "false_alarms": 0
+        },
+        "accuracy": 0.991869918699187,
+        "fire_recall": 0.991869918699187,
+        "specificity": null,
+        "balanced_accuracy": null,
+        "min_fire_score": 0.36099302768707275,
+        "max_no_fire_score": null,
+        "perfect_threshold_exists_on_this_group": null
+      },
+      "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+        "count": 30,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 0,
+          "total": 0,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 30,
+          "total": 30,
+          "false_alarms": 0
+        },
+        "accuracy": 1.0,
+        "fire_recall": null,
+        "specificity": 1.0,
+        "balanced_accuracy": null,
+        "min_fire_score": null,
+        "max_no_fire_score": 0.0220655407756567,
+        "perfect_threshold_exists_on_this_group": null
+      },
+      "validation_extra_v3 / Evening Forest condition_raw_img": {
+        "count": 58,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 0,
+          "total": 0,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 58,
+          "total": 58,
+          "false_alarms": 0
+        },
+        "accuracy": 1.0,
+        "fire_recall": null,
+        "specificity": 1.0,
+        "balanced_accuracy": null,
+        "min_fire_score": null,
+        "max_no_fire_score": 0.0010726081673055887,
+        "perfect_threshold_exists_on_this_group": null
+      }
+    }
+  },
+  "best_candidate_epoch": {
+    "epoch": 1,
+    "val_loss": 0.1557394117116928,
+    "no_group_regression": true,
+    "accepted_improvement": true,
+    "validation": {
+      "group_score": 0.9643848033066935,
+      "by_split": {
+        "validation_temporal": {
+          "count": 7875,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 4826,
+            "total": 5112,
+            "missed": 286
+          },
+          "No_Fire": {
+            "correct": 2695,
+            "total": 2763,
+            "false_alarms": 68
+          },
+          "accuracy": 0.955047619047619,
+          "fire_recall": 0.9440532081377152,
+          "specificity": 0.9753890698516106,
+          "balanced_accuracy": 0.9597211389946629,
+          "min_fire_score": 3.3635740692261606e-05,
+          "max_no_fire_score": 0.9994462728500366,
+          "perfect_threshold_exists_on_this_group": false
+        },
+        "validation_extra_v3": {
+          "count": 211,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 123,
+            "total": 123,
+            "missed": 0
+          },
+          "No_Fire": {
+            "correct": 88,
+            "total": 88,
+            "false_alarms": 0
+          },
+          "accuracy": 1.0,
+          "fire_recall": 1.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 1.0,
+          "min_fire_score": 0.8814675211906433,
+          "max_no_fire_score": 0.07244087010622025,
+          "perfect_threshold_exists_on_this_group": true
+        }
+      },
+      "by_source": {
+        "validation_temporal / dataset_baze/lake": {
+          "count": 2370,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 0,
+            "total": 0,
+            "missed": 0
+          },
+          "No_Fire": {
+            "correct": 2370,
+            "total": 2370,
+            "false_alarms": 0
+          },
+          "accuracy": 1.0,
+          "fire_recall": null,
+          "specificity": 1.0,
+          "balanced_accuracy": null,
+          "min_fire_score": null,
+          "max_no_fire_score": 0.06283747404813766,
+          "perfect_threshold_exists_on_this_group": null
+        },
+        "validation_temporal / dataset_baze/te_tjera": {
+          "count": 5505,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 4826,
+            "total": 5112,
+            "missed": 286
+          },
+          "No_Fire": {
+            "correct": 325,
+            "total": 393,
+            "false_alarms": 68
+          },
+          "accuracy": 0.9356948228882834,
+          "fire_recall": 0.9440532081377152,
+          "specificity": 0.8269720101781171,
+          "balanced_accuracy": 0.8855126091579162,
+          "min_fire_score": 3.3635740692261606e-05,
+          "max_no_fire_score": 0.9994462728500366,
+          "perfect_threshold_exists_on_this_group": false
+        },
+        "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+          "count": 123,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 123,
+            "total": 123,
+            "missed": 0
+          },
+          "No_Fire": {
+            "correct": 0,
+            "total": 0,
+            "false_alarms": 0
+          },
+          "accuracy": 1.0,
+          "fire_recall": 1.0,
+          "specificity": null,
+          "balanced_accuracy": null,
+          "min_fire_score": 0.8814675211906433,
+          "max_no_fire_score": null,
+          "perfect_threshold_exists_on_this_group": null
+        },
+        "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+          "count": 30,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 0,
+            "total": 0,
+            "missed": 0
+          },
+          "No_Fire": {
+            "correct": 30,
+            "total": 30,
+            "false_alarms": 0
+          },
+          "accuracy": 1.0,
+          "fire_recall": null,
+          "specificity": 1.0,
+          "balanced_accuracy": null,
+          "min_fire_score": null,
+          "max_no_fire_score": 0.07244087010622025,
+          "perfect_threshold_exists_on_this_group": null
+        },
+        "validation_extra_v3 / Evening Forest condition_raw_img": {
+          "count": 58,
+          "threshold": 0.5,
+          "Fire": {
+            "correct": 0,
+            "total": 0,
+            "missed": 0
+          },
+          "No_Fire": {
+            "correct": 58,
+            "total": 58,
+            "false_alarms": 0
+          },
+          "accuracy": 1.0,
+          "fire_recall": null,
+          "specificity": 1.0,
+          "balanced_accuracy": null,
+          "min_fire_score": null,
+          "max_no_fire_score": 0.0029179721605032682,
+          "perfect_threshold_exists_on_this_group": null
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "val_loss": 0.1557394117116928,
+      "no_group_regression": true,
+      "accepted_improvement": true,
+      "validation": {
+        "group_score": 0.9643848033066935,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4826,
+              "total": 5112,
+              "missed": 286
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.955047619047619,
+            "fire_recall": 0.9440532081377152,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9597211389946629,
+            "min_fire_score": 3.3635740692261606e-05,
+            "max_no_fire_score": 0.9994462728500366,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.8814675211906433,
+            "max_no_fire_score": 0.07244087010622025,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.06283747404813766,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4826,
+              "total": 5112,
+              "missed": 286
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9356948228882834,
+            "fire_recall": 0.9440532081377152,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8855126091579162,
+            "min_fire_score": 3.3635740692261606e-05,
+            "max_no_fire_score": 0.9994462728500366,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.8814675211906433,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.07244087010622025,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0029179721605032682,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "val_loss": 0.18557703495025635,
+      "no_group_regression": false,
+      "accepted_improvement": false,
+      "validation": {
+        "group_score": 0.9625753353880706,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4789,
+              "total": 5112,
+              "missed": 323
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9503492063492064,
+            "fire_recall": 0.9368153364632238,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9561022031574171,
+            "min_fire_score": 1.1036817340936977e-05,
+            "max_no_fire_score": 0.9991630911827087,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.8375081419944763,
+            "max_no_fire_score": 0.03429107740521431,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.024558942764997482,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4789,
+              "total": 5112,
+              "missed": 323
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9289736603088101,
+            "fire_recall": 0.9368153364632238,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8818936733206704,
+            "min_fire_score": 1.1036817340936977e-05,
+            "max_no_fire_score": 0.9991630911827087,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.8375081419944763,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.03429107740521431,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0012549101375043392,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    },
+    {
+      "epoch": 3,
+      "val_loss": 0.18139895796775818,
+      "no_group_regression": true,
+      "accepted_improvement": true,
+      "validation": {
+        "group_score": 0.963651235231576,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4811,
+              "total": 5112,
+              "missed": 301
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9531428571428572,
+            "fire_recall": 0.9411189358372457,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9582540028444282,
+            "min_fire_score": 1.1466800060588866e-05,
+            "max_no_fire_score": 0.9995813965797424,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.8781648278236389,
+            "max_no_fire_score": 0.032427385449409485,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.030659841373562813,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4811,
+              "total": 5112,
+              "missed": 301
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9329700272479564,
+            "fire_recall": 0.9411189358372457,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8840454730076814,
+            "min_fire_score": 1.1466800060588866e-05,
+            "max_no_fire_score": 0.9995813965797424,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.8781648278236389,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.032427385449409485,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0010201989207416773,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    },
+    {
+      "epoch": 4,
+      "val_loss": 0.17598405480384827,
+      "no_group_regression": true,
+      "accepted_improvement": true,
+      "validation": {
+        "group_score": 0.96423808969167,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4823,
+              "total": 5112,
+              "missed": 289
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9546666666666667,
+            "fire_recall": 0.9434663536776213,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9594277117646159,
+            "min_fire_score": 1.4573787666449789e-05,
+            "max_no_fire_score": 0.9996825456619263,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.9104315042495728,
+            "max_no_fire_score": 0.03344184532761574,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.033879708498716354,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4823,
+              "total": 5112,
+              "missed": 289
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.935149863760218,
+            "fire_recall": 0.9434663536776213,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8852191819278692,
+            "min_fire_score": 1.4573787666449789e-05,
+            "max_no_fire_score": 0.9996825456619263,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.9104315042495728,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.03344184532761574,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0009471767698414624,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    },
+    {
+      "epoch": 5,
+      "val_loss": 0.1817176342010498,
+      "no_group_regression": true,
+      "accepted_improvement": true,
+      "validation": {
+        "group_score": 0.96423808969167,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4823,
+              "total": 5112,
+              "missed": 289
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9546666666666667,
+            "fire_recall": 0.9434663536776213,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9594277117646159,
+            "min_fire_score": 1.0252880201733205e-05,
+            "max_no_fire_score": 0.9997468590736389,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.9543310403823853,
+            "max_no_fire_score": 0.0343162938952446,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.04808567836880684,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4823,
+              "total": 5112,
+              "missed": 289
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.935149863760218,
+            "fire_recall": 0.9434663536776213,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8852191819278692,
+            "min_fire_score": 1.0252880201733205e-05,
+            "max_no_fire_score": 0.9997468590736389,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.9543310403823853,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0343162938952446,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.001223094528540969,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    },
+    {
+      "epoch": 6,
+      "val_loss": 0.1867883950471878,
+      "no_group_regression": true,
+      "accepted_improvement": true,
+      "validation": {
+        "group_score": 0.9641402806149877,
+        "by_split": {
+          "validation_temporal": {
+            "count": 7875,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4821,
+              "total": 5112,
+              "missed": 291
+            },
+            "No_Fire": {
+              "correct": 2695,
+              "total": 2763,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9544126984126984,
+            "fire_recall": 0.943075117370892,
+            "specificity": 0.9753890698516106,
+            "balanced_accuracy": 0.9592320936112513,
+            "min_fire_score": 8.318363143189345e-06,
+            "max_no_fire_score": 0.9998177886009216,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3": {
+            "count": 211,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 88,
+              "total": 88,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 1.0,
+            "min_fire_score": 0.9566817879676819,
+            "max_no_fire_score": 0.03331369534134865,
+            "perfect_threshold_exists_on_this_group": true
+          }
+        },
+        "by_source": {
+          "validation_temporal / dataset_baze/lake": {
+            "count": 2370,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 2370,
+              "total": 2370,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.05552235245704651,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_temporal / dataset_baze/te_tjera": {
+            "count": 5505,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 4821,
+              "total": 5112,
+              "missed": 291
+            },
+            "No_Fire": {
+              "correct": 325,
+              "total": 393,
+              "false_alarms": 68
+            },
+            "accuracy": 0.9347865576748411,
+            "fire_recall": 0.943075117370892,
+            "specificity": 0.8269720101781171,
+            "balanced_accuracy": 0.8850235637745045,
+            "min_fire_score": 8.318363143189345e-06,
+            "max_no_fire_score": 0.9998177886009216,
+            "perfect_threshold_exists_on_this_group": false
+          },
+          "validation_extra_v3 / Pre-Evening Fire Incident_raw_img": {
+            "count": 123,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 123,
+              "total": 123,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 0,
+              "total": 0,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": 1.0,
+            "specificity": null,
+            "balanced_accuracy": null,
+            "min_fire_score": 0.9566817879676819,
+            "max_no_fire_score": null,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Pre-evening Forest condition_raw_img": {
+            "count": 30,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 30,
+              "total": 30,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.03331369534134865,
+            "perfect_threshold_exists_on_this_group": null
+          },
+          "validation_extra_v3 / Evening Forest condition_raw_img": {
+            "count": 58,
+            "threshold": 0.5,
+            "Fire": {
+              "correct": 0,
+              "total": 0,
+              "missed": 0
+            },
+            "No_Fire": {
+              "correct": 58,
+              "total": 58,
+              "false_alarms": 0
+            },
+            "accuracy": 1.0,
+            "fire_recall": null,
+            "specificity": 1.0,
+            "balanced_accuracy": null,
+            "min_fire_score": null,
+            "max_no_fire_score": 0.0010930073913186789,
+            "perfect_threshold_exists_on_this_group": null
+          }
+        }
+      }
+    }
+  ],
+  "split_counts": {
+    "train_mixed_v3": 30276,
+    "validation_temporal": 7875,
+    "validation_extra_v3": 211,
+    "holdout_extra_v2": 202
+  },
+  "diagnostic_holdout": {
+    "group_score": 0.7325581395348837,
+    "by_split": {
+      "holdout_extra_v2": {
+        "count": 202,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 159,
+          "total": 159,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 20,
+          "total": 43,
+          "false_alarms": 23
+        },
+        "accuracy": 0.8861386138613861,
+        "fire_recall": 1.0,
+        "specificity": 0.46511627906976744,
+        "balanced_accuracy": 0.7325581395348837,
+        "min_fire_score": 0.8518365025520325,
+        "max_no_fire_score": 0.9393167495727539,
+        "perfect_threshold_exists_on_this_group": false
+      }
+    },
+    "by_source": {
+      "holdout_extra_v2 / Pre-Evening Fire Incident_raw_img": {
+        "count": 159,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 159,
+          "total": 159,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 0,
+          "total": 0,
+          "false_alarms": 0
+        },
+        "accuracy": 1.0,
+        "fire_recall": 1.0,
+        "specificity": null,
+        "balanced_accuracy": null,
+        "min_fire_score": 0.8518365025520325,
+        "max_no_fire_score": null,
+        "perfect_threshold_exists_on_this_group": null
+      },
+      "holdout_extra_v2 / Pre-evening Forest condition_raw_img": {
+        "count": 43,
+        "threshold": 0.5,
+        "Fire": {
+          "correct": 0,
+          "total": 0,
+          "missed": 0
+        },
+        "No_Fire": {
+          "correct": 20,
+          "total": 43,
+          "false_alarms": 23
+        },
+        "accuracy": 0.46511627906976744,
+        "fire_recall": null,
+        "specificity": 0.46511627906976744,
+        "balanced_accuracy": null,
+        "min_fire_score": null,
+        "max_no_fire_score": 0.9393167495727539,
+        "perfect_threshold_exists_on_this_group": null
+      }
+    }
+  },
+  "limitation": "The 202 control images were inspected in previous experiments. They are a diagnostic comparison, not an independent final test. Validation acceptance cannot guarantee no regressions on these or future images. Global max pooling is a hypothesis for improving local-cue sensitivity, not proof of spatial localization or correct labels."
+}

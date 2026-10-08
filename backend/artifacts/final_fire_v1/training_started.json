@@ -1,0 +1,13 @@
+{
+  "tf_version": "2.21.0",
+  "numpy_version": "2.4.6",
+  "seed": 42,
+  "head_max_epochs": 30,
+  "fine_max_epochs": 4,
+  "batch_size": 16,
+  "head_lr": 0.001,
+  "fine_lr": 1e-05,
+  "plan_sha256": "cc275068d58ac1d4e7ff26866ce51ead2707cb898b4fdc2504ea8a3e138a174b",
+  "script_sha256": "6d44418fe7d9f273965d4b03898e7bcc0330dc1c1c2a284b6dbec6b98c01cbc3",
+  "initialization": "ImageNet"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "path": "Training/Fire/resized_frame0.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame1986.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame4759.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame6902.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame8882.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame17738.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame20050.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame22030.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame24010.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Training/Fire/resized_frame25990.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame73.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2053.jpg",
+    "label": "Fire",
+    "split": "train_with_adapt"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2254.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2306.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2357.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2409.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2460.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2512.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2566.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2618.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2669.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2721.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2772.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  },
+  {
+    "path": "Test/Fire/resized_test_fire_frame2824.jpg",
+    "label": "Fire",
+    "split": "test_adapt_val"
+  }
+]

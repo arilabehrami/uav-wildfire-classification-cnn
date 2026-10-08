@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "Fire": 1088,
+    "No_Fire": 400
+  },
+  "total": 1488,
+  "candidates": 8765,
+  "excluded_near_training": 240,
+  "dhash_minimum_distance": 9,
+  "train_comparison_splits": [
+    "train_temporal",
+    "train_mixed_v3",
+    "train_with_adapt"
+  ],
+  "negative_label_source": "Existing validation_temporal labels; not a new provenance audit",
+  "confirmed_smoke_scope": "Test/No_Fire frames 1592-1913",
+  "training_fog_scope": "Test/No_Fire frames 0-1391 stay No_Fire per user confirmation",
+  "limitations": [
+    "Previously used development validation, not independent test.",
+    "No confirmed fog/cloud negatives from the Test camera outside training.",
+    "Combined AUC mixes cameras/scenes and cannot prove same-camera smoke/fog discrimination.",
+    "Consecutive frames are correlated; image count is not independent scene count."
+  ],
+  "test_final_accessed": false
+}

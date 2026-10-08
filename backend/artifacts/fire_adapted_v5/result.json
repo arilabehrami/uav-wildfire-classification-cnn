@@ -1,0 +1,88 @@
+{
+  "created_utc": "2026-10-08T05:42:35.703374+00:00",
+  "train_split": "train_with_adapt",
+  "train_count": 33722,
+  "validation_splits": [
+    "validation_temporal",
+    "validation_extra_v3",
+    "test_adapt_val"
+  ],
+  "architecture": "MobileNetV2 (ImageNet, i ngrire) -> concat(GlobalAvgPool, GlobalMaxPool) -> Dropout(0.35) -> Dense(1, sigmoid, L2 1e-4)",
+  "augmentation": "2 pamje te augmentuara per foto: flip horizontal+vertikal, rrotullim 0.08, shkelqim/kontrast 0.25",
+  "selection_rule": "Mesatarja e saktesise per klase mbi grupet e validimit, prag 0.5. test_final nuk u perdor ne asnje moment.",
+  "baseline_before_training": {
+    "group_balanced_accuracy": 0.4989795359198258,
+    "per_group": {
+      "test_adapt_val/Fire": {
+        "correct": 568,
+        "total": 568,
+        "rate": 1.0
+      },
+      "test_adapt_val/No_Fire": {
+        "correct": 0,
+        "total": 322,
+        "rate": 0.0
+      },
+      "validation_extra_v3/Fire": {
+        "correct": 123,
+        "total": 123,
+        "rate": 1.0
+      },
+      "validation_extra_v3/No_Fire": {
+        "correct": 0,
+        "total": 88,
+        "rate": 0.0
+      },
+      "validation_temporal/Fire": {
+        "correct": 5077,
+        "total": 5112,
+        "rate": 0.9931533646322379
+      },
+      "validation_temporal/No_Fire": {
+        "correct": 2,
+        "total": 2763,
+        "rate": 0.0007238508867173362
+      }
+    }
+  },
+  "best_epoch": {
+    "epoch": 8,
+    "train_loss": 0.0695900097489357,
+    "validation": {
+      "group_balanced_accuracy": 0.9074352097204015,
+      "per_group": {
+        "test_adapt_val/Fire": {
+          "correct": 445,
+          "total": 568,
+          "rate": 0.7834507042253521
+        },
+        "test_adapt_val/No_Fire": {
+          "correct": 243,
+          "total": 322,
+          "rate": 0.7546583850931677
+        },
+        "validation_extra_v3/Fire": {
+          "correct": 123,
+          "total": 123,
+          "rate": 1.0
+        },
+        "validation_extra_v3/No_Fire": {
+          "correct": 88,
+          "total": 88,
+          "rate": 1.0
+        },
+        "validation_temporal/Fire": {
+          "correct": 4758,
+          "total": 5112,
+          "rate": 0.9307511737089202
+        },
+        "validation_temporal/No_Fire": {
+          "correct": 2696,
+          "total": 2763,
+          "rate": 0.9757509952949692
+        }
+      }
+    }
+  },
+  "limitation": "test_adapt_val and test_final come from the same recording, separated in time with a 200-frame gap and cleaned of near-duplicates. Selecting on test_adapt_val means test_final is held out but not independent."
+}

@@ -1,0 +1,102 @@
+{
+  "results": {
+    "current_v3": {
+      "roc_auc": 0.9940476190476191,
+      "at_operating_threshold": {
+        "threshold": 0.02003161795437336,
+        "TP": 24,
+        "FN": 0,
+        "TN": 20,
+        "FP": 1,
+        "fire_recall": 1.0,
+        "no_fire_specificity": 0.9523809523809523,
+        "fire_precision": 0.96,
+        "balanced_accuracy": 0.9761904761904762,
+        "accuracy": 0.9777777777777777
+      },
+      "at_threshold_0_5": {
+        "threshold": 0.5,
+        "TP": 23,
+        "FN": 1,
+        "TN": 20,
+        "FP": 1,
+        "fire_recall": 0.9583333333333334,
+        "no_fire_specificity": 0.9523809523809523,
+        "fire_precision": 0.9583333333333334,
+        "balanced_accuracy": 0.9553571428571428,
+        "accuracy": 0.9555555555555556
+      },
+      "frame585_diagnostic": {
+        "fire_score": 0.7433465719223022,
+        "label": "Fire",
+        "used_in_pilot_training": true
+      }
+    },
+    "flame_pilot_v1": {
+      "roc_auc": 0.9166666666666666,
+      "at_operating_threshold": {
+        "threshold": 0.5,
+        "TP": 21,
+        "FN": 3,
+        "TN": 15,
+        "FP": 6,
+        "fire_recall": 0.875,
+        "no_fire_specificity": 0.7142857142857143,
+        "fire_precision": 0.7777777777777778,
+        "balanced_accuracy": 0.7946428571428572,
+        "accuracy": 0.8
+      },
+      "at_threshold_0_5": {
+        "threshold": 0.5,
+        "TP": 21,
+        "FN": 3,
+        "TN": 15,
+        "FP": 6,
+        "fire_recall": 0.875,
+        "no_fire_specificity": 0.7142857142857143,
+        "fire_precision": 0.7777777777777778,
+        "balanced_accuracy": 0.7946428571428572,
+        "accuracy": 0.8
+      },
+      "frame585_diagnostic": {
+        "fire_score": 0.8075405359268188,
+        "label": "Fire",
+        "used_in_pilot_training": true
+      }
+    },
+    "flame_pilot_v2": {
+      "roc_auc": 0.9682539682539683,
+      "at_operating_threshold": {
+        "threshold": 0.5,
+        "TP": 21,
+        "FN": 3,
+        "TN": 20,
+        "FP": 1,
+        "fire_recall": 0.875,
+        "no_fire_specificity": 0.9523809523809523,
+        "fire_precision": 0.9545454545454546,
+        "balanced_accuracy": 0.9136904761904762,
+        "accuracy": 0.9111111111111111
+      },
+      "at_threshold_0_5": {
+        "threshold": 0.5,
+        "TP": 21,
+        "FN": 3,
+        "TN": 20,
+        "FP": 1,
+        "fire_recall": 0.875,
+        "no_fire_specificity": 0.9523809523809523,
+        "fire_precision": 0.9545454545454546,
+        "balanced_accuracy": 0.9136904761904762,
+        "accuracy": 0.9111111111111111
+      },
+      "frame585_diagnostic": {
+        "fire_score": 0.4251709580421448,
+        "label": "No_Fire",
+        "used_in_pilot_training": true
+      }
+    }
+  },
+  "limitations": "Small development validation, already used to select epochs. v3 has previous exposure to the broader recordings. Frame585 is a training diagnostic, not a held-out test.",
+  "test_final_accessed": false
+}

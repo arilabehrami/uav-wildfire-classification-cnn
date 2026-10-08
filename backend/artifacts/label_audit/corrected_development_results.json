@@ -1,0 +1,182 @@
+{
+  "v3": {
+    "model": "backend\\artifacts\\models\\fire_mobilenet_mixed_v3_finetuned.keras",
+    "roc_auc": 0.9575367647058823,
+    "at_threshold_0_5": {
+      "threshold": 0.5,
+      "TP": 951,
+      "FN": 137,
+      "TN": 365,
+      "FP": 35,
+      "fire_recall": 0.8740808823529411,
+      "no_fire_specificity": 0.9125,
+      "fire_precision": 0.9645030425963489,
+      "balanced_accuracy": 0.8932904411764706,
+      "accuracy": 0.8844086021505376
+    },
+    "per_group": {
+      "confirmed_smoke": {
+        "count": 322,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 226,
+          "FN": 96,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.7018633540372671,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.7018633540372671
+        }
+      },
+      "test_original_fire": {
+        "count": 566,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 539,
+          "FN": 27,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.9522968197879859,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.9522968197879859
+        }
+      },
+      "old_domain_fire": {
+        "count": 200,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 186,
+          "FN": 14,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.93,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.93
+        }
+      },
+      "old_domain_no_fire": {
+        "count": 400,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 0,
+          "FN": 0,
+          "TN": 365,
+          "FP": 35,
+          "fire_recall": null,
+          "no_fire_specificity": 0.9125,
+          "fire_precision": 0.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.9125
+        }
+      }
+    },
+    "exploratory_at_95_recall": {
+      "threshold": 0.07691553980112076,
+      "TP": 1034,
+      "FN": 54,
+      "TN": 359,
+      "FP": 41,
+      "fire_recall": 0.9503676470588235,
+      "no_fire_specificity": 0.8975,
+      "fire_precision": 0.9618604651162791,
+      "balanced_accuracy": 0.9239338235294117,
+      "accuracy": 0.9361559139784946
+    }
+  },
+  "v5": {
+    "model": "backend\\artifacts\\fire_adapted_v5\\model.keras",
+    "roc_auc": 0.9370749080882353,
+    "at_threshold_0_5": {
+      "threshold": 0.5,
+      "TP": 709,
+      "FN": 379,
+      "TN": 365,
+      "FP": 35,
+      "fire_recall": 0.6516544117647058,
+      "no_fire_specificity": 0.9125,
+      "fire_precision": 0.9529569892473119,
+      "balanced_accuracy": 0.7820772058823529,
+      "accuracy": 0.7217741935483871
+    },
+    "per_group": {
+      "confirmed_smoke": {
+        "count": 322,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 79,
+          "FN": 243,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.2453416149068323,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.2453416149068323
+        }
+      },
+      "test_original_fire": {
+        "count": 566,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 445,
+          "FN": 121,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.7862190812720848,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.7862190812720848
+        }
+      },
+      "old_domain_fire": {
+        "count": 200,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 185,
+          "FN": 15,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.925,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.925
+        }
+      },
+      "old_domain_no_fire": {
+        "count": 400,
+        "metrics": {
+          "threshold": 0.5,
+          "TP": 0,
+          "FN": 0,
+          "TN": 365,
+          "FP": 35,
+          "fire_recall": null,
+          "no_fire_specificity": 0.9125,
+          "fire_precision": 0.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.9125
+        }
+      }
+    },
+    "exploratory_at_95_recall": {
+      "threshold": 0.000346044369507581,
+      "TP": 1034,
+      "FN": 54,
+      "TN": 317,
+      "FP": 83,
+      "fire_recall": 0.9503676470588235,
+      "no_fire_specificity": 0.7925,
+      "fire_precision": 0.9256938227394808,
+      "balanced_accuracy": 0.8714338235294117,
+      "accuracy": 0.9079301075268817
+    }
+  }
+}

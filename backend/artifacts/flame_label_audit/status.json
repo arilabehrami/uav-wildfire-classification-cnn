@@ -1,0 +1,14 @@
+{
+  "policy": "Fire only for visible flames",
+  "reviewed": 25,
+  "total": 42698,
+  "remaining": 42673,
+  "weights_retrained": true,
+  "old_smoke_calibration_applicable": false,
+  "test_final_accessed": false,
+  "full_audit_complete": false,
+  "pilot_model": "backend/artifacts/fire_flame_pilot_v2/model.keras",
+  "pilot_train_images": 40,
+  "pilot_validation_images": 45,
+  "app_default_replaced": false
+}

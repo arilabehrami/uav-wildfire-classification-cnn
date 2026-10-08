@@ -1,0 +1,116 @@
+{
+  "selected": "v3",
+  "rule": "Maximize development No_Fire specificity while each Fire source group has empirical recall >=95%.",
+  "models": {
+    "v3": {
+      "threshold": 0.02003161795437336,
+      "overall": {
+        "threshold": 0.02003161795437336,
+        "TP": 1069,
+        "FN": 19,
+        "TN": 358,
+        "FP": 42,
+        "fire_recall": 0.9825367647058824,
+        "no_fire_specificity": 0.895,
+        "fire_precision": 0.9621962196219622,
+        "balanced_accuracy": 0.9387683823529411,
+        "accuracy": 0.959005376344086
+      },
+      "per_positive_group": {
+        "confirmed_smoke": {
+          "threshold": 0.02003161795437336,
+          "TP": 306,
+          "FN": 16,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.9503105590062112,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.9503105590062112
+        },
+        "test_original_fire": {
+          "threshold": 0.02003161795437336,
+          "TP": 566,
+          "FN": 0,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 1.0,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 1.0
+        },
+        "old_domain_fire": {
+          "threshold": 0.02003161795437336,
+          "TP": 197,
+          "FN": 3,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.985,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.985
+        }
+      }
+    },
+    "v5": {
+      "threshold": 5.571884321398102e-05,
+      "overall": {
+        "threshold": 5.571884321398102e-05,
+        "TP": 1072,
+        "FN": 16,
+        "TN": 266,
+        "FP": 134,
+        "fire_recall": 0.9852941176470589,
+        "no_fire_specificity": 0.665,
+        "fire_precision": 0.8888888888888888,
+        "balanced_accuracy": 0.8251470588235295,
+        "accuracy": 0.8991935483870968
+      },
+      "per_positive_group": {
+        "confirmed_smoke": {
+          "threshold": 5.571884321398102e-05,
+          "TP": 306,
+          "FN": 16,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 0.9503105590062112,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 0.9503105590062112
+        },
+        "test_original_fire": {
+          "threshold": 5.571884321398102e-05,
+          "TP": 566,
+          "FN": 0,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 1.0,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 1.0
+        },
+        "old_domain_fire": {
+          "threshold": 5.571884321398102e-05,
+          "TP": 200,
+          "FN": 0,
+          "TN": 0,
+          "FP": 0,
+          "fire_recall": 1.0,
+          "no_fire_specificity": null,
+          "fire_precision": 1.0,
+          "balanced_accuracy": null,
+          "accuracy": 1.0
+        }
+      }
+    }
+  },
+  "model": "backend\\artifacts\\models\\fire_mobilenet_mixed_v3_finetuned.keras",
+  "limitations": "Development calibration only; negatives use the older camera. Same-camera smoke/fog performance needs new recordings.",
+  "weights_retrained": false,
+  "test_final_accessed": false
+}

@@ -1,0 +1,572 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.9224377870559692,
+    "validation": {
+      "group_balanced_accuracy": 0.4375,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 13,
+          "total": 24,
+          "rate": 0.5416666666666666
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 7,
+          "total": 21,
+          "rate": 0.3333333333333333
+        }
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 1.2050670385360718,
+    "validation": {
+      "group_balanced_accuracy": 0.46428571428571425,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 4,
+          "total": 24,
+          "rate": 0.16666666666666666
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 16,
+          "total": 21,
+          "rate": 0.7619047619047619
+        }
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 1.1681305170059204,
+    "validation": {
+      "group_balanced_accuracy": 0.5357142857142857,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 4,
+          "total": 24,
+          "rate": 0.16666666666666666
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 19,
+          "total": 21,
+          "rate": 0.9047619047619048
+        }
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "train_loss": 1.6982495784759521,
+    "validation": {
+      "group_balanced_accuracy": 0.5982142857142857,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 7,
+          "total": 24,
+          "rate": 0.2916666666666667
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 19,
+          "total": 21,
+          "rate": 0.9047619047619048
+        }
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "train_loss": 1.167095422744751,
+    "validation": {
+      "group_balanced_accuracy": 0.6279761904761905,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 13,
+          "total": 24,
+          "rate": 0.5416666666666666
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 15,
+          "total": 21,
+          "rate": 0.7142857142857143
+        }
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.7367894053459167,
+    "validation": {
+      "group_balanced_accuracy": 0.6785714285714286,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 11,
+          "total": 21,
+          "rate": 0.5238095238095238
+        }
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.9673820734024048,
+    "validation": {
+      "group_balanced_accuracy": 0.5833333333333334,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 7,
+          "total": 21,
+          "rate": 0.3333333333333333
+        }
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.9454072713851929,
+    "validation": {
+      "group_balanced_accuracy": 0.6220238095238095,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 23,
+          "total": 24,
+          "rate": 0.9583333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 6,
+          "total": 21,
+          "rate": 0.2857142857142857
+        }
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.6794163584709167,
+    "validation": {
+      "group_balanced_accuracy": 0.6220238095238095,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 23,
+          "total": 24,
+          "rate": 0.9583333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 6,
+          "total": 21,
+          "rate": 0.2857142857142857
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.7599180936813354,
+    "validation": {
+      "group_balanced_accuracy": 0.6696428571428572,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 23,
+          "total": 24,
+          "rate": 0.9583333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 8,
+          "total": 21,
+          "rate": 0.38095238095238093
+        }
+      }
+    }
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.7043226361274719,
+    "validation": {
+      "group_balanced_accuracy": 0.7202380952380952,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 22,
+          "total": 24,
+          "rate": 0.9166666666666666
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 11,
+          "total": 21,
+          "rate": 0.5238095238095238
+        }
+      }
+    }
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.6004236340522766,
+    "validation": {
+      "group_balanced_accuracy": 0.7946428571428572,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 15,
+          "total": 21,
+          "rate": 0.7142857142857143
+        }
+      }
+    }
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.5506402254104614,
+    "validation": {
+      "group_balanced_accuracy": 0.8690476190476191,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 19,
+          "total": 21,
+          "rate": 0.9047619047619048
+        }
+      }
+    }
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.5236738920211792,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.31611061096191406,
+    "validation": {
+      "group_balanced_accuracy": 0.8511904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 18,
+          "total": 24,
+          "rate": 0.75
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.4788804054260254,
+    "validation": {
+      "group_balanced_accuracy": 0.8511904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 18,
+          "total": 24,
+          "rate": 0.75
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.3562546372413635,
+    "validation": {
+      "group_balanced_accuracy": 0.8511904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 18,
+          "total": 24,
+          "rate": 0.75
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.18915781378746033,
+    "validation": {
+      "group_balanced_accuracy": 0.8511904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 18,
+          "total": 24,
+          "rate": 0.75
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.28646281361579895,
+    "validation": {
+      "group_balanced_accuracy": 0.8511904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 18,
+          "total": 24,
+          "rate": 0.75
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 20,
+    "train_loss": 0.3491005599498749,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 21,
+    "train_loss": 0.254498153924942,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 22,
+    "train_loss": 0.2738192677497864,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 23,
+    "train_loss": 0.18433190882205963,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 24,
+    "train_loss": 0.16965797543525696,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 25,
+    "train_loss": 0.16625985503196716,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 26,
+    "train_loss": 0.12917988002300262,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 27,
+    "train_loss": 0.19573570787906647,
+    "validation": {
+      "group_balanced_accuracy": 0.9136904761904762,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 21,
+          "total": 24,
+          "rate": 0.875
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 28,
+    "train_loss": 0.15278543531894684,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 29,
+    "train_loss": 0.1101490929722786,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  },
+  {
+    "epoch": 30,
+    "train_loss": 0.11072370409965515,
+    "validation": {
+      "group_balanced_accuracy": 0.8928571428571428,
+      "per_group": {
+        "validation_flame_pilot_v1/Fire": {
+          "correct": 20,
+          "total": 24,
+          "rate": 0.8333333333333334
+        },
+        "validation_flame_pilot_v1/No_Fire": {
+          "correct": 20,
+          "total": 21,
+          "rate": 0.9523809523809523
+        }
+      }
+    }
+  }
+]

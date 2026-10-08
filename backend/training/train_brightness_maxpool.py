@@ -13,6 +13,8 @@ ARTIFACTS = Path(__file__).resolve().parents[1] / "artifacts"
 MODEL_DIR = ARTIFACTS / "models"
 REPORT_DIR = ARTIFACTS / "reports"
 
+NAME = "brightness_maxpool_temporal"
+
 
 def read_rows(split):
     with (DATA_DIR / "splits" / f"{split}.csv").open(
@@ -38,12 +40,11 @@ def build_train_data(rows, base_weights):
 
     def load_sample(path, label, weight):
         image, label = load_image(path, label)
-
         image = tf.image.random_brightness(
             image, max_delta=0.15, seed=42
         )
         image = tf.clip_by_value(image, 0.0, 1.0)
-        
+
         return image, label, tf.cast(weight, tf.float32)
 
     dataset = tf.data.Dataset.from_tensor_slices(
@@ -55,6 +56,7 @@ def build_train_data(rows, base_weights):
     dataset = dataset.map(
         load_sample, num_parallel_calls=tf.data.AUTOTUNE
     )
+
     return dataset.batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
 
 
@@ -62,37 +64,31 @@ def main():
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-    experiments = [
-        ("brightness_maxpool", "train_v2"),
-    ]
+    model_path = MODEL_DIR / f"fire_cnn_{NAME}.keras"
 
-    for name, _ in experiments:
-        if (MODEL_DIR / f"fire_cnn_compare_{name}.keras").exists():
-            raise FileExistsError(
-                f"Modeli compare_{name} ekziston. "
-                "Mos e mbishkruaj pa e ruajtur."
-            )
+    if model_path.exists():
+        raise FileExistsError(f"Modeli ekziston: {model_path}")
 
-    base_rows = read_rows("train_v2")
-    extra_rows = read_rows("train_v5")
+    rows = read_rows("train_temporal")
+    validation_rows = read_rows("validation_temporal")
 
-    base_entries = {(r["path"], r["label"]) for r in base_rows}
-    extra_entries = {(r["path"], r["label"]) for r in extra_rows}
+    train_paths = {row["path"] for row in rows}
+    validation_paths = {row["path"] for row in validation_rows}
 
-    if not base_entries.issubset(extra_entries):
-        raise ValueError("train_v5 nuk përmban të gjitha fotot e train_v2.")
+    if train_paths & validation_paths:
+        raise ValueError("Ka foto të përbashkëta në train dhe validation.")
 
-    added = extra_entries - base_entries
-    if not added or any(label != "No_Fire" for _, label in added):
-        raise ValueError("Fotot shtesë duhet të jenë vetëm No_Fire.")
+    counts = Counter(row["label"] for row in rows)
 
-    counts = Counter(row["label"] for row in base_rows)
+    if any(counts[label] == 0 for label in LABELS):
+        raise ValueError("Trajnimi duhet t'i ketë të dyja klasat.")
+
     base_weights = {
-        label: len(base_rows) / (2 * counts[label])
+        label: len(rows) / (2 * counts[label])
         for label in LABELS
     }
 
-    # Merret vetëm arkitektura e v2, jo peshat e mësuara.
+    # Merret vetëm arkitektura, pa peshat e mësuara.
     template = tf.keras.models.load_model(
         MODEL_DIR / "fire_cnn_v2.keras", compile=False
     )
@@ -110,54 +106,52 @@ def main():
 
     del template
 
-    for name, split in experiments:
-        tf.keras.backend.clear_session()
-        tf.keras.utils.set_random_seed(42)
+    tf.keras.backend.clear_session()
+    tf.keras.utils.set_random_seed(42)
 
-        model = tf.keras.Sequential.from_config(architecture)
-        model.compile(
-            optimizer="adam",
-            loss="binary_crossentropy",
-            metrics=["accuracy"],
-        )
+    model = tf.keras.Sequential.from_config(architecture)
+    model.compile(
+        optimizer="adam",
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+    )
 
-        rows = read_rows(split)
-        train_data = build_train_data(rows, base_weights)
-        validation_data = load_dataset("validation_v2")
+    train_data = build_train_data(rows, base_weights)
+    validation_data = load_dataset("validation_temporal")
 
-        model_path = MODEL_DIR / f"fire_cnn_compare_{name}.keras"
+    print(f"\nEksperimenti: {NAME}")
+    print(f"Train: {len(rows)} foto — {dict(counts)}")
+    print(f"Validation: {len(validation_rows)} foto")
+    print(f"Parametra: {model.count_params()}")
 
-        print(f"\nEksperimenti: {name}")
-        print(f"Foto: {len(rows)}, parametra: {model.count_params()}")
+    history = model.fit(
+        train_data,
+        validation_data=validation_data,
+        epochs=10,
+        shuffle=False,
+        callbacks=[
+            tf.keras.callbacks.ModelCheckpoint(
+                str(model_path),
+                monitor="val_loss",
+                save_best_only=True,
+            ),
+            tf.keras.callbacks.EarlyStopping(
+                monitor="val_loss",
+                patience=3,
+                restore_best_weights=True,
+            ),
+            tf.keras.callbacks.CSVLogger(
+                str(REPORT_DIR / f"training_{NAME}.csv")
+            ),
+        ],
+    )
 
-        history = model.fit(
-            train_data,
-            validation_data=validation_data,
-            epochs=10,
-            shuffle=False,
-            callbacks=[
-                tf.keras.callbacks.ModelCheckpoint(
-                    str(model_path),
-                    monitor="val_loss",
-                    save_best_only=True,
-                ),
-                tf.keras.callbacks.EarlyStopping(
-                    monitor="val_loss",
-                    patience=3,
-                    restore_best_weights=True,
-                ),
-                tf.keras.callbacks.CSVLogger(
-                    str(REPORT_DIR / f"training_compare_{name}.csv")
-                ),
-            ],
-        )
+    with (REPORT_DIR / f"history_{NAME}.json").open(
+        "w", encoding="utf-8"
+    ) as file:
+        json.dump(history.history, file, indent=2)
 
-        with (REPORT_DIR / f"history_compare_{name}.json").open(
-            "w", encoding="utf-8"
-        ) as file:
-            json.dump(history.history, file, indent=2)
-
-        print(f"Modeli u ruajt te: {model_path}")
+    print(f"Modeli u ruajt te: {model_path}")
 
 
 if __name__ == "__main__":

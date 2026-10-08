@@ -1,0 +1,98 @@
+split,path,label,reviewed_label,reason
+train_with_adapt,Training/Fire/resized_frame0.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame947.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame1900.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame2847.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame4586.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame5533.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame6480.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame7590.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame8537.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame9484.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame10431.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame18254.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame19465.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/Fire/resized_frame20480.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame21427.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame22374.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/Fire/resized_frame23321.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/Fire/resized_frame24268.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/Fire/resized_frame25215.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/Fire/resized_frame26163.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/Fire/resized_frame27209.jpg,Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Test/Fire/resized_test_fire_frame159.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Test/Fire/resized_test_fire_frame1106.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Test/Fire/resized_test_fire_frame2053.jpg,Fire,Fire,Visible orange flames in native-size image.
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame24.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame542.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame1060.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame1578.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame2096.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame2614.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame3132.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame3650.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame4168.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame8056.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame8574.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame9092.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame9609.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame10127.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame10645.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame11163.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/lake_resized_lake_frame11681.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/resized_frame3571.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/resized_frame6790.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Training/No_Fire/resized_frame18338.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,extra_raw/Evening Forest condition_raw_img/efc_46.png,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Test/No_Fire/resized_test_nofire_frame355.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Test/No_Fire/resized_test_nofire_frame873.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Test/No_Fire/resized_test_nofire_frame1391.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/Fire/resized_frame11011.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame11233.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame11455.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame12003.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame12225.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame12447.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame12669.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame12892.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame13114.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame13336.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame13626.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame13848.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame14071.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame14293.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame14515.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame14737.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame14959.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame15182.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame15404.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame15626.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame15848.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame16071.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame16293.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/Fire/resized_frame16515.jpg,Fire,Fire,Visible orange flames in native-size image.
+validation_temporal,Training/No_Fire/lake_resized_lake_frame4738.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame4858.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame4978.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5098.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5218.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5338.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5459.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5579.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5699.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5819.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame5939.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6059.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6179.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6299.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6419.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6539.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6659.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6779.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+validation_temporal,Training/No_Fire/lake_resized_lake_frame6900.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+validation_temporal,Training/No_Fire/lake_resized_lake_frame7020.jpg,No_Fire,Uncertain,Small colored/burned object or potential flame is ambiguous; excluded.
+validation_temporal,Training/No_Fire/resized_frame11659.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/resized_frame11779.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/resized_frame11899.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+validation_temporal,Training/No_Fire/resized_frame13489.jpg,No_Fire,No_Fire,"No visible flame; forest/lake, clouds/haze or smoke without flame."
+train_with_adapt,Test/No_Fire/resized_test_nofire_frame585.jpg,No_Fire,No_Fire,User-confirmed counterexample; no visible flames.

@@ -1,0 +1,6 @@
+{
+  "label": "No_Fire",
+  "fire_score": 0.4251704812049866,
+  "threshold": 0.5,
+  "model_version": "fire_flame_pilot_v2_experimental"
+}
