@@ -40,9 +40,9 @@ export const SEGMENTS = {
 };
 
 export const ZONES = {
-  alarm: { id: "alarm", title: "Alarm", note: "Mbi portën e sipërme. Njoftim i menjëhershëm." },
-  review: { id: "review", title: "Për shqyrtim", note: "Mes dy portave. Kërkon një njeri." },
-  clear: { id: "clear", title: "E pastër", note: "Nën portën e poshtme. Asnjë veprim." },
+  alarm: { id: "alarm", title: "Alarm", note: "Zjarr shumë i mundshëm. Njoftim i menjëhershëm." },
+  review: { id: "review", title: "Për shqyrtim", note: "Sistemi nuk është i sigurt. Duhet ta shohë një njeri." },
+  clear: { id: "clear", title: "E pastër", note: "Nuk u gjet zjarr. Asnjë veprim." },
 };
 
 export function zoneFor(score) {

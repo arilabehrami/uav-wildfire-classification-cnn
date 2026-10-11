@@ -1,8 +1,10 @@
-import { GATES, MEASURED } from "../config/model";
+import { GATES } from "../config/model";
 
 const pct = (v) => `${(v * 100).toFixed(2)}%`;
 
-function DecisionBand({ score, zone, modelVersion }) {
+/* Shiriti tregon ku ra pamja mes tri zonave. Numrat (rezultati, portat) nuk
+   shfaqen: per perdoruesin mjafton zona; vlerat e sakta jane te punimi. */
+function DecisionBand({ score, zone }) {
   const has = typeof score === "number" && Number.isFinite(score);
   const position = has ? Math.min(Math.max(score, 0), 1) : 0;
 
@@ -10,30 +12,13 @@ function DecisionBand({ score, zone, modelVersion }) {
     <section className={has ? "band" : "band idle"} aria-live="polite">
       <div className="band-head">
         <div className="band-verdict">
-          <div className="band-label">Verdikti</div>
+          <div className="band-label">PËRGJIGJJA</div>
           <h2 className={has ? `band-call t-${zone.id}` : "band-call"}>
-            {has ? zone.title : "Asnjë frame i klasifikuar"}
+            {has ? zone.title : "Asnjë pamje e kontrolluar"}
           </h2>
           <p className="band-note">
-            {has
-              ? zone.note
-              : "Ngarko një pamje ajrore për ta vendosur mbi shkallë."}
+            {has ? zone.note : "Ngarko një pamje ajrore dhe shtyp Klasifiko."}
           </p>
-        </div>
-
-        <div className="band-facts">
-          <div>
-            <div className="fact-k">rezultat fire</div>
-            <div className="fact-v">{has ? score.toFixed(4) : "—"}</div>
-          </div>
-          <div>
-            <div className="fact-k">portë e poshtme</div>
-            <div className="fact-v">{GATES.low.toFixed(4)}</div>
-          </div>
-          <div>
-            <div className="fact-k">portë e sipërme</div>
-            <div className="fact-v">{GATES.high.toFixed(4)}</div>
-          </div>
         </div>
       </div>
 
@@ -52,31 +37,22 @@ function DecisionBand({ score, zone, modelVersion }) {
             style={{ width: pct(1 - GATES.high) }}
           />
         </div>
-
-        <div className="gate" style={{ left: pct(GATES.low) }} />
-        <div className="gate" style={{ left: pct(GATES.high) }} />
         {has && <div className="needle" style={{ left: pct(position) }} />}
       </div>
 
-      <div className="scale-labels">
-        <div className="tick-0">0.00</div>
-        <div className="tick-gate" style={{ left: pct(GATES.low) }}>
-          {GATES.low.toFixed(4)}
-          <em>portë e poshtme</em>
-        </div>
-        <div className="tick-gate" style={{ left: pct(GATES.high) }}>
-          {GATES.high.toFixed(4)}
-          <em>portë e sipërme</em>
-        </div>
-        <div className="tick-1">1.00</div>
-      </div>
-
-      <div className="band-foot">
-        <span>
-          Portat e nxjerra mbi {GATES.fittedOn}, të zbatuara pa ndryshim mbi{" "}
-          {MEASURED.testSet}.
+      <div className="zone-labels">
+        <span className="t-clear" style={{ left: 0 }}>
+          E pastër
         </span>
-        {modelVersion && <span>{modelVersion}</span>}
+        <span
+          className="t-review center"
+          style={{ left: pct((GATES.low + GATES.high) / 2) }}
+        >
+          Për shqyrtim
+        </span>
+        <span className="t-alarm" style={{ right: 0 }}>
+          Alarm
+        </span>
       </div>
     </section>
   );

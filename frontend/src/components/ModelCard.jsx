@@ -1,30 +1,35 @@
-import { MODEL } from "../config/model";
-import { SEGMENT_SUMMARY } from "../config/segments";
-
-/* Modeli dhe portat rrine te headeri. Ketu mbetet ajo qe nuk hyn atje:
-   gjurma e fajllit dhe kufiri i besueshmerise. */
+/* Udhezim per lexuesin: çfare do te thote secila pergjigje dhe ku eshte kufiri
+   i sistemit. Detajet teknike (modeli, portat, hash-i) jane te punimi. */
 function ModelCard() {
   return (
     <section className="panel">
-      <h3>Modeli</h3>
-      <dl className="spec">
-        <div>
-          <dt>Arkitektura</dt>
-          <dd>{MODEL.architecture}</dd>
-        </div>
-        <div>
-          <dt>Hyrja</dt>
-          <dd>{MODEL.input}</dd>
-        </div>
-        <div>
-          <dt>sha256</dt>
-          <dd>{MODEL.sha256.slice(0, 12)}</dd>
-        </div>
-      </dl>
+      <h3>SI TA LEXOSH REZULTATIN</h3>
+      <ul className="guide">
+        <li>
+          <i className="z-clear" />
+          <div>
+            <b className="t-clear">E pastër</b>
+            <span>Nuk u gjet zjarr. Nuk duhet asnjë veprim.</span>
+          </div>
+        </li>
+        <li>
+          <i className="z-review" />
+          <div>
+            <b className="t-review">Për shqyrtim</b>
+            <span>Sistemi nuk është i sigurt. Duhet ta shohë një njeri.</span>
+          </div>
+        </li>
+        <li>
+          <i className="z-alarm" />
+          <div>
+            <b className="t-alarm">Alarm</b>
+            <span>Zjarr shumë i mundshëm. Njoftim i menjëhershëm.</span>
+          </div>
+        </li>
+      </ul>
       <p className="caveat">
-        Nëpër segmente të regjistrimit AUC-ja shkon{" "}
-        {SEGMENT_SUMMARY.aucMin.toFixed(3)}–{SEGMENT_SUMMARY.aucMax.toFixed(3)}.
-        Ka pamje ku ky model nuk dallon fare.
+        Sistemi mund të mos e dallojë një zjarr të vogël ose që sapo ka nisur.
+        Një përgjigje "E pastër" nuk e përjashton plotësisht zjarrin.
       </p>
     </section>
   );

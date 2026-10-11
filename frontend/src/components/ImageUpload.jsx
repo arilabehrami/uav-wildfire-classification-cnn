@@ -182,11 +182,11 @@ function ImageUpload({
                   onClick={() => setShowHeat((v) => !v)}
                   title={
                     meaningful
-                      ? "Shfaq ose fshih zonën e aktivizimit"
-                      : "Harta nuk ka kuptim për një kuadro të pastruar."
+                      ? "Shfaq ose fshih zonën që ndikoi në vendim"
+                      : "Nuk u gjet zjarr, prandaj nuk ka zonë për të treguar."
                   }
                 >
-                  Zona e aktivizimit
+                  Zona e vendimit
                 </button>
               </div>
             )}
@@ -225,17 +225,14 @@ function ImageUpload({
 
       {showing && (
         <p className="heat-note">
-          {explanation.note} Harta është {explanation.rows}×{explanation.cols}{" "}
-          qeliza, nga shtresa <code>{explanation.layer}</code>; zmadhimi është
-          interpolim.
+          Ngjyra portokalli tregon pjesën e pamjes që ndikoi më shumë në vendim.
+          Nuk tregon vendin e saktë të zjarrit.
         </p>
       )}
 
       {explanation && !meaningful && (
         <p className="heat-note">
-          Kuadri u pastrua, prandaj nuk ka hartë aktivizimi. Kur dalja e modelit
-          është afër zeros, gradientet janë zhurmë dhe harta do të tregonte një
-          zonë të rreme.
+          Nuk u gjet zjarr, prandaj nuk ka zonë për të treguar.
         </p>
       )}
 

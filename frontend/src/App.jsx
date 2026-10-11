@@ -5,7 +5,7 @@ import ModelCard from "./components/ModelCard";
 import DetectionLog from "./components/DetectionLog";
 import SessionStats from "./components/SessionStats";
 import { CLASSIFY_URL, HEALTH_URL } from "./config/api";
-import { MODEL, GATES, ZONES, zoneFor } from "./config/model";
+import { MODEL, ZONES, zoneFor } from "./config/model";
 import "./App.css";
 
 const clock = () =>
@@ -104,12 +104,12 @@ function App() {
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        throw new Error(data?.detail ?? `API ktheu ${response.status}.`);
+        throw new Error(data?.detail ?? "Pamja nuk u kontrollua dot. Provo përsëri.");
       }
 
       const score = Number(data?.fire_score);
       if (!Number.isFinite(score)) {
-        throw new Error("Përgjigjja nuk përmban një fire_score të vlefshëm.");
+        throw new Error("Përgjigjja e sistemit nuk u kuptua. Provo përsëri.");
       }
 
       const zone = ZONES[data?.zone] ?? zoneFor(score);
@@ -132,7 +132,7 @@ function App() {
       const offline = problem instanceof TypeError;
       setError(
         offline
-          ? "API-ja nuk u arrit. Nise backend-in me uvicorn në portin 8000."
+          ? "Sistemi nuk përgjigjet. Sigurohu që serveri është i ndezur."
           : problem.message,
       );
       if (offline) setHealth("down");
@@ -150,31 +150,16 @@ function App() {
           <span className="mark-sub">pamje ajrore</span>
         </div>
 
-        <div className="meta">
-          <div className="meta-item">
-            <span className="meta-k">MODELI</span>
-            <span className="meta-v">{MODEL.run}</span>
-          </div>
-          <div className="meta-item">
-            <span className="meta-k">PORTA E POSHTME</span>
-            <span className="meta-v">{GATES.low.toFixed(4)}</span>
-          </div>
-          <div className="meta-item">
-            <span className="meta-k">PORTA E SIPËRME</span>
-            <span className="meta-v">{GATES.high.toFixed(4)}</span>
-          </div>
-        </div>
-
         <SessionStats entries={entries} />
 
         <div className="topbar-end">
           <span className={`status ${health}`}>
             <i />
             {health === "up"
-              ? "API aktive"
+              ? "Sistemi aktiv"
               : health === "down"
-                ? "API joaktive"
-                : "duke kontrolluar"}
+                ? "Sistemi joaktiv"
+                : "Duke u lidhur…"}
           </span>
         </div>
       </header>
@@ -195,7 +180,6 @@ function App() {
           <DecisionBand
             score={result?.score ?? null}
             zone={result?.zone ?? null}
-            modelVersion={result?.modelVersion ?? null}
           />
         </main>
 

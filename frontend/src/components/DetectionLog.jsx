@@ -1,12 +1,11 @@
 function DetectionLog({ entries }) {
   return (
     <section className="panel grow">
-      <h3>Kjo seancë{entries.length > 0 ? ` · ${entries.length}` : ""}</h3>
+      <h3>KJO SEANCË{entries.length > 0 ? ` · ${entries.length}` : ""}</h3>
 
       {entries.length === 0 ? (
         <p className="empty">
-          Asgjë ende. Çdo kuadro i klasifikuar shfaqet këtu, me zonën dhe
-          rezultatin e tij.
+          Asgjë ende. Çdo pamje e kontrolluar shfaqet këtu me përgjigjen e saj.
         </p>
       ) : (
         <div className="log">
@@ -23,9 +22,7 @@ function DetectionLog({ entries }) {
                 </span>
                 <span className="at">{entry.at}</span>
               </span>
-              <span className={`score t-${entry.zone.id}`}>
-                {entry.score.toFixed(4)}
-              </span>
+              <span className={`score t-${entry.zone.id}`}>{entry.zone.title}</span>
             </div>
           ))}
         </div>
