@@ -1,0 +1,569 @@
+[
+  {
+    "stage": "head",
+    "epoch": 1,
+    "train_loss": 0.23845791816711426,
+    "improved": true,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2783,
+          68
+        ],
+        [
+          471,
+          4764
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9333415780361118,
+      "balanced_accuracy": 0.943088686521293,
+      "fire_precision": 0.9859271523178808,
+      "fire_recall": 0.9100286532951289,
+      "no_fire_specificity": 0.976148719747457,
+      "false_positives": 68,
+      "false_negatives": 471,
+      "false_positive_rate": 0.023851280252542968,
+      "false_negative_rate": 0.08997134670487106,
+      "fire_f1": 0.9464587265322341,
+      "group_bce": 0.12955929941116773,
+      "group_balanced_accuracy": 0.9553374637135792,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4641,
+          "recall": 0.9078638497652582,
+          "bce": 0.18173289562459943
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.006966081669365042
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.5794109064906209
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2370,
+          "recall": 1.0,
+          "bce": 0.011783945160106734
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.021074420680880473
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.04680716836980481
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 2,
+    "train_loss": 0.07443086057901382,
+    "improved": true,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2775,
+          76
+        ],
+        [
+          353,
+          4882
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9469453376205788,
+      "balanced_accuracy": 0.952955966119899,
+      "fire_precision": 0.9846712384025816,
+      "fire_recall": 0.9325692454632283,
+      "no_fire_specificity": 0.9733426867765697,
+      "false_positives": 76,
+      "false_negatives": 353,
+      "false_positive_rate": 0.026657313223430377,
+      "false_negative_rate": 0.06743075453677173,
+      "fire_f1": 0.9579122927499264,
+      "group_bce": 0.1236098871148171,
+      "group_balanced_accuracy": 0.9606862583095658,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4759,
+          "recall": 0.9309467918622848,
+          "bce": 0.15586324574999882
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.0032091042256618537
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.6288206541088162
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2362,
+          "recall": 0.9966244725738397,
+          "bce": 0.010670653237813372
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.008229235074390056
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.02301385454619581
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 3,
+    "train_loss": 0.05119325965642929,
+    "improved": false,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2772,
+          79
+        ],
+        [
+          316,
+          4919
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9511501360375958,
+      "balanced_accuracy": 0.9559637413370934,
+      "fire_precision": 0.9841936774709884,
+      "fire_recall": 0.9396370582617001,
+      "no_fire_specificity": 0.9722904244124868,
+      "false_positives": 79,
+      "false_negatives": 316,
+      "false_positive_rate": 0.027709575587513153,
+      "false_negative_rate": 0.060362941738299904,
+      "fire_f1": 0.9613993941170722,
+      "group_bce": 0.1303224769014166,
+      "group_balanced_accuracy": 0.9623374983800874,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4796,
+          "recall": 0.9381846635367762,
+          "bce": 0.14036890983441738
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.00132307640717771
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.7247031850011084
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2359,
+          "recall": 0.9953586497890295,
+          "bce": 0.012082381261491701
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.005189474415700891
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.01722080204984143
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 4,
+    "train_loss": 0.0416564866900444,
+    "improved": false,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2771,
+          80
+        ],
+        [
+          335,
+          4900
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9486767252040564,
+      "balanced_accuracy": 0.9539736555849134,
+      "fire_precision": 0.9839357429718876,
+      "fire_recall": 0.936007640878701,
+      "no_fire_specificity": 0.9719396702911259,
+      "false_positives": 80,
+      "false_negatives": 335,
+      "false_positive_rate": 0.02806032970887408,
+      "false_negative_rate": 0.06399235912129896,
+      "fire_f1": 0.9593734703866863,
+      "group_bce": 0.13191034240588068,
+      "group_balanced_accuracy": 0.9613555695355716,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4777,
+          "recall": 0.9344679186228482,
+          "bce": 0.15886812086969582
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.0007706969181127646
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.7110256549507619
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2358,
+          "recall": 0.9949367088607595,
+          "bce": 0.011528835397541334
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.002642672411581795
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.010807940911543102
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 5,
+    "train_loss": 0.035511795431375504,
+    "improved": false,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2770,
+          81
+        ],
+        [
+          337,
+          4898
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9483057135790255,
+      "balanced_accuracy": 0.9536072565567068,
+      "fire_precision": 0.9837316730267122,
+      "fire_recall": 0.9356255969436486,
+      "no_fire_specificity": 0.971588916169765,
+      "false_positives": 81,
+      "false_negatives": 337,
+      "false_positive_rate": 0.028411083830235006,
+      "false_negative_rate": 0.06437440305635148,
+      "fire_f1": 0.9590757783434501,
+      "group_bce": 0.1330765746490482,
+      "group_balanced_accuracy": 0.9612050178428555,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4775,
+          "recall": 0.934076682316119,
+          "bce": 0.15961330631178683
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.0009405868689129006
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.7222653346680734
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2357,
+          "recall": 0.9945147679324895,
+          "bce": 0.012413280694831918
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.001673202848861956
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.007152992619218737
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 6,
+    "train_loss": 0.03167476877570152,
+    "improved": false,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2771,
+          80
+        ],
+        [
+          337,
+          4898
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9484293841207024,
+      "balanced_accuracy": 0.9537826336173872,
+      "fire_precision": 0.9839292888710326,
+      "fire_recall": 0.9356255969436486,
+      "no_fire_specificity": 0.9719396702911259,
+      "false_positives": 80,
+      "false_negatives": 337,
+      "false_positive_rate": 0.02806032970887408,
+      "false_negative_rate": 0.06437440305635148,
+      "fire_f1": 0.9591696856947028,
+      "group_bce": 0.13406279560256038,
+      "group_balanced_accuracy": 0.9612577604588892,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4775,
+          "recall": 0.934076682316119,
+          "bce": 0.16746689260202416
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.0006180012280976891
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.7172872831035668
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2358,
+          "recall": 0.9949367088607595,
+          "bce": 0.011742528880820977
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.0011363159913937563
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.006166449184457748
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  },
+  {
+    "stage": "head",
+    "epoch": 7,
+    "train_loss": 0.0288323312997818,
+    "improved": false,
+    "validation": {
+      "n": 8086,
+      "threshold": 0.5,
+      "confusion_matrix": [
+        [
+          2771,
+          80
+        ],
+        [
+          329,
+          4906
+        ]
+      ],
+      "confusion_order": [
+        "No_Fire",
+        "Fire"
+      ],
+      "accuracy": 0.9494187484541182,
+      "balanced_accuracy": 0.9545467214874923,
+      "fire_precision": 0.9839550742077818,
+      "fire_recall": 0.9371537726838587,
+      "no_fire_specificity": 0.9719396702911259,
+      "false_positives": 80,
+      "false_negatives": 329,
+      "false_positive_rate": 0.02806032970887408,
+      "false_negative_rate": 0.06284622731614135,
+      "fire_f1": 0.9599843459544076,
+      "group_bce": 0.1417296864611968,
+      "group_balanced_accuracy": 0.9616489967656185,
+      "per_stratum": {
+        "Fire / base_forest": {
+          "label": "Fire",
+          "total": 5112,
+          "correct": 4783,
+          "recall": 0.935641627543036,
+          "bce": 0.17250680734004223
+        },
+        "Fire / extra_pre_evening_fire": {
+          "label": "Fire",
+          "total": 123,
+          "correct": 123,
+          "recall": 1.0,
+          "bce": 0.0002910691192765459
+        },
+        "No_Fire / base_forest": {
+          "label": "No_Fire",
+          "total": 393,
+          "correct": 325,
+          "recall": 0.8269720101781171,
+          "bce": 0.7700271904950129
+        },
+        "No_Fire / base_lake": {
+          "label": "No_Fire",
+          "total": 2370,
+          "correct": 2358,
+          "recall": 0.9949367088607595,
+          "bce": 0.011620640716952613
+        },
+        "No_Fire / extra_evening_forest": {
+          "label": "No_Fire",
+          "total": 58,
+          "correct": 58,
+          "recall": 1.0,
+          "bce": 0.0011610984037179475
+        },
+        "No_Fire / extra_pre_evening_forest": {
+          "label": "No_Fire",
+          "total": 30,
+          "correct": 30,
+          "recall": 1.0,
+          "bce": 0.0054328091552534865
+        }
+      },
+      "zero_errors_on_this_set": false
+    }
+  }
+]

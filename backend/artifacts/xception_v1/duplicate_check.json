@@ -1,0 +1,272 @@
+{
+  "method": "SHA256 of file bytes; not near-duplicate or scene detection",
+  "duplicates": [
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame262.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame263.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1354.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1355.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1621.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1622.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1666.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1667.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1687.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1688.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1714.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1715.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1792.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1793.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1822.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1823.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame1870.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame1871.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame7684.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame7685.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame7699.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame7700.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame9160.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame9161.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame9205.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame9206.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame9235.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame9236.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame9325.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame9326.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame9616.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame9617.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame11137.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame11138.jpg",
+      "first_role": "train",
+      "second_role": "train",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5167.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5168.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5380.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5381.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5479.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5480.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5593.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5594.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5623.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5624.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5791.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5792.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame5896.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame5897.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame6034.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame6035.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame6064.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame6065.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame6217.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame6218.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame6262.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame6263.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Training/No_Fire/lake_resized_lake_frame6643.jpg",
+      "second": "Training/No_Fire/lake_resized_lake_frame6644.jpg",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "extra_raw/Pre-evening Forest condition_raw_img/pefc_122.png",
+      "second": "extra_raw/Pre-evening Forest condition_raw_img/pefc_123.png",
+      "first_role": "validation",
+      "second_role": "validation",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3472.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3473.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3474.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3475.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3476.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3477.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3478.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    },
+    {
+      "first": "Test/No_Fire/resized_test_nofire_frame3471.jpg",
+      "second": "Test/No_Fire/resized_test_nofire_frame3479.jpg",
+      "first_role": "known_test",
+      "second_role": "known_test",
+      "conflicting_labels": false
+    }
+  ],
+  "blocking_errors": []
+}

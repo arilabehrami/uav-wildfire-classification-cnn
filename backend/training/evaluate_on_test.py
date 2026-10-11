@@ -1,4 +1,4 @@
-"""Vlereson modele te ruajtura mbi known_test (8617 fotot e dosjes Test).
+"""Vlereson modele te ruajtura mbi setin e testimit te dhene me --test-csv.
 
 Krahason drejtperdrejt v3 (vetem average pooling) me v4 (average + max), per
 te pare nese max pooling i kap flaket e vogla qe v3 i humb. Baseline-i merret
@@ -6,8 +6,13 @@ nga CSV-ja ekzistuese e final_fire_v1, pra ai model nuk ri-ekzekutohet.
 
 Kontrata e inputit merret nga inference.json: RGB, 254x254, [0,1].
 
-    python evaluate_on_test.py
-    python evaluate_on_test.py --models fire_mobilenet_avgmax_v4.keras
+Ekzekutohet nga rrenja e projektit, sepse te gjitha shtigjet ndertohen nga
+--project-root (parazgjedhje: dosja aktuale).
+
+    python backend/training/evaluate_on_test.py
+    python backend/training/evaluate_on_test.py \
+        --test-csv dataset/splits/test_final.csv \
+        --models final_fire_v1/model.keras
 """
 
 import argparse
@@ -185,7 +190,7 @@ def main():
         row["path"] = row["path"].replace("\\", "/")
         row.setdefault("stratum", "test")
     labels = np.array([LABELS[row["label"]] for row in rows], dtype=np.int64)
-    print(f"known_test: {len(rows)} foto "
+    print(f"{test_csv.stem}: {len(rows)} foto "
           f"({int((labels == 1).sum())} Fire, {int((labels == 0).sum())} No_Fire)")
 
     results = {}
@@ -254,7 +259,7 @@ def main():
     # --- krahasimi
     if len(results) > 1:
         print("\n" + "=" * 78)
-        print("KRAHASIMI MBI KNOWN_TEST")
+        print(f"KRAHASIMI MBI {test_csv.stem.upper()}")
         print("=" * 78)
         print(f"{'Modeli':<44}{'AUC':>8}{'Fire':>9}{'No_Fire':>10}{'Bal.acc':>9}")
         print("-" * 78)
@@ -270,9 +275,10 @@ def main():
         "count": len(rows),
         "models": results,
         "note": (
-            "Te gjitha modelet jane vleresuar mbi te njejtat 8617 foto, me te "
-            "njejten kontrate inputi (RGB, 254x254, [0,1]). Asnje model nuk u "
-            "trajnua dhe asnje prag nuk u ndryshua."
+            f"Te gjitha modelet jane vleresuar mbi te njejtat {len(rows)} "
+            f"foto te setit '{test_csv.stem}', me te njejten kontrate inputi "
+            "(RGB, 254x254, [0,1]). Asnje model nuk u trajnua dhe asnje prag "
+            "nuk u ndryshua."
         ),
     }
     output = run_dir / f"comparison_{test_csv.stem}.json"

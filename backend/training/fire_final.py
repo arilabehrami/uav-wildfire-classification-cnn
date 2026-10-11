@@ -306,37 +306,42 @@ def dataset(tf, rows, data_root, batch_size, *, training=False, augment=False):
     return ds.with_options(options).prefetch(1)
 
 
-def build_models(tf, weights="imagenet"):
-    base = tf.keras.applications.MobileNetV2(input_shape=(224, 224, 3), include_top=False,
+def build_models(tf, weights="imagenet", architecture="mobilenet"):
+    size = 299 if architecture == "xception" else 224
+    factory = tf.keras.applications.Xception if architecture == "xception" else tf.keras.applications.MobileNetV2
+    base = factory(input_shape=(size, size, 3), include_top=False,
                                             weights=weights, pooling="avg")
     base.trainable = False
     inputs = tf.keras.Input(shape=(*INPUT_SIZE, 3), name="rgb_0_to_1")
-    x = tf.keras.layers.Resizing(224, 224, name="resize_224")(inputs)
-    x = tf.keras.layers.Rescaling(2.0, offset=-1.0, name="mobilenet_scaling")(x)
+    x = tf.keras.layers.Resizing(size, size, name=f"resize_{size}")(inputs)
+    x = tf.keras.layers.Rescaling(2.0, offset=-1.0, name=f"{architecture}_scaling")(x)
     features = base(x, training=False)
     extractor = tf.keras.Model(inputs, features)
     head = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(1280,)),
+        tf.keras.layers.Input(shape=(int(base.output_shape[-1]),)),
         tf.keras.layers.Dropout(0.35),
         tf.keras.layers.Dense(1, activation="sigmoid", kernel_regularizer=tf.keras.regularizers.l2(1e-4)),
     ], name="fire_head")
-    model = tf.keras.Model(inputs, head(features), name="fire_mobilenet_final")
+    model = tf.keras.Model(inputs, head(features), name=f"fire_{architecture}_final")
     return model, extractor, head
 
 
-def enable_finetuning(tf, model):
-    bases = [layer for layer in model.layers if layer.name.startswith("mobilenetv2")]
+def enable_finetuning(tf, model, architecture="mobilenet"):
+    prefix = "xception" if architecture == "xception" else "mobilenetv2"
+    start = "block13_sepconv1" if architecture == "xception" else "block_13_expand"
+    bases = [layer for layer in model.layers
+             if isinstance(layer, tf.keras.Model) and layer.name.startswith(prefix)]
     if len(bases) != 1:
-        raise ValueError("Nuk u identifikua MobileNetV2.")
+        raise ValueError(f"Nuk u identifikua {architecture}.")
     base = bases[0]
     base.trainable = True
     reached = False
     for layer in base.layers:
-        if layer.name == "block_13_expand":
+        if layer.name == start:
             reached = True
         layer.trainable = reached and not isinstance(layer, tf.keras.layers.BatchNormalization)
     if not reached:
-        raise ValueError("Nuk u gjet block_13_expand.")
+        raise ValueError(f"Nuk u gjet {start}.")
 
 
 def metrics(rows, probabilities):
@@ -380,6 +385,8 @@ def display(name, result):
     tn, fp = result["confusion_matrix"][0]; fn, tp = result["confusion_matrix"][1]
     print(f"\n{name}: Fire {tp}/{tp+fn}; No_Fire {tn}/{tn+fp}; alarme te rreme {fp}; zjarre te humbura {fn}")
     print(f"  accuracy={result['accuracy']:.4f}; group_BCE={result['group_bce']:.5f}")
+    print(f"  Saktesia: {result['accuracy']:.2%}; Fire recall: {result['fire_recall']:.2%}; "
+          f"No_Fire specificity: {result['no_fire_specificity']:.2%}")
     for name, item in result["per_stratum"].items():
         print(f"  {name}: {item['correct']}/{item['total']}")
 
@@ -432,8 +439,13 @@ def compile_model(tf, model, learning_rate):
                   loss="binary_crossentropy", metrics=["accuracy"])
 
 
-def train(project, output, batch_size=16, head_epochs=30, fine_epochs=4, *, imagenet_weights="imagenet"):
+def train(project, output, batch_size=16, head_epochs=30, fine_epochs=4, *, imagenet_weights="imagenet", architecture="mobilenet"):
     plan = read_plan(project, output)
+    marker = output / "training_started.json"
+    if marker.exists():
+        previous = json.loads(marker.read_text(encoding="utf-8"))
+        if previous.get("architecture", "mobilenet") != architecture:
+            raise ValueError("Ky run i perket nje arkitekture tjeter. Perdor nje emer te ri --run.")
     if (output / "selection.json").exists():
         check_selected(output)
         print("Trajnimi dhe zgjedhja kane perfunduar. Vazhdo me evaluate.")
@@ -445,11 +457,12 @@ def train(project, output, batch_size=16, head_epochs=30, fine_epochs=4, *, imag
     val_rows = read_csv(output / "validation.csv")
     data_root = project / "dataset"
     # Ngarkimi i peshave behet para marker-it: nese shkarkimi deshton mund te riprovohet.
-    model, extractor, head = build_models(tf, weights=imagenet_weights)
+    model, extractor, head = build_models(tf, weights=imagenet_weights, architecture=architecture)
     write_json(output / "training_started.json", {"tf_version": tf.__version__, "numpy_version": np.__version__,
         "seed": 42, "head_max_epochs": head_epochs, "fine_max_epochs": fine_epochs,
         "batch_size": batch_size, "head_lr": 0.001, "fine_lr": 1e-5,
         "plan_sha256": sha256(output / "plan.json"), "script_sha256": sha256(Path(__file__)),
+        "architecture": architecture,
         "initialization": "ImageNet" if imagenet_weights == "imagenet" else "TEST ONLY: random weights"})
     print("\nNxjerrje vecorish ImageNet: train origjinal")
     original = extractor.predict(dataset(tf, train_rows, data_root, batch_size), verbose=1)
@@ -472,19 +485,20 @@ def train(project, output, batch_size=16, head_epochs=30, fine_epochs=4, *, imag
     model = tf.keras.models.load_model(output / "candidate.keras", compile=False)
     if fine_epochs:
         best = json.loads((output / "best_candidate.json").read_text(encoding="utf-8"))
-        enable_finetuning(tf, model)
+        enable_finetuning(tf, model, architecture)
         compile_model(tf, model, 1e-5)
         callback = validation_callback(tf, val_rows, validation_data, model, output, "finetune", 2,
                                        initial_best=best["validation"]["group_bce"])
-        print("\nFine-tuning: block_13 e tutje; BatchNormalization mbetet frozen.")
+        print(f"\nFine-tuning {architecture}: blloqet e fundit; BatchNormalization mbetet frozen.")
         model.fit(dataset(tf, train_rows, data_root, batch_size, training=True), epochs=fine_epochs,
                   shuffle=False, callbacks=[callback], verbose=2)
     del model
     gc.collect()
     # Vetem validimi perdoret per zgjedhje. Kontrolli 202 dhe Test lexohen nga evaluate.
     candidates = [output / "candidate.keras"]
-    candidates += [project / "backend" / "artifacts" / "models" / name for name in BASELINES
-                   if (project / "backend" / "artifacts" / "models" / name).is_file()]
+    if architecture == "mobilenet":
+        candidates += [project / "backend" / "artifacts" / "models" / name for name in BASELINES
+                       if (project / "backend" / "artifacts" / "models" / name).is_file()]
     comparisons = []
     best_path, best_p, best_rank = None, None, None
     for path in candidates:
@@ -530,6 +544,7 @@ def check_selected(output):
 def evaluate(project, output, batch_size=16):
     plan = read_plan(project, output)
     selection = check_selected(output)
+    display("validation (modeli i zgjedhur)", selection["validation"])
     result_path = output / "evaluation.json"
     if result_path.exists():
         report = json.loads(result_path.read_text(encoding="utf-8"))
@@ -579,6 +594,7 @@ def main():
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--head-epochs", type=int, default=30)
     parser.add_argument("--fine-epochs", type=int, default=4)
+    parser.add_argument("--architecture", choices=["mobilenet", "xception"], default="mobilenet")
     parser.add_argument("--image", type=Path)
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.run):
@@ -590,7 +606,7 @@ def main():
     if args.command == "prepare":
         prepare(project, output)
     elif args.command == "train":
-        train(project, output, args.batch_size, args.head_epochs, args.fine_epochs)
+        train(project, output, args.batch_size, args.head_epochs, args.fine_epochs, architecture=args.architecture)
     elif args.command == "evaluate":
         evaluate(project, output, args.batch_size)
     else:

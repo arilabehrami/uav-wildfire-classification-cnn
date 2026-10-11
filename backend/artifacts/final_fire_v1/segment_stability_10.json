@@ -1,0 +1,256 @@
+{
+  "model": "final_fire_v1 (nga known_test_predictions.csv)",
+  "model_sha256": "f4d96699ec3fecee541d3171aca12d06caa92cba93a9e69c1ae67e73374be5eb",
+  "sha256_verified_at_runtime": false,
+  "source": "/sessions/rcw-01q5wycdlx3os9egyply1tzh/mnt/wildfire-detection-satellite-cnn/backend/artifacts/final_fire_v1/known_test_predictions.csv",
+  "gates": {
+    "low": 0.5244,
+    "high": 0.9713,
+    "refit_per_segment": false
+  },
+  "segments": 10,
+  "gap_frames": 200,
+  "per_segment": [
+    {
+      "segment": 1,
+      "n": 662,
+      "fire": 414,
+      "no_fire": 248,
+      "fire_frames": [
+        0,
+        413
+      ],
+      "no_fire_frames": [
+        0,
+        247
+      ],
+      "roc_auc": 0.5150187003272557,
+      "alarm_share": 0.0,
+      "alarm_precision": null,
+      "clear_share": 0.8731117824773413,
+      "missed_fire_rate": 0.9130434782608695,
+      "review_share": 0.1268882175226586,
+      "auto_decision_share": 0.8731117824773413
+    },
+    {
+      "segment": 2,
+      "n": 461,
+      "fire": 313,
+      "no_fire": 148,
+      "fire_frames": [
+        614,
+        926
+      ],
+      "no_fire_frames": [
+        448,
+        595
+      ],
+      "roc_auc": 0.8769968051118211,
+      "alarm_share": 0.527114967462039,
+      "alarm_precision": 0.9506172839506173,
+      "clear_share": 0.08026030368763558,
+      "missed_fire_rate": 0.02875399361022364,
+      "review_share": 0.3926247288503254,
+      "auto_decision_share": 0.6073752711496746
+    },
+    {
+      "segment": 3,
+      "n": 462,
+      "fire": 314,
+      "no_fire": 148,
+      "fire_frames": [
+        1127,
+        1440
+      ],
+      "no_fire_frames": [
+        796,
+        943
+      ],
+      "roc_auc": 1.0,
+      "alarm_share": 0.6406926406926406,
+      "alarm_precision": 1.0,
+      "clear_share": 0.13636363636363635,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.22294372294372294,
+      "auto_decision_share": 0.7770562770562771
+    },
+    {
+      "segment": 4,
+      "n": 462,
+      "fire": 314,
+      "no_fire": 148,
+      "fire_frames": [
+        1641,
+        1954
+      ],
+      "no_fire_frames": [
+        1144,
+        1291
+      ],
+      "roc_auc": 0.9987949733172663,
+      "alarm_share": 0.5303030303030303,
+      "alarm_precision": 1.0,
+      "clear_share": 0.02813852813852814,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.44155844155844154,
+      "auto_decision_share": 0.5584415584415584
+    },
+    {
+      "segment": 5,
+      "n": 461,
+      "fire": 313,
+      "no_fire": 148,
+      "fire_frames": [
+        2155,
+        2467
+      ],
+      "no_fire_frames": [
+        1492,
+        1639
+      ],
+      "roc_auc": 0.7535402814955531,
+      "alarm_share": 0.6052060737527115,
+      "alarm_precision": 0.7956989247311828,
+      "clear_share": 0.0,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.3947939262472885,
+      "auto_decision_share": 0.6052060737527115
+    },
+    {
+      "segment": 6,
+      "n": 462,
+      "fire": 314,
+      "no_fire": 148,
+      "fire_frames": [
+        2668,
+        2981
+      ],
+      "no_fire_frames": [
+        1840,
+        1987
+      ],
+      "roc_auc": 0.8285419177138922,
+      "alarm_share": 0.3917748917748918,
+      "alarm_precision": 0.988950276243094,
+      "clear_share": 0.08008658008658008,
+      "missed_fire_rate": 0.01592356687898089,
+      "review_share": 0.5281385281385281,
+      "auto_decision_share": 0.47186147186147187
+    },
+    {
+      "segment": 7,
+      "n": 462,
+      "fire": 314,
+      "no_fire": 148,
+      "fire_frames": [
+        3182,
+        3495
+      ],
+      "no_fire_frames": [
+        2188,
+        2335
+      ],
+      "roc_auc": 0.9959975899466346,
+      "alarm_share": 0.2748917748917749,
+      "alarm_precision": 1.0,
+      "clear_share": 0.27705627705627706,
+      "missed_fire_rate": 0.006369426751592357,
+      "review_share": 0.44805194805194803,
+      "auto_decision_share": 0.551948051948052
+    },
+    {
+      "segment": 8,
+      "n": 462,
+      "fire": 314,
+      "no_fire": 148,
+      "fire_frames": [
+        3696,
+        4009
+      ],
+      "no_fire_frames": [
+        2536,
+        2683
+      ],
+      "roc_auc": 0.43428300912377343,
+      "alarm_share": 0.015151515151515152,
+      "alarm_precision": 0.5714285714285714,
+      "clear_share": 0.02813852813852814,
+      "missed_fire_rate": 0.03821656050955414,
+      "review_share": 0.9567099567099567,
+      "auto_decision_share": 0.04329004329004329
+    },
+    {
+      "segment": 9,
+      "n": 461,
+      "fire": 313,
+      "no_fire": 148,
+      "fire_frames": [
+        4210,
+        4522
+      ],
+      "no_fire_frames": [
+        2884,
+        3031
+      ],
+      "roc_auc": 0.4546455401087989,
+      "alarm_share": 0.3210412147505423,
+      "alarm_precision": 0.6148648648648649,
+      "clear_share": 0.0,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.6789587852494577,
+      "auto_decision_share": 0.3210412147505423
+    },
+    {
+      "segment": 10,
+      "n": 662,
+      "fire": 414,
+      "no_fire": 248,
+      "fire_frames": [
+        4723,
+        5136
+      ],
+      "no_fire_frames": [
+        3232,
+        3479
+      ],
+      "roc_auc": 1.0,
+      "alarm_share": 0.14501510574018128,
+      "alarm_precision": 1.0,
+      "clear_share": 0.37462235649546827,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.48036253776435045,
+      "auto_decision_share": 0.5196374622356495
+    }
+  ],
+  "summary": {
+    "roc_auc": {
+      "median": 0.8527693614128566,
+      "min": 0.43428300912377343,
+      "max": 1.0,
+      "spread": 0.5657169908762265,
+      "n_segments": 10
+    },
+    "alarm_precision": {
+      "median": 0.988950276243094,
+      "min": 0.5714285714285714,
+      "max": 1.0,
+      "spread": 0.4285714285714286,
+      "n_segments": 9
+    },
+    "missed_fire_rate": {
+      "median": 0.0031847133757961785,
+      "min": 0.0,
+      "max": 0.9130434782608695,
+      "spread": 0.9130434782608695,
+      "n_segments": 10
+    },
+    "auto_decision_share": {
+      "median": 0.5551948051948052,
+      "min": 0.04329004329004329,
+      "max": 0.8731117824773413,
+      "spread": 0.8298217391872981,
+      "n_segments": 10
+    }
+  },
+  "limitation": "Segmentet jane blloqe te njepasnjeshme kuadrosh te te njejtit regjistrim, te ndara vetem ne kohe. Segmenti k i Fire dhe segmenti k i No_Fire nuk pretendohen te njekohshem: jane bllok i k-te i secilit sekuence. Luhatja e matur ketu eshte luhatje brenda nje regjistrimi te vetem dhe nuk e mat pergjithesimin ne regjistrime te tjera, i cili mbetet i pamatur."
+}

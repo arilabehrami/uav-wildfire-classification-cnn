@@ -1,0 +1,61 @@
+{
+  "version": "final_fire_1",
+  "created_utc": "2026-10-08T16:38:30.416017+00:00",
+  "source_csv_sha256": {
+    "dataset/splits/train_mixed_v3.csv": "659d12ec0730121d6b25839402934b28dd51eed40b4f3f17e6bd3976cbfc3eed",
+    "dataset/splits/validation_temporal.csv": "656a51b405773c48fc20900c2ec354b005f7f3e3916070d1752262d7f9d4faf6",
+    "dataset/splits/validation_extra_v3.csv": "ef672225e77def7fd742f21aa58a21670a33e6a309bd497d6359109c0a809328",
+    "dataset/splits/holdout_extra_v2.csv": "c89c1e9a3f65dbbe445b5f8e47fe5388b450063b8dd2062702d3437c8a7218f6"
+  },
+  "manifest_sha256": {
+    "train.csv": "90b52e2f3abf8c6c685419e72aebe246e14eea2859f676fbdab47f6797475bd4",
+    "validation.csv": "bc1b6f120fbd6406ba31e38b25a9df02e3c8a757c2e3070fba11df3fc462e88b",
+    "diagnostic_202.csv": "c27771d647d16400dce58b7542d6ebb144e8fb812c90bef1eaee26ca16fce3c2",
+    "known_test.csv": "2667f6f58ce39bd89b6da024b85e02221db77260a8290d9244b5890b0aed250d",
+    "image_inventory.csv": "08d0b80b3566a859b4d6772e3c90812209dbbfbac39f6cde36e69feffe25bee3"
+  },
+  "original_train_counts": {
+    "Fire / base_forest": 19261,
+    "Fire / extra_pre_evening_fire": 469,
+    "No_Fire / base_forest": 1762,
+    "No_Fire / base_lake": 8477,
+    "No_Fire / extra_evening_forest": 208,
+    "No_Fire / extra_pre_evening_forest": 99
+  },
+  "counts": {
+    "train": {
+      "Fire / base_forest": 6000,
+      "Fire / extra_pre_evening_fire": 469,
+      "No_Fire / base_forest": 1762,
+      "No_Fire / base_lake": 1000,
+      "No_Fire / extra_evening_forest": 208,
+      "No_Fire / extra_pre_evening_forest": 99
+    },
+    "validation": {
+      "Fire / base_forest": 5112,
+      "Fire / extra_pre_evening_fire": 123,
+      "No_Fire / base_forest": 393,
+      "No_Fire / base_lake": 2370,
+      "No_Fire / extra_evening_forest": 58,
+      "No_Fire / extra_pre_evening_forest": 30
+    },
+    "diagnostic_202": {
+      "Fire / extra_pre_evening_fire": 159,
+      "No_Fire / extra_pre_evening_forest": 43
+    },
+    "known_test": {
+      "Fire / dataset_test": 5137,
+      "No_Fire / dataset_test": 3480
+    }
+  },
+  "threshold": 0.5,
+  "labels": {
+    "No_Fire": 0,
+    "Fire": 1
+  },
+  "limitation": "Temporal validation on known image sequences. No verified flight/scene IDs were supplied. The 202 extra images and the existing Test folder have been used in earlier experiments; neither is claimed to be a fresh independent final test.",
+  "selection_rule": "Minimum validation group_BCE: equal class weight, equal weight per stratum within class; threshold fixed at 0.5.",
+  "sampling": "Evenly spaced frame indices; base Fire cap 6000, lake cap 1000; all remaining training rows retained.",
+  "training_weights": "Each class totals 50%; within each class, stratum weight mass proportional to sqrt(selected count).",
+  "image_check": "File integrity + byte SHA256. Temporal correlation and re-encoded duplicates can remain."
+}

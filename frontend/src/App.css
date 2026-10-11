@@ -1,184 +1,619 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* Pamja e konsolës. Logjika, portat dhe numrat janë te komponentët —
+   këtu rri vetëm forma. */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.shell {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
 }
 
-#next-steps {
+/* ---------- shiriti i sipërm ---------- */
+
+.topbar {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  align-items: center;
+  min-height: 62px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(10, 12, 14, 0.88);
+  backdrop-filter: var(--glass);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  flex-wrap: wrap;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+.mark {
   display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  align-items: baseline;
+  gap: 9px;
+  padding-right: 20px;
+  min-width: 0;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.mark-glyph {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  align-self: center;
 }
 
-.ticks {
+.mark-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.mark-sub {
+  font-size: 12px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+/* Grupe etiketë/vlerë, të ndara me vija flokë — si në konsolat e fluturimit. */
+.meta,
+.stats {
+  display: flex;
+  align-items: center;
+}
+
+.meta-item {
+  display: grid;
+  gap: 1px;
+  padding: 0 17px;
+  border-left: 1px solid var(--line-soft);
+  white-space: nowrap;
+}
+
+.meta-k {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.meta-v {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.topbar-end {
+  margin-left: auto;
+  padding-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.status { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+
+.status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  flex: none;
+}
+
+.status.up i   { background: var(--clear); box-shadow: 0 0 0 3px var(--clear-wash); }
+.status.down i { background: var(--alarm); box-shadow: 0 0 0 3px var(--alarm-wash); }
+
+/* ---------- layout ---------- */
+
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 342px;
+  align-items: start;
+}
+
+.work {
+  padding: 24px 22px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.side {
+  padding: 24px 20px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+  border-left: 1px solid var(--line-soft);
+  background: var(--ink-raise);
+  align-self: stretch;
+}
+
+/* ---------- skena e imazhit ---------- */
+
+.stage {
   position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  backdrop-filter: var(--glass);
+  box-shadow: var(--lift);
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.stage.dragging {
+  border-color: var(--alarm);
+  background: var(--alarm-wash);
+}
+
+/* Fotoja dhe harta e aktivizimit ndajnë të njëjtën kuti, që mbivendosja të
+   bjerë saktësisht mbi pikselët e saj dhe jo mbi skenën rreth e qark. */
+.shot {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+}
+
+.shot-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.shot-heat {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.stage-contour {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+  pointer-events: none;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+.frame-tag {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(6, 7, 8, .84);
+  backdrop-filter: blur(6px);
+  border: 1px solid currentColor;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.frame-tag i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.frame-caption {
+  position: absolute;
+  left: 13px;
+  bottom: 13px;
+  max-width: calc(100% - 26px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  background: rgba(6, 7, 8, .84);
+  border: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.frame-tools {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  display: flex;
+  gap: 6px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(6, 7, 8, .84);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--text-dim);
+  transition: color .12s ease, border-color .12s ease;
+}
+
+.chip[aria-pressed="true"] { color: var(--text); border-color: var(--text-faint); }
+
+.chip:disabled { opacity: .4; cursor: not-allowed; }
+
+/* Kufiri i interpretimit rri gjithmonë i dukshëm bashkë me harten. */
+.heat-note {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-faint);
+  border-left: 2px solid var(--line);
+  padding-left: 11px;
+}
+
+.heat-note code {
+  font-family: var(--code);
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+.drop {
+  position: relative;
+  display: grid;
+  gap: 13px;
+  justify-items: center;
+  text-align: center;
+  padding: 62px 24px;
+  color: var(--text-dim);
+  max-width: 46ch;
+}
+
+.drop strong {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.drop small { color: var(--text-faint); font-size: 12.5px; }
+
+.filebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.filename {
+  font-size: 13px;
+  color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.actions { display: flex; gap: 8px; }
+
+.btn {
+  padding: 9px 16px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: var(--surface-2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: border-color .12s ease, background .12s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--text-faint);
+  background: var(--line-soft);
+}
+
+/* I bardhë me qëllim: po të ishte ember, do të ngatërrohej me zonën e alarmit. */
+.btn.primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.btn.primary:hover:not(:disabled) { background: #fff; border-color: #fff; }
+
+.btn:disabled { opacity: .45; }
+
+.error {
+  border: 1px solid var(--alarm);
+  border-radius: var(--r-sm);
+  padding: 11px 14px;
+  font-size: 13px;
+  color: var(--alarm);
+  background: var(--alarm-wash);
+}
+
+/* ---------- shiriti i vendimit ---------- */
+
+.band {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  backdrop-filter: var(--glass);
+  box-shadow: var(--lift);
+  padding: 20px 22px 16px;
+}
+
+.band-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.band-verdict { min-width: 0; }
+
+.band-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+
+.band-call {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.band.idle .band-call {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.band-note {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.band-facts {
+  display: flex;
+  gap: 26px;
+  text-align: right;
+}
+
+.fact-k {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.fact-v { font-size: 15px; font-weight: 600; }
+
+.scale { position: relative; height: 10px; margin: 6px 0 4px; }
+
+.scale-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.seg { transition: background .3s ease, box-shadow .3s ease; }
+
+.seg-clear  { background: rgba(70, 199, 155, .26); }
+.seg-review { background: rgba(228, 176, 74, .26); }
+.seg-alarm  { background: rgba(255, 106, 31, .32); }
+
+.seg.on.seg-clear  { background: var(--clear);  box-shadow: 0 0 16px -2px var(--clear); }
+.seg.on.seg-review { background: var(--review); box-shadow: 0 0 16px -2px var(--review); }
+.seg.on.seg-alarm  { background: var(--alarm);  box-shadow: 0 0 16px -2px var(--alarm); }
+
+.gate {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: var(--text);
+  opacity: .5;
+  transform: translateX(-1px);
+}
+
+.needle {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text);
+  border: 3px solid var(--ink);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 1px var(--line);
+  transition: left .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.scale-labels {
+  position: relative;
+  height: 34px;
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 11px;
+}
+
+.scale-labels > * { position: absolute; top: 0; white-space: nowrap; }
+
+.tick-0 { left: 0; }
+.tick-1 { right: 0; }
+
+.tick-gate { transform: translateX(-50%); color: var(--text-dim); text-align: center; }
+.tick-gate + .tick-gate { transform: translateX(-100%); text-align: right; padding-right: 8px; }
+.tick-gate em { display: block; font-style: normal; color: var(--text-faint); }
+
+.band-foot {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 12.5px;
+  color: var(--text-faint);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- panelet anësore ---------- */
+
+.panel { display: flex; flex-direction: column; gap: 12px; }
+
+.panel > h3 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.spec { display: grid; gap: 8px; font-size: 13px; }
+
+.spec > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.spec dt { color: var(--text-faint); flex: none; }
+
+.spec dd {
+  margin: 0;
+  text-align: right;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hash {
+  font-family: var(--code);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  word-break: break-all;
+  line-height: 1.45;
+}
+
+.caveat {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--review);
+  border: 1px solid var(--review);
+  background: var(--review-wash);
+  border-radius: var(--r-sm);
+  padding: 11px 13px;
+}
+
+.log { display: flex; flex-direction: column; }
+
+.log-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13px;
+}
+
+.log-thumb {
+  width: 38px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  background: var(--surface-2);
+  display: block;
+}
+
+.log-row i { width: 4px; height: 26px; border-radius: 999px; }
+
+.log-main { min-width: 0; display: grid; gap: 1px; }
+
+.log-row .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-dim);
+}
+
+.log-row .at { font-size: 11.5px; color: var(--text-faint); }
+.log-row .score { font-size: 13px; font-weight: 600; }
+
+.empty {
+  font-size: 13px;
+  color: var(--text-faint);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-sm);
+  padding: 15px;
+}
+
+.z-alarm  { background: var(--alarm); }
+.z-review { background: var(--review); }
+.z-clear  { background: var(--clear); }
+
+.t-alarm  { color: var(--alarm); }
+.t-review { color: var(--review); }
+.t-clear  { color: var(--clear); }
+
+.link {
+  align-self: start;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--line);
+  line-height: 1.4;
+}
+
+.link:hover { color: var(--text); border-color: var(--text-faint); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1240px) {
+  .mark-sub { display: none; }
+  .meta-item { padding: 0 13px; }
+}
+
+@media (max-width: 1040px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .work { padding: 18px 16px 28px; }
+  .side {
+    padding: 18px 16px 32px;
+    border-left: 0;
+    border-top: 1px solid var(--line-soft);
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+  .band-call { font-size: 23px; }
+}
+
+@media (max-width: 820px) {
+  .topbar { padding: 12px 16px; gap: 12px 0; min-height: 0; }
+  .mark { padding-right: 0; width: 100%; }
+  .meta, .stats { flex-wrap: wrap; }
+  .meta-item:first-child { border-left: 0; padding-left: 0; }
+  .topbar-end { margin-left: 0; padding-left: 0; width: 100%; }
+  .band-head { flex-direction: column; align-items: flex-start; }
+  .band-facts { text-align: left; gap: 18px; flex-wrap: wrap; }
+  .scale-labels { font-size: 11px; }
+  .tick-1 { display: none; }
 }

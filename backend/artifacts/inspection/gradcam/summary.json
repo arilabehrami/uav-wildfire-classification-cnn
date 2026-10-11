@@ -1,0 +1,37 @@
+{
+  "model_version": "final_fire_v1@f4d96699ec3f",
+  "results": [
+    {
+      "image": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\dataset\\Test\\Fire\\resized_test_fire_frame94.jpg",
+      "fire_score": 0.03176506608724594,
+      "zone": "clear",
+      "model_check_drift": 0.0,
+      "cam_shape": [
+        7,
+        7
+      ],
+      "cam_peak_raw": 0.0008218432776629925,
+      "cam_hot_fraction": 0.061224489795918366,
+      "cam_argmax_cell": [
+        5,
+        1
+      ]
+    },
+    {
+      "image": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\dataset\\Test\\Fire\\resized_test_fire_frame958.jpg",
+      "fire_score": 0.9854183197021484,
+      "zone": "alarm",
+      "model_check_drift": 0.0,
+      "cam_shape": [
+        7,
+        7
+      ],
+      "cam_peak_raw": 0.003776320954784751,
+      "cam_hot_fraction": 0.20408163265306123,
+      "cam_argmax_cell": [
+        5,
+        3
+      ]
+    }
+  ]
+}

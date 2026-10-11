@@ -1,0 +1,21 @@
+{
+  "model": "model.keras",
+  "model_sha256": "88dfa0d55916d1cb71b569661d18e22715a5aa462d041f6fb469be70415eb0ee",
+  "labels": {
+    "No_Fire": 0,
+    "Fire": 1
+  },
+  "threshold": 0.5,
+  "input_size": [
+    254,
+    254,
+    3
+  ],
+  "input_range": [
+    0,
+    1
+  ],
+  "color": "RGB",
+  "resize": "tf.image.resize bilinear to 254x254; then /255 once",
+  "output": "Sigmoid Fire score; not a guarantee or a calibrated confidence."
+}

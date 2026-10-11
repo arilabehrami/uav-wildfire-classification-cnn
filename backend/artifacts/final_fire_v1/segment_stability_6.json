@@ -1,0 +1,172 @@
+{
+  "model": "final_fire_v1@f4d96699ec3f",
+  "model_sha256": "f4d96699ec3fecee541d3171aca12d06caa92cba93a9e69c1ae67e73374be5eb",
+  "sha256_verified_at_runtime": true,
+  "source": "C:\\Users\\Arila\\AppData\\Local\\GitHubDesktop\\app-3.6.6\\wildfire-detection-satellite-cnn\\backend\\artifacts\\final_fire_v1\\known_test.csv",
+  "gates": {
+    "low": 0.5244,
+    "high": 0.9713,
+    "refit_per_segment": false
+  },
+  "segments": 6,
+  "gap_frames": 200,
+  "per_segment": [
+    {
+      "segment": 1,
+      "n": 1236,
+      "fire": 756,
+      "no_fire": 480,
+      "fire_frames": [
+        0,
+        755
+      ],
+      "no_fire_frames": [
+        0,
+        479
+      ],
+      "roc_auc": 0.5546682098765432,
+      "alarm_share": 0.16828478964401294,
+      "alarm_precision": 1.0,
+      "clear_share": 0.5614886731391586,
+      "missed_fire_rate": 0.5753968253968254,
+      "review_share": 0.2702265372168285,
+      "auto_decision_share": 0.7297734627831716
+    },
+    {
+      "segment": 2,
+      "n": 1036,
+      "fire": 656,
+      "no_fire": 380,
+      "fire_frames": [
+        956,
+        1611
+      ],
+      "no_fire_frames": [
+        680,
+        1059
+      ],
+      "roc_auc": 0.9999919768934531,
+      "alarm_share": 0.583976833976834,
+      "alarm_precision": 1.0,
+      "clear_share": 0.16023166023166024,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.2557915057915058,
+      "auto_decision_share": 0.7442084942084942
+    },
+    {
+      "segment": 3,
+      "n": 1036,
+      "fire": 656,
+      "no_fire": 380,
+      "fire_frames": [
+        1812,
+        2467
+      ],
+      "no_fire_frames": [
+        1260,
+        1639
+      ],
+      "roc_auc": 0.8523748395378691,
+      "alarm_share": 0.5260617760617761,
+      "alarm_precision": 0.8770642201834863,
+      "clear_share": 0.007722007722007722,
+      "missed_fire_rate": 0.001524390243902439,
+      "review_share": 0.46621621621621623,
+      "auto_decision_share": 0.5337837837837838
+    },
+    {
+      "segment": 4,
+      "n": 1037,
+      "fire": 657,
+      "no_fire": 380,
+      "fire_frames": [
+        2668,
+        3324
+      ],
+      "no_fire_frames": [
+        1840,
+        2219
+      ],
+      "roc_auc": 0.9411780020828326,
+      "alarm_share": 0.39151398264223725,
+      "alarm_precision": 0.9950738916256158,
+      "clear_share": 0.16875602700096431,
+      "missed_fire_rate": 0.0091324200913242,
+      "review_share": 0.43972999035679844,
+      "auto_decision_share": 0.5602700096432015
+    },
+    {
+      "segment": 5,
+      "n": 1036,
+      "fire": 656,
+      "no_fire": 380,
+      "fire_frames": [
+        3525,
+        4180
+      ],
+      "no_fire_frames": [
+        2420,
+        2799
+      ],
+      "roc_auc": 0.5803634467265725,
+      "alarm_share": 0.02027027027027027,
+      "alarm_precision": 0.6190476190476191,
+      "clear_share": 0.06563706563706563,
+      "missed_fire_rate": 0.018292682926829267,
+      "review_share": 0.9140926640926641,
+      "auto_decision_share": 0.0859073359073359
+    },
+    {
+      "segment": 6,
+      "n": 1236,
+      "fire": 756,
+      "no_fire": 480,
+      "fire_frames": [
+        4381,
+        5136
+      ],
+      "no_fire_frames": [
+        3000,
+        3479
+      ],
+      "roc_auc": 0.9243964947089947,
+      "alarm_share": 0.23786407766990292,
+      "alarm_precision": 0.9591836734693877,
+      "clear_share": 0.24029126213592233,
+      "missed_fire_rate": 0.0,
+      "review_share": 0.5218446601941747,
+      "auto_decision_share": 0.47815533980582525
+    }
+  ],
+  "summary": {
+    "roc_auc": {
+      "median": 0.8883856671234318,
+      "min": 0.5546682098765432,
+      "max": 0.9999919768934531,
+      "spread": 0.4453237670169099,
+      "n_segments": 6
+    },
+    "alarm_precision": {
+      "median": 0.9771287825475017,
+      "min": 0.6190476190476191,
+      "max": 1.0,
+      "spread": 0.38095238095238093,
+      "n_segments": 6
+    },
+    "missed_fire_rate": {
+      "median": 0.0053284051676133195,
+      "min": 0.0,
+      "max": 0.5753968253968254,
+      "spread": 0.5753968253968254,
+      "n_segments": 6
+    },
+    "auto_decision_share": {
+      "median": 0.5470268967134926,
+      "min": 0.0859073359073359,
+      "max": 0.7442084942084942,
+      "spread": 0.6583011583011583,
+      "n_segments": 6
+    }
+  },
+  "limitation": "Segmentet jane blloqe te njepasnjeshme kuadrosh te te njejtit regjistrim, te ndara vetem ne kohe. Segmenti k i Fire dhe segmenti k i No_Fire nuk pretendohen te njekohshem: jane bllok i k-te i secilit sekuence. Luhatja e matur ketu eshte luhatje brenda nje regjistrimi te vetem dhe nuk e mat pergjithesimin ne regjistrime te tjera, i cili mbetet i pamatur."
+}

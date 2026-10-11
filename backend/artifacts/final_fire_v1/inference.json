@@ -17,5 +17,69 @@
   ],
   "color": "RGB",
   "resize": "tf.image.resize bilinear to 254x254; then /255 once",
-  "output": "Sigmoid Fire score; not a guarantee or a calibrated confidence."
+  "output": "Sigmoid Fire score; not a guarantee or a calibrated confidence.",
+  "threshold_note": "Fusha 'threshold' (0.5) eshte pragu i perdorur ne eksperimentet e perzgjedhjes se modelit. Vendimi ne sherbim perdor 'gates'.",
+  "gates": {
+    "low": 0.5244,
+    "high": 0.9713,
+    "fitted_on": "dataset/splits/test_adapt_val.csv (890 foto: 568 Fire, 322 No_Fire)",
+    "rule": "low = pragu me i ulet qe mban Fire recall >= 99% mbi test_adapt_val; high = pragu me i ulet qe jep Fire precision >= 90% mbi test_adapt_val. Asnje nga te dyja nuk eshte pershtatur mbi test_final.",
+    "zones": {
+      "clear": "score < low",
+      "review": "low <= score < high",
+      "alarm": "score >= high"
+    }
+  },
+  "measured_on_test_final": {
+    "n": 3463,
+    "fire": 2100,
+    "no_fire": 1363,
+    "roc_auc": 0.8041,
+    "auto_decision_share": 0.367,
+    "clear_share": 0.164,
+    "missed_fire_rate": 0.0067,
+    "alarm_share": 0.204,
+    "alarm_precision": 0.874,
+    "note": "Portat e nxjerra mbi test_adapt_val, zbatuar njehere mbi test_final. Keta numra jane mesatare mbi nje set heterogjen; shih 'segment_stability'."
+  },
+  "calibrated": false,
+  "calibration_note": "Brier 0.1973, ECE 0.1897 mbi test_final. Dalja eshte sigmoid, jo probabilitet i kalibruar.",
+  "segment_stability": {
+    "method": "dataset/Test e ndare ne K blloqe te njepasnjeshme per klase, hendek 200 kuadro, porta fikse.",
+    "headline_k": 6,
+    "by_k": {
+      "4": {
+        "auc_median": 0.8305,
+        "auc_min": 0.6526,
+        "auc_max": 0.956,
+        "missed_fire_max": 0.375
+      },
+      "6": {
+        "auc_median": 0.8884,
+        "auc_min": 0.5547,
+        "auc_max": 1.0,
+        "missed_fire_max": 0.575
+      },
+      "8": {
+        "auc_median": 0.9353,
+        "auc_min": 0.361,
+        "auc_max": 0.9998,
+        "missed_fire_max": 0.803
+      },
+      "10": {
+        "auc_median": 0.8528,
+        "auc_min": 0.4343,
+        "auc_max": 1.0,
+        "missed_fire_max": 0.913
+      }
+    },
+    "note": "AUC-ja e nje modeli te vetem, mbi nje regjistrim te vetem, me porta fikse, luhatet nga nen 0.5 deri ne 1.0 sipas segmentit. Per krahasim, diferenca mes pese arkitekturave mbi te njejtin set ishte 0.0034. Nje numer i vetem mbi nje ndarje te vetme nuk e mat modelin.",
+    "caveat": "Ne K=8 dhe K=10 segmentet jane me te vegjel, pra nje pjese e luhatjes vjen nga mostra me e vogel. K=4 dhe K=6 jane matjet e qendrueshme.",
+    "reports": [
+      "segment_stability_4.json",
+      "segment_stability_6.json",
+      "segment_stability_8.json",
+      "segment_stability_10.json"
+    ]
+  }
 }

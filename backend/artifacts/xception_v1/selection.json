@@ -1,0 +1,165 @@
+{
+  "chosen_model": "candidate.keras",
+  "chosen_new_candidate": true,
+  "comparisons": [
+    {
+      "model": "candidate.keras",
+      "sha256": "88dfa0d55916d1cb71b569661d18e22715a5aa462d041f6fb469be70415eb0ee",
+      "validation": {
+        "n": 8086,
+        "threshold": 0.5,
+        "confusion_matrix": [
+          [
+            2774,
+            77
+          ],
+          [
+            349,
+            4886
+          ]
+        ],
+        "confusion_order": [
+          "No_Fire",
+          "Fire"
+        ],
+        "accuracy": 0.9473163492456097,
+        "balanced_accuracy": 0.9531626329942711,
+        "fire_precision": 0.9844851904090268,
+        "fire_recall": 0.9333333333333333,
+        "no_fire_specificity": 0.9729919326552087,
+        "false_positives": 77,
+        "false_negatives": 349,
+        "false_positive_rate": 0.0270080673447913,
+        "false_negative_rate": 0.06666666666666667,
+        "fire_f1": 0.9582271033535987,
+        "group_bce": 0.10760425714686664,
+        "group_balanced_accuracy": 0.9584412219713532,
+        "per_stratum": {
+          "Fire / base_forest": {
+            "label": "Fire",
+            "total": 5112,
+            "correct": 4763,
+            "recall": 0.9317292644757433,
+            "bce": 0.1400029260992611
+          },
+          "Fire / extra_pre_evening_fire": {
+            "label": "Fire",
+            "total": 123,
+            "correct": 123,
+            "recall": 1.0,
+            "bce": 0.004450207487780605
+          },
+          "No_Fire / base_forest": {
+            "label": "No_Fire",
+            "total": 393,
+            "correct": 316,
+            "recall": 0.8040712468193384,
+            "bce": 0.5539066463645875
+          },
+          "No_Fire / base_lake": {
+            "label": "No_Fire",
+            "total": 2370,
+            "correct": 2370,
+            "recall": 1.0,
+            "bce": 0.005578635078028572
+          },
+          "No_Fire / extra_evening_forest": {
+            "label": "No_Fire",
+            "total": 58,
+            "correct": 58,
+            "recall": 1.0,
+            "bce": 0.0023029207695894486
+          },
+          "No_Fire / extra_pre_evening_forest": {
+            "label": "No_Fire",
+            "total": 30,
+            "correct": 30,
+            "recall": 1.0,
+            "bce": 0.010139587788644051
+          }
+        },
+        "zero_errors_on_this_set": false
+      }
+    }
+  ],
+  "validation": {
+    "n": 8086,
+    "threshold": 0.5,
+    "confusion_matrix": [
+      [
+        2774,
+        77
+      ],
+      [
+        349,
+        4886
+      ]
+    ],
+    "confusion_order": [
+      "No_Fire",
+      "Fire"
+    ],
+    "accuracy": 0.9473163492456097,
+    "balanced_accuracy": 0.9531626329942711,
+    "fire_precision": 0.9844851904090268,
+    "fire_recall": 0.9333333333333333,
+    "no_fire_specificity": 0.9729919326552087,
+    "false_positives": 77,
+    "false_negatives": 349,
+    "false_positive_rate": 0.0270080673447913,
+    "false_negative_rate": 0.06666666666666667,
+    "fire_f1": 0.9582271033535987,
+    "group_bce": 0.10760425714686664,
+    "group_balanced_accuracy": 0.9584412219713532,
+    "per_stratum": {
+      "Fire / base_forest": {
+        "label": "Fire",
+        "total": 5112,
+        "correct": 4763,
+        "recall": 0.9317292644757433,
+        "bce": 0.1400029260992611
+      },
+      "Fire / extra_pre_evening_fire": {
+        "label": "Fire",
+        "total": 123,
+        "correct": 123,
+        "recall": 1.0,
+        "bce": 0.004450207487780605
+      },
+      "No_Fire / base_forest": {
+        "label": "No_Fire",
+        "total": 393,
+        "correct": 316,
+        "recall": 0.8040712468193384,
+        "bce": 0.5539066463645875
+      },
+      "No_Fire / base_lake": {
+        "label": "No_Fire",
+        "total": 2370,
+        "correct": 2370,
+        "recall": 1.0,
+        "bce": 0.005578635078028572
+      },
+      "No_Fire / extra_evening_forest": {
+        "label": "No_Fire",
+        "total": 58,
+        "correct": 58,
+        "recall": 1.0,
+        "bce": 0.0023029207695894486
+      },
+      "No_Fire / extra_pre_evening_forest": {
+        "label": "No_Fire",
+        "total": 30,
+        "correct": 30,
+        "recall": 1.0,
+        "bce": 0.010139587788644051
+      }
+    },
+    "zero_errors_on_this_set": false
+  },
+  "model_sha256": "88dfa0d55916d1cb71b569661d18e22715a5aa462d041f6fb469be70415eb0ee",
+  "plan_sha256": "c017aa45aa74ef50d813e2e10592f555fd925dd8835a16f1a50a8e94fbed6b7c",
+  "selection_rule": "Minimum validation group_BCE: equal class weight, equal weight per stratum within class; threshold fixed at 0.5.",
+  "threshold": 0.5,
+  "limitation": "Temporal validation on known image sequences. No verified flight/scene IDs were supplied. The 202 extra images and the existing Test folder have been used in earlier experiments; neither is claimed to be a fresh independent final test."
+}
