@@ -1,29 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ZONES } from "../config/model";
 
-// Unaza terreni: një aluzion i asaj që shikon kamera, i mbajtur në kontrast
-// shumë të ulët që të mos konkurrojë me pamjen nën analizë.
-function Contour() {
-  const rings = [0, 1, 2, 3, 4, 5];
+// Shenjestra e kameres: shfaqet vetem kur nuk ka pamje, qe zona bosh te
+// lexohet si objektiv i dronit, jo si kuti e zakonshme ngarkimi.
+function Reticle() {
   return (
-    <svg
-      className="stage-contour"
-      viewBox="0 0 600 400"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <g fill="none" stroke="var(--line)" strokeWidth="1">
-        {rings.map((i) => (
-          <ellipse
-            key={i}
-            cx="300"
-            cy="200"
-            rx={70 + i * 52}
-            ry={44 + i * 33}
-            transform={`rotate(${-12 + i * 2} 300 200)`}
-          />
-        ))}
-      </g>
+    <svg className="reticle" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="62" stroke="var(--line)" />
+      <circle cx="100" cy="100" r="30" stroke="var(--line)" strokeDasharray="2 5" />
+      <path
+        d="M100 18v26M100 156v26M18 100h26M156 100h26"
+        stroke="var(--faint)"
+        strokeLinecap="round"
+      />
+      <circle cx="100" cy="100" r="2.5" fill="var(--faint)" />
     </svg>
   );
 }
@@ -33,8 +23,8 @@ function Contour() {
 function ramp(v) {
   const stops = [
     [0.0, 90, 70, 30],
-    [0.5, 228, 176, 74],
-    [1.0, 255, 106, 31],
+    [0.5, 239, 196, 90],
+    [1.0, 255, 106, 43],
   ];
   let i = 1;
   while (i < stops.length - 1 && v > stops[i][0]) i += 1;
@@ -101,42 +91,48 @@ function HeatCanvas({ explanation }) {
   return <canvas className="shot-heat" ref={canvasRef} aria-hidden="true" />;
 }
 
+const STATUS_TEXT = {
+  pending: "pa klasifikuar",
+  running: "duke u analizuar",
+  error: "gabim",
+};
+
 function QueueStrip({ items, focusedId, running, onFocus, onRemove }) {
   if (items.length < 2) return null;
 
   return (
-    <div className="queue" role="list" aria-label="Radha e pamjeve">
+    <div className="strip" role="list" aria-label="Radha e pamjeve">
       {items.map((item, index) => {
         const zone = item.status === "done" ? ZONES[item.zoneId] : null;
+        const state = zone ? zone.title : STATUS_TEXT[item.status];
         return (
           <div
             role="listitem"
             key={item.id}
-            className={`q-item${item.id === focusedId ? " on" : ""} s-${item.status}`}
+            className={`thumb${item.id === focusedId ? " on" : ""} s-${item.status}${zone ? ` z-${zone.id}` : ""}`}
           >
             <button
               type="button"
-              className="q-open"
+              className="thumb-open"
               onClick={() => onFocus(item.id)}
               title={item.message ?? item.name}
+              aria-label={`Pamja ${index + 1}, ${item.name}: ${state}`}
+              aria-current={item.id === focusedId ? "true" : undefined}
             >
-              {item.preview ? (
-                <img src={item.preview} alt="" className="q-thumb" />
-              ) : (
-                <span className="q-thumb" />
-              )}
-              <span className="q-index">{index + 1}</span>
-              <span className={`q-dot${zone ? ` z-${zone.id}` : ""}`} />
+              <img src={item.preview} alt="" />
+              <span className="thumb-mark" aria-hidden="true" />
             </button>
             <button
               type="button"
-              className="q-drop"
+              className="thumb-drop"
               onClick={() => onRemove(item.id)}
               disabled={running && item.status === "running"}
-              aria-label={`Hiq ${item.name}`}
+              aria-label={`Hiq ${item.name} nga radha`}
               title="Hiqe nga radha"
             >
-              ×
+              <svg viewBox="0 0 10 10" aria-hidden="true">
+                <path d="M2.5 2.5l5 5M7.5 2.5l-5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
         );
@@ -167,9 +163,12 @@ function ImageUpload({
     if (files.length) onPick(files);
   };
 
+  const pick = () => inputRef.current?.click();
+
   const done = focused?.status === "done";
   const zone = done ? ZONES[focused.zoneId] : null;
   const explanation = focused?.explanation ?? null;
+  const position = focused ? items.findIndex((item) => item.id === focused.id) + 1 : 0;
 
   /* Grad-CAM shpjegon një vendim pozitiv. Kur dalja është afër zeros, gradientet
      janë zhurmë dhe normalizimi do të prodhonte një njollë bindëse nga asgjëja.
@@ -188,10 +187,20 @@ function ImageUpload({
       : "Harta e aktivizimit nuk u llogarit dot për këtë pamje."
     : "Harta shfaqet vetëm për vendimet pozitive.";
 
+  const finderClass = [
+    "finder",
+    focused ? "has-shot" : "is-empty",
+    zone ? `z-${zone.id}` : "",
+    focused?.status === "running" ? "is-running" : "",
+    dragging ? "is-dragging" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <>
+    <section className="viewer" aria-label="Pamja nën analizë">
       <div
-        className={dragging ? "stage dragging" : "stage"}
+        className={finderClass}
         onDragOver={(e) => {
           e.preventDefault();
           setDragging(true);
@@ -203,58 +212,63 @@ function ImageUpload({
           take(e.dataTransfer.files);
         }}
       >
+        <span className="corner tl" aria-hidden="true" />
+        <span className="corner tr" aria-hidden="true" />
+        <span className="corner bl" aria-hidden="true" />
+        <span className="corner br" aria-hidden="true" />
+
         {focused ? (
           <>
             <div className="shot">
-              <img
-                className="shot-img"
-                src={focused.preview}
-                alt={focused.name}
-              />
+              <img className="shot-img" src={focused.preview} alt={focused.name} />
               {showing && <HeatCanvas explanation={explanation} />}
-              {focused.status === "running" && <div className="shot-busy" />}
+              {focused.status === "running" && <div className="scan" aria-hidden="true" />}
             </div>
 
-            {zone && (
-              <div className={`frame-tag t-${zone.id}`}>
-                <i className={`z-${zone.id}`} />
-                {zone.title}
-              </div>
-            )}
-
-            {done && (
-              <div className="frame-tools">
+            <div className="hud hud-top">
+              <span className="hud-label">
+                Pamja {position} nga {items.length}
+              </span>
+              {done && (
                 <button
                   type="button"
-                  className="chip"
+                  className="toggle"
                   aria-pressed={showing}
                   disabled={!canShow}
                   onClick={() => setShowHeat((v) => !v)}
                   title={heatTitle}
                 >
+                  <span className="toggle-knob" aria-hidden="true" />
                   Zona e vendimit
                 </button>
-              </div>
-            )}
+              )}
+            </div>
 
-            <div className="frame-caption">{focused.name}</div>
-          </>
-        ) : (
-          <>
-            <Contour />
-            <div className="drop">
-              <strong>Lësho këtu pamje ajrore</strong>
-              <span>një ose shumë, ose zgjidhi nga kompjuteri</span>
-              <button
-                type="button"
-                className="btn primary"
-                onClick={() => inputRef.current?.click()}
-              >
-                Zgjidh pamjet
-              </button>
-              <small>JPEG ose PNG, deri në {maxMb} MB secila</small>
+            <div className="hud hud-bottom">
+              <span className="hud-label hud-name" title={focused.name}>
+                {focused.name}
+              </span>
+              {zone && (
+                <span className={`hud-zone t-${zone.id}`}>
+                  <i aria-hidden="true" />
+                  {zone.title}
+                </span>
+              )}
             </div>
           </>
+        ) : (
+          <div className="drop">
+            <Reticle />
+            <h1 className="drop-title">
+              {dragging ? "Lëshoji pamjet" : "Lësho këtu pamjet nga droni"}
+            </h1>
+            <p className="drop-hint">
+              Një ose më shumë foto, JPEG ose PNG, deri në {maxMb} MB secila.
+            </p>
+            <button type="button" className="btn primary" onClick={pick}>
+              Zgjidh pamjet
+            </button>
+          </div>
         )}
 
         <input
@@ -270,77 +284,75 @@ function ImageUpload({
         />
       </div>
 
-      <QueueStrip
-        items={items}
-        focusedId={focused?.id ?? null}
-        running={running}
-        onFocus={onFocus}
-        onRemove={onRemove}
-      />
-
-      {showing && (
-        <p className="heat-note">
-          Ngjyra portokalli tregon pjesën e pamjes që ndikoi më shumë në vendim.
-          Nuk tregon vendin e saktë të zjarrit.
-        </p>
-      )}
-
-      {done && !positive && (
-        <p className="heat-note">
-          Harta e aktivizimit shpjegon vetëm vendimet pozitive, prandaj nuk
-          shfaqet për një pamje të pastër.
-        </p>
-      )}
-
-      {done && positive && !hasMap && (
-        <p className="heat-note">
-          Harta e aktivizimit nuk u llogarit dot për këtë pamje. Klasifikimi
-          mbetet i vlefshëm.
-        </p>
-      )}
-
-      {focused?.status === "error" && <p className="error">{focused.message}</p>}
-      {notice && <p className="notice">{notice}</p>}
-
       {items.length > 0 && (
-        <div className="filebar">
-          <span className="filename">
-            {items.length} në radhë
-            {pending > 0 ? ` · ${pending} pa klasifikuar` : " · të gjitha të kryera"}
-          </span>
-          <div className="actions">
-            <button
-              type="button"
-              className="btn"
-              onClick={() => inputRef.current?.click()}
-              disabled={running}
-            >
-              Shto
-            </button>
-            <button
-              type="button"
-              className="btn"
-              onClick={onClearQueue}
-              disabled={running}
-            >
-              Pastro radhën
-            </button>
-            <button
-              type="button"
-              className="btn primary"
-              onClick={onClassify}
-              disabled={running || pending === 0}
-            >
-              {running
-                ? "Duke klasifikuar…"
-                : pending > 1
-                  ? `Klasifiko ${pending}`
-                  : "Klasifiko"}
-            </button>
+        <div className="deck">
+          <QueueStrip
+            items={items}
+            focusedId={focused?.id ?? null}
+            running={running}
+            onFocus={onFocus}
+            onRemove={onRemove}
+          />
+
+          <div className="deck-row">
+            <p className="deck-count">
+              <b>{items.length}</b> pamje në radhë
+              <span>
+                {running
+                  ? `${pending} në pritje`
+                  : pending > 0
+                    ? `${pending} pa klasifikuar`
+                    : "të gjitha u klasifikuan"}
+              </span>
+            </p>
+            <div className="actions">
+              <button type="button" className="btn ghost" onClick={pick} disabled={running}>
+                Shto pamje
+              </button>
+              <button type="button" className="btn ghost" onClick={onClearQueue} disabled={running}>
+                Pastro radhën
+              </button>
+              <button
+                type="button"
+                className={running ? "btn primary is-busy" : "btn primary"}
+                onClick={onClassify}
+                disabled={running || pending === 0}
+              >
+                {running
+                  ? "Duke klasifikuar…"
+                  : pending > 1
+                    ? `Klasifiko ${pending} pamje`
+                    : "Klasifiko"}
+              </button>
+            </div>
           </div>
         </div>
       )}
-    </>
+
+      <div className="notes" aria-live="polite">
+        {focused?.status === "error" && <p className="note error">{focused.message}</p>}
+        {notice && <p className="note warn">{notice}</p>}
+
+        {showing && (
+          <p className="note">
+            Portokallia tregon pjesën e pamjes që ndikoi më shumë në vendim, jo
+            vendin e saktë të zjarrit.
+          </p>
+        )}
+        {done && !positive && (
+          <p className="note">
+            Harta e aktivizimit shpjegon vetëm vendimet pozitive, prandaj nuk
+            shfaqet për një pamje të pastër.
+          </p>
+        )}
+        {done && positive && !hasMap && (
+          <p className="note">
+            Harta e aktivizimit nuk u llogarit dot për këtë pamje. Klasifikimi
+            mbetet i vlefshëm.
+          </p>
+        )}
+      </div>
+    </section>
   );
 }
 

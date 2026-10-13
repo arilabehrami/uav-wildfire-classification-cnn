@@ -1,52 +1,52 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap");
-
-/* Konsolë operative, e zezë. Ngjyra mban një vendim, kurrë zbukurim:
-   ember = alarm, qelibar = shqyrtim, mentë = e pastër. */
+/* Pamja: nate mbi pyll, e pare nga droni.
+   Toni baze eshte gjelber pishe; ngjyrat e tjera mbajne vetem nje vendim
+   dhe ndjekin logjiken e kameres termike: e ftohte = e paster,
+   squfur = per shqyrtim, ember = alarm. */
 
 :root {
   color-scheme: dark;
 
-  --ink:        #060708;
-  --ink-raise:  #0a0c0e;
-  --surface:    rgba(20, 23, 26, 0.74);
-  --surface-2:  #171b1f;
-  --solid:      #121518;
-  --line:       #232a30;
-  --line-soft:  #161b20;
+  --ground:  #0e1c18;
+  --panel:   #13241f;
+  --raise:   #1a2f28;
+  --line:    #264039;
+  --line-2:  #1c322b;
 
-  --text:       #e9edf0;
-  --text-dim:   #8c98a2;
-  --text-faint: #5a646d;
+  --text:    #e3ece6;
+  --dim:     #9bb0a7;
+  --faint:   #647a71;
 
-  --alarm:  #ff6a1f;
-  --review: #e4b04a;
-  --clear:  #46c79b;
+  --alarm:   #ff6a2b;
+  --review:  #efc45a;
+  --clear:   #92d8e8;
+  /* Defekt teknik (serveri, fajlli). Nuk eshte zjarr, prandaj nuk perdor ember. */
+  --fault:   #ef8a95;
 
-  --alarm-wash:  rgba(255, 106, 31, 0.12);
-  --review-wash: rgba(228, 176, 74, 0.12);
-  --clear-wash:  rgba(70, 199, 155, 0.10);
+  --alarm-wash:  rgba(255, 106, 43, 0.14);
+  --review-wash: rgba(239, 196, 90, 0.14);
+  --clear-wash:  rgba(146, 216, 232, 0.12);
 
-  --sans: "Archivo", "Segoe UI", system-ui, sans-serif;
-  --mono: "Archivo", "Segoe UI", system-ui, sans-serif;
-  --code: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* DIN: shkronja e tabelave dhe e instrumenteve. */
+  --sans: "Bahnschrift", "Barlow", "Segoe UI", system-ui, sans-serif;
+  --narrow: "Bahnschrift Condensed", "Barlow Condensed", "Bahnschrift", "Arial Narrow", sans-serif;
 
-  --r:    14px;
+  --r-lg: 18px;
+  --r:    12px;
   --r-sm: 8px;
 
-  --glass: blur(16px);
-  --lift: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 16px 40px rgba(0, 0, 0, 0.5);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 * { box-sizing: border-box; }
 
-html, body, #root { height: 100%; }
+html, body, #root { min-height: 100%; }
 
 body {
   margin: 0;
-  background: var(--ink);
+  background: var(--ground);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-variant-numeric: tabular-nums;
@@ -65,14 +65,17 @@ button {
 button:disabled { cursor: not-allowed; }
 
 :focus-visible {
-  outline: 2px solid var(--review);
+  outline: 2px solid var(--clear);
   outline-offset: 2px;
   border-radius: var(--r-sm);
 }
 
+::selection { background: var(--review-wash); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

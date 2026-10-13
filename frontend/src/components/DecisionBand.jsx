@@ -9,7 +9,9 @@
    sakte; distanca vizuale nuk eshte distance ne score.
 
    Numrat (rezultati, portat) nuk shfaqen: per perdoruesin mjafton zona,
-   kurse vlerat e sakta jane te punimi dhe ne eksportin e regjistrit. */
+   kurse vlerat e sakta jane te punimi dhe ne eksportin e regjistrit.
+   Kur pamja ende nuk ka pergjigje, paneli tregon gjendjen e saj (ne pritje,
+   duke u analizuar, gabim) ne vend te nje shiriti bosh. */
 const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
 const pct = (v) => `${(clamp01(v) * 100).toFixed(2)}%`;
 
@@ -28,12 +30,12 @@ function place(score, gates) {
 
 function Verdict({ verdict, onVerdict }) {
   return (
-    <div className="verdict">
-      <span className="verdict-ask">Vendimi i shqyrtuesit</span>
-      <div className="verdict-buttons">
+    <div className="review-ask">
+      <p className="review-q">Çka sheh ti në këtë pamje?</p>
+      <div className="review-buttons">
         <button
           type="button"
-          className={`btn small${verdict === "fire" ? " on t-alarm" : ""}`}
+          className={`btn pick${verdict === "fire" ? " on t-alarm" : ""}`}
           aria-pressed={verdict === "fire"}
           onClick={() => onVerdict("fire")}
         >
@@ -41,72 +43,72 @@ function Verdict({ verdict, onVerdict }) {
         </button>
         <button
           type="button"
-          className={`btn small${verdict === "no_fire" ? " on t-clear" : ""}`}
+          className={`btn pick${verdict === "no_fire" ? " on t-clear" : ""}`}
           aria-pressed={verdict === "no_fire"}
           onClick={() => onVerdict("no_fire")}
         >
           Nuk është zjarr
         </button>
       </div>
-      <span className="verdict-hint">
+      <p className="review-hint">
         {verdict
-          ? "Shtypja e sërishme e heq vendimin."
-          : "Vendimi ruhet në regjistër dhe del në eksport."}
-      </span>
+          ? "U ruajt në regjistër. Shtype sërish për ta hequr."
+          : "Vendimi yt ruhet në regjistër dhe del në eksport."}
+      </p>
     </div>
   );
 }
 
-function DecisionBand({ score, zone, gates, verdict, onVerdict }) {
+const IDLE = {
+  none: { title: "Në pritje", note: "Zgjidh një ose më shumë pamje ajrore për të filluar." },
+  pending: { title: "Gati", note: "Shtyp Klasifiko që sistemi ta analizojë këtë pamje." },
+  running: { title: "Në analizë", note: "Modeli po e kontrollon pamjen për flakë të dukshme." },
+  error: { title: "Pa përgjigje", note: "Kjo pamje nuk u kontrollua. Arsyeja shkruhet nën pamje." },
+};
+
+const SEGMENTS = [
+  { id: "clear", label: "E pastër" },
+  { id: "review", label: "Për shqyrtim" },
+  { id: "alarm", label: "Alarm" },
+];
+
+function DecisionBand({ status, score, zone, gates, verdict, onVerdict }) {
   const has = typeof score === "number" && Number.isFinite(score) && Boolean(zone);
   const position = has ? place(score, gates) : 0;
-  const third = 1 / 3;
+  const idle = IDLE[status ?? "none"] ?? IDLE.none;
 
   return (
-    <section className={has ? "band" : "band idle"} aria-live="polite">
-      <div className="band-head">
-        <div className="band-verdict">
-          <div className="band-label">PËRGJIGJJA</div>
-          <h2 className={has ? `band-call t-${zone.id}` : "band-call"}>
-            {has ? zone.title : "Asnjë pamje e kontrolluar"}
-          </h2>
-          <p className="band-note">
-            {has ? zone.note : "Ngarko pamje ajrore dhe shtyp Klasifiko."}
-          </p>
-        </div>
-      </div>
+    <section
+      className={has ? `decision z-${zone.id}` : `decision idle s-${status ?? "none"}`}
+      aria-live="polite"
+      aria-label="Përgjigjja e sistemit"
+    >
+      <p className="decision-label">Përgjigjja e sistemit</p>
+      <h2 className={has ? `call t-${zone.id}` : "call"} key={has ? `${zone.id}-${score}` : status}>
+        {has ? zone.title : idle.title}
+      </h2>
+      <p className="call-note">{has ? zone.note : idle.note}</p>
 
-      <div className="scale">
-        <div className="scale-track">
-          <div
-            className={`seg seg-clear${has && zone.id === "clear" ? " on" : ""}`}
-            style={{ width: pct(third) }}
-          />
-          <div
-            className={`seg seg-review${has && zone.id === "review" ? " on" : ""}`}
-            style={{ width: pct(third) }}
-          />
-          <div
-            className={`seg seg-alarm${has && zone.id === "alarm" ? " on" : ""}`}
-            style={{ width: pct(third) }}
-          />
+      <div className="scale" aria-hidden={!has}>
+        <div className="scale-bars">
+          {SEGMENTS.map((segment) => (
+            <span
+              key={segment.id}
+              className={`bar bar-${segment.id}${has && zone.id === segment.id ? " on" : ""}`}
+            />
+          ))}
+          {has && <span className="needle" style={{ left: pct(position) }} />}
         </div>
-        {has && <div className="needle" style={{ left: pct(position) }} />}
-      </div>
-
-      <div className="zone-labels">
-        <span className="t-clear" style={{ left: 0 }}>
-          E pastër
-        </span>
-        <span
-          className="t-review center"
-          style={{ left: "50%" }}
-        >
-          Për shqyrtim
-        </span>
-        <span className="t-alarm" style={{ right: 0 }}>
-          Alarm
-        </span>
+        <div className="scale-labels">
+          {SEGMENTS.map((segment) => (
+            <span
+              key={segment.id}
+              className={`t-${segment.id}${has && zone.id === segment.id ? " on" : ""}`}
+            >
+              {segment.label}
+            </span>
+          ))}
+        </div>
       </div>
 
       {has && zone.id === "review" && onVerdict && (

@@ -186,6 +186,11 @@ nuk u trajnua mbi të):
 Me portat e `fire_flame_v6`: humbje flakësh 2.0%, pastrim automatik 24.1%,
 alarm 32.2% me saktësi 54.9%, shqyrtim njerëzor 43.7%.
 
+- **Kontrolli i verbër njerëzor nuk e konfirmoi përmirësimin.** Mbi 200 pamje të
+  etiketuara nga njeriu, AUC është 0.792 (tymi) kundrejt 0.794 (flaka), diferenca
+  +0.002 me interval 95% [−0.062, +0.069]. Rregulli i ngjyrës i humbi 40 nga 61
+  flakët që pa njeriu, dhe modeli i flakës i mësoi ato pika të verbra. Detajet
+  te `METODOLOGJIA.md`, seksioni "Kontrolli i verbër njerëzor".
 - **Etiketat u nxorën nga një rregull ngjyre** i kalibruar mbi negativat e
   njohura dhe i verifikuar vizualisht mbi montazhe, jo nga shqyrtim
   foto-për-foto. Etiketat e `test_final` u nxorën nga i njëjti rregull, prandaj

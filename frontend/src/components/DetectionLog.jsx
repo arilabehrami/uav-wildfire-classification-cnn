@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { ZONES } from "../config/model";
 import { download, stamp, toCsv, toJson } from "../lib/exportLog";
+import SessionStats from "./SessionStats";
 
 const VERDICT_LABEL = { fire: "zjarr", no_fire: "pa zjarr" };
 
@@ -54,94 +55,109 @@ function DetectionLog({ records, items, persisting, onVerdict, onClearHistory })
   };
 
   return (
-    <section className="panel grow">
-      <div className="panel-head">
-        <h3>REGJISTRI{records.length > 0 ? ` · ${records.length}` : ""}</h3>
+    <section className="log-panel" aria-label="Regjistri i klasifikimeve">
+      <div className="log-head">
+        <h3>
+          Regjistri
+          {records.length > 0 && <span className="log-count">{records.length}</span>}
+        </h3>
         {records.length > 0 && (
-          <div className="panel-tools">
-            <button type="button" className="chip" onClick={() => save("csv")}>
-              CSV
-            </button>
-            <button type="button" className="chip" onClick={() => save("json")}>
-              JSON
-            </button>
+          <div className="log-tools">
             {confirming ? (
               <>
+                <span className="log-confirm">Të fshihet gjithë regjistri?</span>
                 <button
                   type="button"
-                  className="chip danger"
+                  className="link danger"
                   onClick={() => {
                     onClearHistory();
                     setConfirming(false);
                   }}
                 >
-                  Konfirmo
+                  Fshije
                 </button>
-                <button
-                  type="button"
-                  className="chip"
-                  onClick={() => setConfirming(false)}
-                >
+                <button type="button" className="link" onClick={() => setConfirming(false)}>
                   Anulo
                 </button>
               </>
             ) : (
-              <button
-                type="button"
-                className="chip"
-                onClick={() => setConfirming(true)}
-                title="Fshi gjithë regjistrin e ruajtur"
-              >
-                Fshi
-              </button>
+              <>
+                <button
+                  type="button"
+                  className="link"
+                  onClick={() => save("csv")}
+                  title="Shkarko regjistrin si CSV (hapet në Excel)"
+                >
+                  CSV
+                </button>
+                <button
+                  type="button"
+                  className="link"
+                  onClick={() => save("json")}
+                  title="Shkarko regjistrin si JSON"
+                >
+                  JSON
+                </button>
+                <button
+                  type="button"
+                  className="link"
+                  onClick={() => setConfirming(true)}
+                  title="Fshi gjithë regjistrin e ruajtur"
+                >
+                  Fshi
+                </button>
+              </>
             )}
           </div>
         )}
       </div>
 
+      {records.length > 0 && <SessionStats records={records} />}
+
       {!persisting && records.length > 0 && (
-        <p className="empty">
+        <p className="log-note warn">
           Shfletuesi nuk lejon ruajtjen lokale, prandaj regjistri do të humbasë
-          me rifreskimin e faqes. Eksportoje para se ta mbyllësh.
+          me rifreskimin e faqes. Shkarkoje para se ta mbyllësh.
         </p>
       )}
 
       {records.length === 0 ? (
-        <p className="empty">
-          Asgjë ende. Çdo pamje e kontrolluar shfaqet këtu me përgjigjen e saj
-          dhe ruhet edhe pas rifreskimit.
+        <p className="log-empty">
+          Çdo pamje që klasifikon shfaqet këtu me përgjigjen e saj, dhe mbetet
+          edhe pas rifreskimit të faqes.
         </p>
       ) : (
         <>
           {open > 0 && (
-            <p className="empty">
-              {open} {open === 1 ? "rast pret" : "raste presin"} vendimin e
-              shqyrtuesit.
+            <p className="log-note">
+              {open === 1
+                ? "1 pamje pret vendimin tënd."
+                : `${open} pamje presin vendimin tënd.`}
             </p>
           )}
 
-          <div className="log">
+          <ol className="log">
             {records.map((record) => {
               const zone = ZONES[record.zoneId];
               const thumb = thumbs.get(record.id);
 
               return (
-                <div className="log-row" key={record.id}>
+                <li className={`log-row z-${record.zoneId}`} key={record.id}>
                   {thumb ? (
                     <img className="log-thumb" src={thumb} alt="" />
                   ) : (
-                    <i className={`z-${record.zoneId}`} />
+                    <span className="log-thumb blank" aria-hidden="true" />
                   )}
 
-                  <span className="log-main">
-                    <span className="name" title={record.name}>
+                  <div className="log-main">
+                    <span className="log-name" title={record.name}>
                       {record.name}
                     </span>
-                    <span className="at">
+                    <span className="log-at">
                       {when(record.at)}
                       {record.verdict && (
                         <>
-                          {" · njeriu: "}
+                          {", sipas njeriut "}
                           <b className={record.verdict === "fire" ? "t-alarm" : "t-clear"}>
                             {VERDICT_LABEL[record.verdict]}
                           </b>
@@ -152,27 +168,27 @@ function DetectionLog({ records, items, persisting, onVerdict, onClearHistory })
                       <span className="log-verdict">
                         <button
                           type="button"
-                          className="chip tiny"
+                          className="mini"
                           onClick={() => onVerdict(record.id, "fire")}
                         >
-                          zjarr
+                          Zjarr
                         </button>
                         <button
                           type="button"
-                          className="chip tiny"
+                          className="mini"
                           onClick={() => onVerdict(record.id, "no_fire")}
                         >
-                          pa zjarr
+                          Pa zjarr
                         </button>
                       </span>
                     )}
-                  </span>
+                  </div>
 
-                  <span className={`score t-${record.zoneId}`}>{zone.title}</span>
-                </div>
+                  <span className={`log-zone t-${record.zoneId}`}>{zone.title}</span>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </>
       )}
     </section>
