@@ -155,6 +155,57 @@ kësaj analize është optimiste për këtë arsye.
 Rregullimi: portat përshtaten vetëm mbi negativat e pyllit, liqeni raportohet
 veçmas, dhe specificity raportohet gjithmonë sipas burimit të negativit.
 
+## Kontrolli i verbër njerëzor — përmirësimi nuk u konfirmua
+
+200 pamje të rastësishme nga `test_final` (100 nga secila klasë origjinale,
+farë 20261013) u etiketuan nga njeriu pa e parë emrin e fajllit, rregullin ose
+modelin. Rezultati: 61 Flakë, 98 Pa flakë, 41 E paqartë. Skriptet:
+`make_human_check.py`, `evaluate_human_labels.py`; rezultati te
+`human_check_2026-10-13/rezultati_kontrollit_njerezor.json`.
+
+**Rregulli i ngjyrës është i saktë, por i humb shumicën e flakëve.** Kur
+rregulli thotë Fire, njeriu pajtohet (21 nga 21). Por nga 61 flakët që pa
+njeriu, rregulli i quajti Fire vetëm 21. 34 i quajti Uncertain, dhe këto u
+përjashtuan nga trajnimi. 6 i quajti No_Fire, dhe këto u trajnuan si negativa.
+Pragu `bright >= 16` u zgjodh që të mos ndizej mbi asnjë negativ të njohur, dhe
+kjo e bëri shumë konservativ. Banda 1–15, e shpallur Uncertain, sipas njeriut
+është kryesisht flakë (34 Flakë, 6 Pa flakë, 20 E paqartë).
+
+**Modeli i flakës mësoi edhe pikat e verbra të rregullit.** Mbi flakët që
+rregulli i njihte, modeli i kap 95%. Mbi ato që rregulli i quajti Uncertain,
+71%. Mbi 6 flakët që rregulli i quajti No_Fire, 0%. Ky është efekti
+"mësuesi dhe korrigjuesi janë i njëjti", i matur drejtpërdrejt.
+
+**Mbi etiketat njerëzore, dy modelet nuk ndryshojnë.** AUC: tymi 0.792,
+flaka 0.794. Diferenca +0.002, interval besimi 95% [−0.062, +0.069].
+Përmirësimi 0.696 → 0.855 i raportuar më sipër u mat kundrejt etiketave të të
+njëjtit rregull dhe **nuk qëndron** kundrejt një gjykatësi të pavarur.
+
+Me portat e veta, mbi 61 flakët dhe 98 jo-flakët e njeriut:
+
+| | flakë të humbura | flakë në alarm | alarme të rreme | në shqyrtim |
+| --- | --- | --- | --- | --- |
+| tymi | 0 | 19 | 6 | 91 |
+| flaka | 3 | 38 | 17 | 67 |
+
+Asnjëri model nuk e mund tjetrin në çdo drejtim.
+
+**Etiketat origjinale të dataset-it pajtohen me njeriun 95% (151/159)**,
+njësoj si rregulli, por mbulojnë më shumë pamje. Pretendimi më sipër se rreth
+një e katërta e etiketave origjinale Fire nuk kanë flakë është i tepruar:
+në mostrën njerëzore, vetëm 7 nga 100 pamje origjinale Fire u gjykuan qartë
+pa flakë (33 të paqarta).
+
+**Çka mbetet e vlefshme:** modeli i tymit i jep alarm 56% të skenave pa zjarr
+fare (sipas njeriut), kurse modeli i flakës 26%. Diagnoza që modeli i tymit
+reagon ndaj kontekstit të zjarrit, jo vetëm ndaj flakës, mbështetet edhe nga
+segmenti i tymit të konfirmuar nga përdoruesja (Test/No_Fire 1592–1913) dhe
+nga banda e flakëve pa tym (Test/Fire 0–499), të dyja me etiketa origjinale.
+
+**Mësimi metodologjik:** vlerësimi kundrejt etiketave të prodhuara nga e njëjta
+procedurë si etiketat e trajnimit e fryu përmirësimin e matur. Vetëm një
+gjykatës i pavarur e zbuloi.
+
 ## Hapi tjetër
 
 Nga **rrënja e projektit**, jo nga `backend/` — skripti e pret `dataset/` nën

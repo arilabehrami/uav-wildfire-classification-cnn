@@ -1,0 +1,26 @@
+{
+  "rregulli": "Fire = origjinale Fire DHE n >= 1; extra_raw perjashtohet",
+  "zgjedhur_mbi": "human_check_2026-10-13 (159 pamje te sigurta)",
+  "nga_ne": {
+    "Fire -> Fire": 23139,
+    "Fire -> No_Fire": 3856,
+    "Fire -> Uncertain": 592,
+    "No_Fire -> No_Fire": 14716,
+    "No_Fire -> Uncertain": 395
+  },
+  "train": {
+    "No_Fire": 15282,
+    "Fire": 17664
+  },
+  "validation_para_filtrimit": {
+    "No_Fire": 3290,
+    "Fire": 5475
+  },
+  "validation": {
+    "No_Fire": 2956,
+    "Fire": 5394
+  },
+  "hequr_nga_dhash": 415,
+  "dhash_prag": 8,
+  "test_final_prekur": false
+}

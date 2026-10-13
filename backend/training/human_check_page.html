@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontroll i verbër</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0d0f; --panel: #14181c; --raise: #1b2025; --line: #262d33;
+    --text: #e9edf0; --dim: #8c98a2; --faint: #5a646d;
+    --fire: #ff6a1f; --clear: #46c79b; --unsure: #e4b04a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.55 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 56px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  h2 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  .count { color: var(--dim); font-variant-numeric: tabular-nums; }
+  .bar { height: 4px; background: var(--line); border-radius: 2px; margin: 12px 0 20px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--text); transition: width .15s ease; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .panel p { margin: 0 0 12px; }
+  .rules { margin: 0 0 14px; padding-left: 18px; color: var(--dim); }
+  .rules li { margin-bottom: 6px; }
+  .rules b { color: var(--text); }
+  .note { color: var(--dim); font-size: 13px; }
+  .warn { color: var(--unsure); font-size: 13px; }
+  figure { margin: 0; display: grid; place-items: center; background: #000;
+           border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  figure img { display: block; width: 100%; max-width: 520px; aspect-ratio: 1 / 1; }
+  figure.zoom img { max-width: 720px; }
+  .pid { color: var(--faint); font-size: 12px; margin-top: 8px; text-align: center;
+         font-variant-numeric: tabular-nums; }
+  button { font: inherit; color: inherit; cursor: pointer; border-radius: 10px;
+           border: 1px solid var(--line); background: var(--raise); padding: 12px 10px; }
+  button:hover:not(:disabled) { border-color: var(--faint); }
+  button:disabled { opacity: .4; cursor: default; }
+  .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+  .choices button { font-weight: 600; }
+  .choices .fire   { border-color: rgba(255,106,31,.45); }
+  .choices .clear  { border-color: rgba(70,199,155,.45); }
+  .choices .unsure { border-color: rgba(228,176,74,.45); }
+  .choices .fire.on   { background: rgba(255,106,31,.18); border-color: var(--fire); }
+  .choices .clear.on  { background: rgba(70,199,155,.16); border-color: var(--clear); }
+  .choices .unsure.on { background: rgba(228,176,74,.16); border-color: var(--unsure); }
+  kbd { font: 12px ui-monospace, Consolas, monospace; color: var(--dim);
+        border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-left: 8px; font-weight: 400; }
+  .tools { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .ghost { background: transparent; padding: 8px 12px; color: var(--dim); }
+  .primary { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 600; padding: 11px 20px; }
+  .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+  .summary div { border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+  .summary b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .summary span { color: var(--dim); font-size: 13px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  code { font: 13px ui-monospace, Consolas, monospace; color: var(--text); }
+  [hidden] { display: none !important; }
+  @media (max-width: 520px) {
+    .choices, .summary { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Kontroll i verbër i flakës</h1>
+    <span class="count" id="count">0 / 0</span>
+  </header>
+  <div class="bar"><i id="bar"></i></div>
+
+  <section class="panel" id="intro" hidden>
+    <p>Do të shohësh 200 pamje ajrore, një nga një. Për secilën vendos vetëm me sy:</p>
+    <ul class="rules">
+      <li><b>Flakë</b> — sheh flakë të dukshme: portokalli ose të verdhë, të ndritshme. Edhe një flakë e vogël numërohet.</li>
+      <li><b>Pa flakë</b> — nuk ka flakë. <b>Tymi pa flakë të dukshme është "Pa flakë".</b></li>
+      <li><b>E paqartë</b> — nuk mund të vendosësh me siguri, p.sh. një njollë që mund të jetë flakë ose dhé.</li>
+    </ul>
+    <p class="note">Mos u mendo gjatë, 10–20 sekonda për pamje mjaftojnë. Fotot janë të përziera dhe emrat e tyre janë fshehur me qëllim, që vendimi të jetë vetëm yti. Përparimi ruhet në këtë shfletues: mund të ndalesh dhe të vazhdosh më vonë.</p>
+    <p class="note">Tastet: <kbd>1</kbd> Flakë · <kbd>2</kbd> Pa flakë · <kbd>3</kbd> E paqartë · <kbd>←</kbd> prapa · <kbd>Z</kbd> zmadho</p>
+    <p class="warn" id="nostore" hidden>Ky shfletues nuk e ruan përparimin. Mos e mbyll faqen para se ta shkarkosh fajllin.</p>
+    <button class="primary" id="start">Fillo</button>
+  </section>
+
+  <section id="work" hidden>
+    <figure id="fig"><img id="img" alt="Pamje ajrore për etiketim"></figure>
+    <div class="pid" id="pid"></div>
+    <div class="choices">
+      <button class="fire" data-label="Fire">Flakë<kbd>1</kbd></button>
+      <button class="clear" data-label="No_Fire">Pa flakë<kbd>2</kbd></button>
+      <button class="unsure" data-label="Uncertain">E paqartë<kbd>3</kbd></button>
+    </div>
+    <div class="tools">
+      <button class="ghost" id="back">← Prapa</button>
+      <button class="ghost" id="zoom">Zmadho <kbd>Z</kbd></button>
+      <button class="ghost" id="save-partial">Shkarko deri tani</button>
+    </div>
+  </section>
+
+  <section class="panel" id="done" hidden>
+    <h2>Përfundove</h2>
+    <p class="note">Të gjitha 200 pamjet kanë përgjigje.</p>
+    <div class="summary">
+      <div><b id="n-fire">0</b><span>Flakë</span></div>
+      <div><b id="n-clear">0</b><span>Pa flakë</span></div>
+      <div><b id="n-unsure">0</b><span>E paqartë</span></div>
+    </div>
+    <p>Shkarko fajllin dhe vendose te dosja <code>__BATCH__</code> me emrin <code>etiketat_njerezore.csv</code>.</p>
+    <div class="row">
+      <button class="primary" id="save">Shkarko CSV</button>
+      <button class="ghost" id="review">Rishiko përgjigjet</button>
+    </div>
+  </section>
+</main>
+
+<script>
+// Vetem ID anonime dhe fotoja. Emri i fajllit, klasa origjinale dhe vendimi i
+// rregullit jane te key.csv, jashte kesaj faqeje, qe etiketimi te jete i verber.
+const ITEMS = __ITEMS__;
+const STORE = "__STORE__";
+
+const $ = (id) => document.getElementById(id);
+
+function load() {
+  try {
+    const value = JSON.parse(localStorage.getItem(STORE) || "{}");
+    return value && typeof value === "object" ? value : {};
+  } catch {
+    return {};
+  }
+}
+
+function canStore() {
+  try {
+    localStorage.setItem(STORE + ":probe", "1");
+    localStorage.removeItem(STORE + ":probe");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+let answers = load();
+const persistent = canStore();
+
+function save() {
+  try {
+    localStorage.setItem(STORE, JSON.stringify(answers));
+  } catch {
+    /* pa ruajtje: pergjigjet mbeten ne memorie derisa te shkarkohen */
+  }
+}
+
+const answered = () => ITEMS.filter((item) => answers[item.id]).length;
+const firstOpen = () => {
+  const i = ITEMS.findIndex((item) => !answers[item.id]);
+  return i === -1 ? ITEMS.length : i;
+};
+
+let index = firstOpen();
+
+function show(section) {
+  for (const id of ["intro", "work", "done"]) $(id).hidden = id !== section;
+}
+
+function render() {
+  const n = answered();
+  $("count").textContent = `${n} / ${ITEMS.length}`;
+  $("bar").style.width = `${(100 * n) / ITEMS.length}%`;
+
+  if (index >= ITEMS.length) {
+    const count = (label) => ITEMS.filter((item) => answers[item.id]?.label === label).length;
+    $("n-fire").textContent = count("Fire");
+    $("n-clear").textContent = count("No_Fire");
+    $("n-unsure").textContent = count("Uncertain");
+    show("done");
+    return;
+  }
+
+  const item = ITEMS[index];
+  $("img").src = item.src;
+  $("pid").textContent = `${item.id} · ${index + 1} nga ${ITEMS.length}`;
+  for (const button of document.querySelectorAll("[data-label]")) {
+    button.classList.toggle("on", answers[item.id]?.label === button.dataset.label);
+  }
+  $("back").disabled = index === 0;
+  show("work");
+}
+
+function answer(label) {
+  if (index >= ITEMS.length) return;
+  answers[ITEMS[index].id] = { label, at: new Date().toISOString() };
+  save();
+  index += 1;
+  if (index >= ITEMS.length) index = firstOpen();
+  render();
+}
+
+function back() {
+  if (index > 0) {
+    index = Math.min(index, ITEMS.length) - 1;
+    render();
+  }
+}
+
+function csv() {
+  const lines = ["id,label,koha"];
+  for (const item of ITEMS) {
+    const a = answers[item.id];
+    if (a) lines.push(`${item.id},${a.label},${a.at}`);
+  }
+  return lines.join("\r\n") + "\r\n";
+}
+
+function download() {
+  const url = URL.createObjectURL(new Blob([csv()], { type: "text/csv;charset=utf-8" }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "etiketat_njerezore.csv";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+for (const button of document.querySelectorAll("[data-label]")) {
+  button.addEventListener("click", () => answer(button.dataset.label));
+}
+$("start").addEventListener("click", render);
+$("back").addEventListener("click", back);
+$("zoom").addEventListener("click", () => $("fig").classList.toggle("zoom"));
+$("save").addEventListener("click", download);
+$("save-partial").addEventListener("click", download);
+$("review").addEventListener("click", () => { index = 0; render(); });
+
+document.addEventListener("keydown", (event) => {
+  if ($("work").hidden) return;
+  if (event.key === "1") answer("Fire");
+  else if (event.key === "2") answer("No_Fire");
+  else if (event.key === "3") answer("Uncertain");
+  else if (event.key === "ArrowLeft" || event.key === "Backspace") { event.preventDefault(); back(); }
+  else if (event.key === "z" || event.key === "Z") $("fig").classList.toggle("zoom");
+});
+
+$("nostore").hidden = persistent;
+if (answered() === 0) {
+  $("count").textContent = `0 / ${ITEMS.length}`;
+  show("intro");
+} else {
+  render();
+}
+</script>
+</body>
+</html>
