@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MAX_BYTES } from "../config/api";
+import { ZONES } from "../config/model";
 
 // Unaza terreni: një aluzion i asaj që shikon kamera, i mbajtur në kontrast
 // shumë të ulët që të mos konkurrojë me pamjen nën analizë.
@@ -101,43 +101,92 @@ function HeatCanvas({ explanation }) {
   return <canvas className="shot-heat" ref={canvasRef} aria-hidden="true" />;
 }
 
+function QueueStrip({ items, focusedId, running, onFocus, onRemove }) {
+  if (items.length < 2) return null;
+
+  return (
+    <div className="queue" role="list" aria-label="Radha e pamjeve">
+      {items.map((item, index) => {
+        const zone = item.status === "done" ? ZONES[item.zoneId] : null;
+        return (
+          <div
+            role="listitem"
+            key={item.id}
+            className={`q-item${item.id === focusedId ? " on" : ""} s-${item.status}`}
+          >
+            <button
+              type="button"
+              className="q-open"
+              onClick={() => onFocus(item.id)}
+              title={item.message ?? item.name}
+            >
+              {item.preview ? (
+                <img src={item.preview} alt="" className="q-thumb" />
+              ) : (
+                <span className="q-thumb" />
+              )}
+              <span className="q-index">{index + 1}</span>
+              <span className={`q-dot${zone ? ` z-${zone.id}` : ""}`} />
+            </button>
+            <button
+              type="button"
+              className="q-drop"
+              onClick={() => onRemove(item.id)}
+              disabled={running && item.status === "running"}
+              aria-label={`Hiq ${item.name}`}
+              title="Hiqe nga radha"
+            >
+              ×
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function ImageUpload({
-  file,
-  preview,
-  zone,
-  explanation,
-  busy,
-  error,
+  items,
+  focused,
+  pending,
+  running,
+  notice,
+  maxMb,
   onPick,
+  onFocus,
+  onRemove,
   onClassify,
-  onReset,
+  onClearQueue,
 }) {
   const [dragging, setDragging] = useState(false);
   const [showHeat, setShowHeat] = useState(true);
   const inputRef = useRef(null);
 
-  const take = (candidate) => {
-    if (!candidate) return;
-    if (!candidate.type.startsWith("image/")) {
-      onPick(null, "Zgjidh një fajll imazhi (JPEG ose PNG).");
-      return;
-    }
-    if (candidate.size > MAX_BYTES) {
-      onPick(null, "Imazhi i kalon 10 MB. Zgjidh një më të vogël.");
-      return;
-    }
-    onPick(candidate, null);
+  const take = (fileList) => {
+    const files = Array.from(fileList ?? []);
+    if (files.length) onPick(files);
   };
+
+  const done = focused?.status === "done";
+  const zone = done ? ZONES[focused.zoneId] : null;
+  const explanation = focused?.explanation ?? null;
 
   /* Grad-CAM shpjegon një vendim pozitiv. Kur dalja është afër zeros, gradientet
      janë zhurmë dhe normalizimi do të prodhonte një njollë bindëse nga asgjëja.
-     Prandaj harta shfaqet vetëm kur kuadri nuk u pastrua. */
-  const meaningful =
-    Boolean(explanation) &&
-    explanation.peak_raw > 0 &&
-    Boolean(zone) &&
-    zone.id !== "clear";
-  const showing = meaningful && showHeat;
+     Prandaj harta shfaqet vetëm kur kuadri nuk u pastrua.
+
+     Mungesa e hartës nuk thotë asgjë për zjarrin: harta dhe klasifikimi janë
+     dy rezultate të ndryshme, dhe mesazhet më poshtë nuk i ngatërrojnë. */
+  const hasMap = Boolean(explanation) && explanation.peak_raw > 0;
+  const positive = Boolean(zone) && zone.id !== "clear";
+  const canShow = hasMap && positive;
+  const showing = canShow && showHeat;
+
+  const heatTitle = positive
+    ? hasMap
+      ? "Shfaq ose fshih zonën që ndikoi në vendim"
+      : "Harta e aktivizimit nuk u llogarit dot për këtë pamje."
+    : "Harta shfaqet vetëm për vendimet pozitive.";
 
   return (
     <>
@@ -151,18 +200,19 @@ function ImageUpload({
         onDrop={(e) => {
           e.preventDefault();
           setDragging(false);
-          take(e.dataTransfer.files?.[0]);
+          take(e.dataTransfer.files);
         }}
       >
-        {preview ? (
+        {focused ? (
           <>
             <div className="shot">
               <img
                 className="shot-img"
-                src={preview}
-                alt={file ? file.name : "Pamja e ngarkuar"}
+                src={focused.preview}
+                alt={focused.name}
               />
               {showing && <HeatCanvas explanation={explanation} />}
+              {focused.status === "running" && <div className="shot-busy" />}
             </div>
 
             {zone && (
@@ -172,41 +222,37 @@ function ImageUpload({
               </div>
             )}
 
-            {explanation && (
+            {done && (
               <div className="frame-tools">
                 <button
                   type="button"
                   className="chip"
                   aria-pressed={showing}
-                  disabled={!meaningful}
+                  disabled={!canShow}
                   onClick={() => setShowHeat((v) => !v)}
-                  title={
-                    meaningful
-                      ? "Shfaq ose fshih zonën që ndikoi në vendim"
-                      : "Nuk u gjet zjarr, prandaj nuk ka zonë për të treguar."
-                  }
+                  title={heatTitle}
                 >
                   Zona e vendimit
                 </button>
               </div>
             )}
 
-            {file && <div className="frame-caption">{file.name}</div>}
+            <div className="frame-caption">{focused.name}</div>
           </>
         ) : (
           <>
             <Contour />
             <div className="drop">
-              <strong>Lësho këtu një pamje ajrore</strong>
-              <span>ose zgjidhe nga kompjuteri</span>
+              <strong>Lësho këtu pamje ajrore</strong>
+              <span>një ose shumë, ose zgjidhi nga kompjuteri</span>
               <button
                 type="button"
                 className="btn primary"
                 onClick={() => inputRef.current?.click()}
               >
-                Zgjidh pamjen
+                Zgjidh pamjet
               </button>
-              <small>JPEG ose PNG, deri në 10 MB</small>
+              <small>JPEG ose PNG, deri në {maxMb} MB secila</small>
             </div>
           </>
         )}
@@ -215,13 +261,22 @@ function ImageUpload({
           ref={inputRef}
           type="file"
           accept="image/*"
+          multiple
           hidden
           onChange={(e) => {
-            take(e.target.files?.[0]);
+            take(e.target.files);
             e.target.value = "";
           }}
         />
       </div>
+
+      <QueueStrip
+        items={items}
+        focusedId={focused?.id ?? null}
+        running={running}
+        onFocus={onFocus}
+        onRemove={onRemove}
+      />
 
       {showing && (
         <p className="heat-note">
@@ -230,30 +285,57 @@ function ImageUpload({
         </p>
       )}
 
-      {explanation && !meaningful && (
+      {done && !positive && (
         <p className="heat-note">
-          Nuk u gjet zjarr, prandaj nuk ka zonë për të treguar.
+          Harta e aktivizimit shpjegon vetëm vendimet pozitive, prandaj nuk
+          shfaqet për një pamje të pastër.
         </p>
       )}
 
-      {error && <p className="error">{error}</p>}
+      {done && positive && !hasMap && (
+        <p className="heat-note">
+          Harta e aktivizimit nuk u llogarit dot për këtë pamje. Klasifikimi
+          mbetet i vlefshëm.
+        </p>
+      )}
 
-      {file && (
+      {focused?.status === "error" && <p className="error">{focused.message}</p>}
+      {notice && <p className="notice">{notice}</p>}
+
+      {items.length > 0 && (
         <div className="filebar">
-          <span className="filename" title={file.name}>
-            {file.name} · {(file.size / 1024).toFixed(0)} KB
+          <span className="filename">
+            {items.length} në radhë
+            {pending > 0 ? ` · ${pending} pa klasifikuar` : " · të gjitha të kryera"}
           </span>
           <div className="actions">
-            <button type="button" className="btn" onClick={onReset} disabled={busy}>
-              Hiqe
+            <button
+              type="button"
+              className="btn"
+              onClick={() => inputRef.current?.click()}
+              disabled={running}
+            >
+              Shto
+            </button>
+            <button
+              type="button"
+              className="btn"
+              onClick={onClearQueue}
+              disabled={running}
+            >
+              Pastro radhën
             </button>
             <button
               type="button"
               className="btn primary"
               onClick={onClassify}
-              disabled={busy}
+              disabled={running || pending === 0}
             >
-              {busy ? "Duke klasifikuar…" : "Klasifiko"}
+              {running
+                ? "Duke klasifikuar…"
+                : pending > 1
+                  ? `Klasifiko ${pending}`
+                  : "Klasifiko"}
             </button>
           </div>
         </div>

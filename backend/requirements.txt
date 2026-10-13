@@ -1,9 +1,10 @@
-tensorflow>=2.15
+# Varesite e sherbimit (backend/app). Vetem keto nevojiten per te ngritur API-ne.
+#
+# Versionet jane kufij, jo fiksime: per riprodhim te sakte ekzekuto
+#   pip freeze > requirements.lock.txt
+# ne venv-in e punes dhe citoje ate fajll ne punim.
+tensorflow>=2.15,<3
 numpy
-pillow
-fastapi
-uvicorn[standard]
-python-multipart
- tensorflow
-scikit-learn
-matplotlib
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9

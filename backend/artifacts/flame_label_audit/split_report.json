@@ -1,0 +1,14 @@
+{
+  "policy": "visible flames only",
+  "train": {
+    "No_Fire": 15901,
+    "Fire": 10955
+  },
+  "validation": {
+    "No_Fire": 3347,
+    "Fire": 5012
+  },
+  "uncertain_excluded": 7483,
+  "review_source": "/sessions/rcw-01rqtzmre4krd7nywavdwlge/mnt/wildfire-detection-satellite-cnn/backend/artifacts/flame_label_audit/review_2026-10-13/reviewed_flame_labels.csv",
+  "test_final_accessed": false
+}

@@ -28,8 +28,10 @@ function ModelCard() {
         </li>
       </ul>
       <p className="caveat">
-        Sistemi mund të mos e dallojë një zjarr të vogël ose që sapo ka nisur.
-        Një përgjigje "E pastër" nuk e përjashton plotësisht zjarrin.
+        Sistemi kërkon flakë të dukshme. Tymi pa flakë nuk numërohet si zjarr,
+        prandaj një kuadër me tym mund të dalë "E pastër" ose "Për shqyrtim".
+        Mund të mos e dallojë një flakë shumë të vogël ose të largët; një
+        përgjigje "E pastër" nuk e përjashton plotësisht zjarrin.
       </p>
     </section>
   );

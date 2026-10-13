@@ -3,19 +3,24 @@
 Modeli, kontrata e hyrjes dhe pragjet lexohen nga inference.json i ekzekutimit;
 asnje prej tyre nuk shkruhet ne kod. Keshtu nje ndryshim modeli nuk le pas nje
 prag te vjeteruar, dhe fajlli qe citohet ne punim eshte fajlli qe sherben.
+
+Logjika e zonave jeton ne app/ml/zones.py, pa TensorFlow, qe te testohet
+ne njesi pa ngarkuar modelin.
 """
+
+from __future__ import annotations
 
 import hashlib
 import json
-import os
 from pathlib import Path
 
 import tensorflow as tf
 
+from ..config import DEFAULT_RUN
 from .preprocessing import prepare_batch
+from .zones import label_for, validate_gates, zone_for
 
 ARTIFACTS = Path(__file__).resolve().parents[2] / "artifacts"
-DEFAULT_RUN = os.environ.get("FIRE_MODEL_RUN", "final_fire_v1")
 
 
 def _sha256(path: Path) -> str:
@@ -42,10 +47,7 @@ class FireClassifier:
         if not gates or "low" not in gates or "high" not in gates:
             raise ValueError(f"{contract_path} nuk përmban 'gates' me low dhe high.")
 
-        self.low = float(gates["low"])
-        self.high = float(gates["high"])
-        if not 0.0 <= self.low <= self.high <= 1.0:
-            raise ValueError("Duhet 0 <= low <= high <= 1.")
+        self.low, self.high = validate_gates(gates["low"], gates["high"])
 
         height, width, channels = self.contract["input_size"]
         if channels != 3:
@@ -77,11 +79,7 @@ class FireClassifier:
         self.model_version = f"{run}@{self.model_sha256[:12]}"
 
     def zone_for(self, fire_score: float) -> str:
-        if fire_score >= self.high:
-            return "alarm"
-        if fire_score < self.low:
-            return "clear"
-        return "review"
+        return zone_for(fire_score, self.low, self.high)
 
     def classify(self, image_bytes: bytes) -> dict:
         batch = prepare_batch(image_bytes, self.input_size)
@@ -89,8 +87,7 @@ class FireClassifier:
         zone = self.zone_for(fire_score)
 
         return {
-            # Vendimi binar i skanimit: gjithçka qe nuk pastrohet trajtohet si Fire.
-            "label": "No_Fire" if zone == "clear" else "Fire",
+            "label": label_for(zone),
             "zone": zone,
             "fire_score": fire_score,
             "gates": {"low": self.low, "high": self.high},

@@ -1,0 +1,56 @@
+{
+  "test_set": "dataset/splits/test_final.csv, i rietiketuar sipas politikes se flakes",
+  "n": 2367,
+  "fire": 560,
+  "note": "test_final nuk u perdor ne trajnimin e asnjerit model dhe nuk mbivendoset me split-et e reja. Fotot Uncertain jane perjashtuar.",
+  "models": {
+    "tymi (final_fire_v1)": {
+      "roc_auc": 0.6957476875642343,
+      "best_threshold": 0.7,
+      "best_balanced_accuracy": 0.6732182385959364,
+      "fire_recall_at_best": 0.9607142857142857,
+      "specificity_at_best": 0.3857221914775872,
+      "by_group": {
+        "A. flake e dukshme": {
+          "n": 560,
+          "mean_score": 0.9050809144973755,
+          "share_above_0.5": 0.9982142857142857
+        },
+        "B. tym pa flake (ish-Fire)": {
+          "n": 520,
+          "mean_score": 0.9177429676055908,
+          "share_above_0.5": 0.9980769230769231
+        },
+        "C. pa zjarr fare": {
+          "n": 1287,
+          "mean_score": 0.592125415802002,
+          "share_above_0.5": 0.5936285936285937
+        }
+      }
+    },
+    "flaka (fire_flame_v6)": {
+      "roc_auc": 0.8553146493793976,
+      "best_threshold": 0.6,
+      "best_balanced_accuracy": 0.8037759901968535,
+      "fire_recall_at_best": 0.8964285714285715,
+      "specificity_at_best": 0.7111234089651356,
+      "by_group": {
+        "A. flake e dukshme": {
+          "n": 560,
+          "mean_score": 0.8896232843399048,
+          "share_above_0.5": 0.9196428571428571
+        },
+        "B. tym pa flake (ish-Fire)": {
+          "n": 520,
+          "mean_score": 0.4986375570297241,
+          "share_above_0.5": 0.5
+        },
+        "C. pa zjarr fare": {
+          "n": 1287,
+          "mean_score": 0.25915461778640747,
+          "share_above_0.5": 0.236985236985237
+        }
+      }
+    }
+  }
+}

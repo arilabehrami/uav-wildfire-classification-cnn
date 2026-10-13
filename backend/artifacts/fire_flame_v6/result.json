@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-10-13T15:43:59.280792+00:00",
+  "train_split": "train_flame_reviewed_v1",
+  "train_count": 26856,
+  "validation_splits": [
+    "validation_flame_reviewed_v1"
+  ],
+  "architecture": "MobileNetV2 (ImageNet, i ngrire) -> concat(GlobalAvgPool, GlobalMaxPool) -> Dropout(0.35) -> Dense(1, sigmoid, L2 1e-4)",
+  "augmentation": "2 pamje te augmentuara per foto: flip horizontal+vertikal, rrotullim 0.08, shkelqim/kontrast 0.25",
+  "selection_rule": "Mesatarja e saktesise per klase mbi grupet e validimit, prag 0.5. test_final nuk u perdor ne asnje moment.",
+  "baseline_before_training": {
+    "group_balanced_accuracy": 0.4976201089161943,
+    "per_group": {
+      "validation_flame_reviewed_v1/Fire": {
+        "correct": 4953,
+        "total": 4985,
+        "rate": 0.99358074222668
+      },
+      "validation_flame_reviewed_v1/No_Fire": {
+        "correct": 5,
+        "total": 3013,
+        "rate": 0.001659475605708596
+      }
+    }
+  },
+  "best_epoch": {
+    "epoch": 21,
+    "train_loss": 0.05501260980963707,
+    "validation": {
+      "group_balanced_accuracy": 0.859574441878573,
+      "per_group": {
+        "validation_flame_reviewed_v1/Fire": {
+          "correct": 3987,
+          "total": 4985,
+          "rate": 0.7997993981945838
+        },
+        "validation_flame_reviewed_v1/No_Fire": {
+          "correct": 2770,
+          "total": 3013,
+          "rate": 0.9193494855625622
+        }
+      }
+    }
+  },
+  "limitation": "Development validation is used for checkpoint selection, not an independent test. Correlated frames and shared recordings limit generalization claims. Consult the data preparation report for the selected split."
+}

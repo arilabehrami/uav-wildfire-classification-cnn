@@ -1,0 +1,49 @@
+{
+  "model": "model.keras",
+  "model_sha256": "b80b82b06a6b999bb49ddf1d037312b271430ebe5f61787665fcdd08e742f426",
+  "labels": {
+    "No_Fire": 0,
+    "Fire": 1
+  },
+  "threshold": 0.5,
+  "input_size": [
+    254,
+    254,
+    3
+  ],
+  "input_range": [
+    0,
+    1
+  ],
+  "color": "RGB",
+  "resize": "tf.image.resize bilinear; then /255 once",
+  "output": "Sigmoid flame score; not a calibrated confidence.",
+  "policy": "Fire = flake e dukshme. Tym pa flake eshte No_Fire.",
+  "threshold_note": "Vendimi ne sherbim perdor 'gates', jo pragun 0.5.",
+  "gates": {
+    "low": 0.0033,
+    "high": 0.9389,
+    "fitted_on": "dataset/splits/validation_flame_reviewed_v1.csv, pa kuadrot e liqenit (5962 nga 7998 foto)",
+    "rule": "low = pragu me i larte qe mban recall >= 99% per flaken; high = pragu me i ulet qe jep specificity >= 90% mbi jo-flaken. Precision nuk perdoret si cak sepse varet nga perberja e setit. Asnjera porte nuk u pershtat mbi test_final.",
+    "zones": {
+      "clear": "score < low",
+      "review": "low <= score < high",
+      "alarm": "score >= high"
+    }
+  },
+  "measured_on_test_final": {
+    "n": 2367,
+    "fire": 560,
+    "auto_decision_share": 0.5627376425855514,
+    "clear_share": 0.24081115335868186,
+    "alarm_share": 0.32192648922686945,
+    "alarm_precision": 0.5485564304461942,
+    "missed_fire_rate": 0.019642857142857142,
+    "fire_prevalence": 0.23658639628221378
+  },
+  "calibrated": false,
+  "calibration_note": "Dalja eshte sigmoid, jo probabilitet i kalibruar.",
+  "negative_composition_note": "Portat u pershtaten pa kuadrot e liqenit. 67.6% e negativave te validation jane liqen, kurse negativat e test_final jane 71.2% pyll me mjegull/tym. Specificity e llogaritur mbi te gjithe negativat e validation eshte optimiste dhe nuk transferohet.",
+  "precision_note": "alarm_precision varet nga sa foto me flake ka seti: test_final ka 23.7%. Nje set me perberje tjeter do te jepte precision tjeter me te njejtat porta.",
+  "limitation": "Etiketat e flakes u nxorren nga nje rregull ngjyre i verifikuar vizualisht, jo nga shqyrtim foto-per-foto. test_final vjen nga te njejtat regjistrime si trajnimi, pra pergjithesimi ne nje fluturim te ri mbetet i paprovuar."
+}

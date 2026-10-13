@@ -1,0 +1,5 @@
+# Testet. Pillow perdoret nga test_preprocessing.py per te krijuar imazhe.
+-r requirements.txt
+pytest>=8
+httpx>=0.27
+pillow>=10

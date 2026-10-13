@@ -1,0 +1,5 @@
+# Varesite shtese te skripteve nen backend/training/. Sherbimi nuk i kerkon.
+-r requirements.txt
+scikit-learn>=1.4
+matplotlib>=3.8
+pillow>=10

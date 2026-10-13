@@ -1,0 +1,24 @@
+{
+  "metoda": "dHash 64-bit (9x8 grayscale, krahasim horizontal), distance Hamming",
+  "prag": 8,
+  "train": 26856,
+  "validation_para": 8359,
+  "hequr": 361,
+  "validation_pas": 7998,
+  "distanca_minimale": {
+    "5": 8,
+    "6": 90,
+    "7": 156,
+    "8": 107,
+    "9": 190,
+    "10": 229,
+    "11": 224,
+    "12": 534
+  },
+  "duplikate_te_sakta_d0": 0,
+  "balanca_pas": {
+    "No_Fire": 3013,
+    "Fire": 4985
+  },
+  "kufizimi": "dHash eshte ekran perafrues ngjashmerie, jo prove e pavaresise se skenes. Çiftet me te aferta ishin kuadro liqeni, ku uji i hapur duket njesoj kudo."
+}

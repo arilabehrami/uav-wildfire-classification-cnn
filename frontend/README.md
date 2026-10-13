@@ -1,16 +1,50 @@
-# React + Vite
+# Ndërfaqja
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite. Klient i `POST /api/classify` të backend-it.
 
-Currently, two official plugins are available:
+```bash
+npm install
+cp .env.example .env     # Windows: copy .env.example .env
+npm run dev              # http://localhost:5173
+npm run lint
+npm run build            # prodhimi ne dist/
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+`VITE_API_BASE` cakton adresën e backend-it (parazgjedhja
+`http://localhost:8000`). Çdo origjinë e re duhet shtuar edhe në
+`FIRE_CORS_ORIGINS` të backend-it.
 
-## React Compiler
+## Struktura
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Fajlli                     | Roli                                                        |
+| -------------------------- | ----------------------------------------------------------- |
+| `App.jsx`                  | radha e pamjeve, kërkesat, gjendja, regjistri               |
+| `components/ImageUpload`   | ngarkimi, pamja e fokusuar, harta Grad-CAM, radha            |
+| `components/DecisionBand`  | shiriti i tri zonave (shkallë sipas zonave) dhe verdikti    |
+| `components/DetectionLog`  | regjistri i ruajtur, eksporti CSV/JSON                      |
+| `components/SessionStats`  | numrat përmbledhës                                          |
+| `components/ModelCard`     | si lexohet rezultati                                        |
+| `components/ErrorBoundary` | kufiri i gabimeve të render-it                              |
+| `lib/storage.js`           | regjistri në `localStorage`                                 |
+| `lib/exportLog.js`         | CSV (me BOM) dhe JSON                                       |
+| `config/api.js`            | adresat e API-së                                            |
+| `config/model.js`          | vlera rezervë dhe rregulli i zonave                         |
 
-## Expanding the ESLint configuration
+## Dy gjëra që nuk duhen ngatërruar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Portat vijnë nga API-ja.** `config/model.js` mban vetëm vlera rezervë për
+momentin para përgjigjes së parë. Në ekzekutim, shiriti përdor portat e
+`gates` të përgjigjes, pra nuk tregon kurrë kufij të ndryshëm nga ata me të
+cilët u marr vendimi. Testi `backend/tests/test_contract.py` dështon nëse
+vlerat rezervë largohen nga `inference.json`.
+
+**Harta dhe klasifikimi janë rezultate të ndryshme.** Grad-CAM shfaqet vetëm
+për vendimet pozitive, sepse për një dalje afër zeros gradientet janë zhurmë.
+Mungesa e hartës nuk thotë që nuk ka zjarr, dhe ndërfaqja nuk e thotë atë.
+
+## Radha
+
+Deri 50 foto njëherësh, të klasifikuara në seri. Rezultatet shkruhen sipas
+id-së së elementit, prandaj ndërrimi i pamjes gjatë përpunimit nuk mund t'i
+ngatërrojë. Nëse serveri nuk përgjigjet, radha ndalet dhe fotot e mbetura
+mbesin në pritje.

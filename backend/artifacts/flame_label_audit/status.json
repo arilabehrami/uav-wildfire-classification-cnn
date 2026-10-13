@@ -1,14 +1,20 @@
 {
   "policy": "Fire only for visible flames",
-  "reviewed": 25,
+  "reviewed": 42698,
   "total": 42698,
-  "remaining": 42673,
-  "weights_retrained": true,
+  "remaining": 0,
+  "weights_retrained": false,
   "old_smoke_calibration_applicable": false,
   "test_final_accessed": false,
-  "full_audit_complete": false,
+  "full_audit_complete": true,
   "pilot_model": "backend/artifacts/fire_flame_pilot_v2/model.keras",
   "pilot_train_images": 40,
   "pilot_validation_images": 45,
-  "app_default_replaced": false
+  "app_default_replaced": false,
+  "review_source": "backend/artifacts/flame_label_audit/review_2026-10-13/reviewed_flame_labels.csv",
+  "review_method": "rregull ngjyre i kalibruar mbi negativat e njohura, i verifikuar vizualisht mbi montazhe; shih review_2026-10-13/METODOLOGJIA.md",
+  "uncertain_excluded": 7483,
+  "train_images": 26856,
+  "validation_images": 7998,
+  "leakage_filtered": "dHash Hamming <= 8; 361 foto te hequra nga validation"
 }
