@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ImageUpload from "./components/ImageUpload";
 import DecisionBand from "./components/DecisionBand";
 import ModelCard from "./components/ModelCard";
+import OrbitalScene from "./components/OrbitalScene";
 import DetectionLog from "./components/DetectionLog";
 import { CLASSIFY_URL, HEALTH_URL, MAX_BYTES } from "./config/api";
 import { GATES, MODEL, ZONES, zoneIdFor } from "./config/model";
@@ -355,7 +356,7 @@ function App() {
           <Drone />
           <div className="mark-text">
             <span className="mark-name">AERO<span className="brand-accent">FIRE</span></span>
-            <span className="mark-sub">Monitorim ajror · Detektim zjarri</span>
+            <span className="mark-sub">Monitorim ajror</span>
           </div>
         </div>
 
@@ -365,32 +366,23 @@ function App() {
         </span>
       </header>
 
-      <section className="flight-intro" aria-label="Monitorimi nga droni">
+      <section className="flight-intro" aria-label="Monitorimi ajror">
         <div className="intro-copy">
-          <p className="eyebrow"><span /> PAMJE NGA LART. VENDIME MË TË QARTA.</p>
-          <h1>Një kënd tjetër.<br /><span>Një vështrim më i sigurt.</span></h1>
-          <p className="intro-description">Analizo pamjet nga droni, identifiko flakën e dukshme dhe shqyrto çdo sinjal në një hapësirë të vetme.</p>
-          <div className="intro-tags"><span>01 / Ngarko pamjet</span><span>02 / Analizo</span><span>03 / Shqyrto</span></div>
+          <p className="eyebrow"><span /> VËZHGIM AJROR / AEROFIRE</p>
+          <h1>Një perspektivë e re.<br /><span>Për një tokë më të sigurt.</span></h1>
+          <p className="intro-description">Nga pamja ajrore te sinjali i parë i zjarrit.<br />Ngarko fotografitë dhe nis analizën.</p>
+          <a className="intro-link" href="#analiza">Fillo analizën <span aria-hidden="true">↗</span></a>
         </div>
-        <div className="drone-art" aria-hidden="true">
-          <svg viewBox="0 0 460 280" fill="none">
-            <g className="orbit-lines" stroke="currentColor"><ellipse cx="230" cy="148" rx="200" ry="100" /><ellipse cx="230" cy="148" rx="152" ry="76" /><ellipse cx="230" cy="148" rx="106" ry="53" /><path d="M22 148h416M230 26v244" strokeDasharray="3 8" /></g>
-            <g className="aircraft" transform="translate(230 132) rotate(-18)">
-              <path d="M-26-15L-94-59M26-15L94-59M-26 15L-94 59M26 15L94 59" stroke="#566a79" strokeWidth="17" strokeLinecap="round" />
-              <path d="M-26-15L-94-59M26-15L94-59M-26 15L-94 59M26 15L94 59" stroke="#bac5cc" strokeWidth="8" strokeLinecap="round" />
-              {[-1, 1].flatMap(x => [-1, 1].map(y => <g key={`${x}-${y}`} transform={`translate(${x * 100} ${y * 63})`}><circle r="39" fill="#15202a" stroke="#53616e" strokeWidth="2" /><circle r="31" stroke="#91a0ac" strokeOpacity=".35" strokeDasharray="4 4" /><path d="M-31-7Q-13-18 0 0Q13 18 31 7Q13-5 0 0Q-13 5-31-7" fill="#9faeb8" /><circle r="7" fill="#25323e" stroke="#c8d3da" /></g>))}
-              <path d="M-29-28Q0-42 29-28L34 21Q0 42-34 21Z" fill="#c2cdd4" stroke="#e0e8ed" strokeWidth="2" />
-              <path d="M-20-20Q0-28 20-20L22 15Q0 27-22 15Z" fill="#26343f" /><path d="M-8-18h16" stroke="#ff8b56" strokeWidth="3" strokeLinecap="round" /><rect x="-11" y="27" width="22" height="18" rx="5" fill="#111a23" stroke="#768897" /><circle cy="36" r="5" fill="#6bd2bc" />
-            </g>
-            <path d="M293 207h53l19 18h44" stroke="#ff8b56" strokeOpacity=".6" /><circle cx="293" cy="207" r="3" fill="#ff8b56" />
-          </svg>
-          <span className="art-label">UAV / VIZION AJROR</span>
-        </div>
+        <OrbitalScene />
+        <span className="hero-caption" aria-hidden="true">NJË VËSHTRIM NGA LART</span>
       </section>
-      <div className="workspace-heading"><div><span className="eyebrow">HAPËSIRA E ANALIZËS</span><h2>Çdo pamje ka rëndësi.</h2></div><span className="workspace-mode"><i /> Analizë e fotografive</span></div>
+      <div className="workspace-heading" id="analiza">
+        <div><span className="section-index">01 /</span><h2>Hapësira e analizës</h2></div>
+        <span className="workspace-mode">NGARKO <span aria-hidden="true">—</span> ANALIZO <span aria-hidden="true">—</span> SHQYRTO</span>
+      </div>
       <div className="main">
         <main className="work">
-          <div className="viewer-heading"><div><span className="section-index">01</span><h2>Pamjet ajrore</h2></div><span>JPEG / PNG · deri {MAX_MB} MB</span></div>
+          <div className="viewer-heading"><div><span className="panel-dot" aria-hidden="true" /><h2>Pamjet ajrore</h2></div><span>JPEG / PNG · deri {MAX_MB} MB</span></div>
           <ImageUpload
             items={items}
             focused={focused}
@@ -427,7 +419,7 @@ function App() {
           <ModelCard />
         </aside>
       </div>
-      <footer className="flight-footer"><span>AEROFIRE <span>/</span> Pamje ajrore. Analizë e kujdesshme.</span><span>Prototip akademik · Vendimi përfundimtar mbetet te njeriu.</span></footer>
+      <footer className="flight-footer"><span>AEROFIRE <span>/</span> Vëzhgo. Analizo. Shqyrto.</span><span>Prototip akademik · Vendimi përfundimtar mbetet te njeriu.</span></footer>
     </div>
   );
 }

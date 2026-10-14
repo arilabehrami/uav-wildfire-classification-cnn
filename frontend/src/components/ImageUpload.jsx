@@ -259,14 +259,14 @@ function ImageUpload({
         ) : (
           <div className="drop">
             <Reticle />
-            <h1 className="drop-title">
+            <h3 className="drop-title">
               {dragging ? "Lëshoji pamjet" : "Lësho këtu pamjet nga droni"}
-            </h1>
+            </h3>
             <p className="drop-hint">
-              Një ose më shumë foto, JPEG ose PNG, deri në {maxMb} MB secila.
+              Zgjidh ose tërhiq fotografitë këtu. Deri {maxMb} MB për foto.
             </p>
             <button type="button" className="btn primary" onClick={pick}>
-              Zgjidh pamjet
+              Zgjidh pamjet <span aria-hidden="true">↗</span>
             </button>
           </div>
         )}

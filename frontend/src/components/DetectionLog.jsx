@@ -123,8 +123,7 @@ function DetectionLog({ records, items, persisting, onVerdict, onClearHistory })
 
       {records.length === 0 ? (
         <p className="log-empty">
-          Çdo pamje që klasifikon shfaqet këtu me përgjigjen e saj, dhe mbetet
-          edhe pas rifreskimit të faqes.
+          Ende asnjë analizë. Rezultatet e tua do të ruhen këtu.
         </p>
       ) : (
         <>
