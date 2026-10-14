@@ -3,11 +3,6 @@
 Sistem që klasifikon një pamje ajrore (dron) në `Fire` ose `No_Fire`, me një
 backend FastAPI mbi një CNN në TensorFlow dhe një ndërfaqe React.
 
-> **Terminologjia.** Emri i repo-s është `wildfire-detection-satellite-cnn`,
-> por të dhënat janë ajrore (dron), jo satelitore. Emri i repo-s mbetet për të
-> ruajtur historikun e commit-eve; dokumentacioni dhe punimi përdorin
-> *ajror / UAV*.
-
 Sistemi **detekton** zjarr në një pamje të dhënë. Nuk parashikon zjarre të
 ardhshme.
 
