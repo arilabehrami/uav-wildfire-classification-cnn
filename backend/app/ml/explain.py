@@ -125,6 +125,30 @@ def _pooling_after(model, backbone, last_conv):
     raise ValueError("Pooling-u pas shtylles kurrizore nuk u njoh.")
 
 
+def _logit_fn(head):
+    """Funksioni pooled -> logit-i para sigmoid-it te fundit te kokes.
+
+    Nese koka nuk mbaron me Dense(sigmoid), kthehet vete koka (sjellja e meparshme).
+    """
+    layers = list(getattr(head, "layers", [head]))
+    last = layers[-1] if layers else None
+    if not (
+        isinstance(last, tf.keras.layers.Dense)
+        and getattr(last.activation, "__name__", "") == "sigmoid"
+    ):
+        return lambda pooled: head(pooled, training=False)
+
+    before = layers[:-1]
+
+    def logit(pooled):
+        x = pooled
+        for layer in before:
+            x = layer(x, training=False)
+        return tf.matmul(x, last.kernel) + last.bias
+
+    return logit
+
+
 class Explainer:
     """Ndan modelin nje here, e verifikon, dhe e riperdor per çdo kerkese."""
 
@@ -163,6 +187,7 @@ class Explainer:
                     raise ValueError("Nuk u gjet koka 'fire_head'.")
                 self._head = tail[-1]
 
+            self._logit = _logit_fn(self._head)
             self.shape = tuple(self._conv.output.shape[1:3])
             self._verify(model)
             self.available = True
@@ -198,7 +223,9 @@ class Explainer:
                 features = self._conv(self._stem(batch, training=False),
                                       training=False)
                 tape.watch(features)
-                score = self._head(self._pool(features), training=False)[0, 0]
+                # Logit-i, jo sigmoid-i: kur modeli eshte shume i sigurt,
+                # sigmoid-i ngopet ne 1.0, gradienti del 0 dhe harta zbrazet.
+                score = self._logit(self._pool(features))[0, 0]
 
             grads = tape.gradient(score, features)
             if grads is None:
