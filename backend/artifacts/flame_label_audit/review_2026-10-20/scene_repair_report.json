@@ -1,0 +1,22 @@
+{
+  "reviewed_frames": 201,
+  "relabelled_no_fire": 66,
+  "newly_included": 75,
+  "already_fire": 60,
+  "train": {
+    "No_Fire": 15835,
+    "Fire": 11096
+  },
+  "validation": {
+    "No_Fire": 3013,
+    "Fire": 4985
+  },
+  "validation_near_scene_excluded": 0,
+  "limitations": [
+    "Other labels remain unaudited; this is a scoped experimental repair",
+    "dHash screening does not establish independence of recordings",
+    "Reviewed scene is development/training data, not an independent test"
+  ],
+  "original_splits_modified": false,
+  "model_modified": false
+}

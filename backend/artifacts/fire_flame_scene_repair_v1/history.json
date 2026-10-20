@@ -1,0 +1,268 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.18823125958442688,
+    "validation": {
+      "group_balanced_accuracy": 0.7766763283544627,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3048,
+          "total": 4985,
+          "rate": 0.6114343029087261
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2838,
+          "total": 3013,
+          "rate": 0.9419183538001992
+        }
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.07189497351646423,
+    "validation": {
+      "group_balanced_accuracy": 0.7916194650995803,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3240,
+          "total": 4985,
+          "rate": 0.649949849548646
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2812,
+          "total": 3013,
+          "rate": 0.9332890806505144
+        }
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.05780192092061043,
+    "validation": {
+      "group_balanced_accuracy": 0.8155823594247729,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3512,
+          "total": 4985,
+          "rate": 0.7045135406218656
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2792,
+          "total": 3013,
+          "rate": 0.9266511782276801
+        }
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.056128550320863724,
+    "validation": {
+      "group_balanced_accuracy": 0.8279759956936857,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3667,
+          "total": 4985,
+          "rate": 0.7356068204613841
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2773,
+          "total": 3013,
+          "rate": 0.9203451709259873
+        }
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.055008843541145325,
+    "validation": {
+      "group_balanced_accuracy": 0.7704410609858117,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 2918,
+          "total": 4985,
+          "rate": 0.5853560682046138
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2879,
+          "total": 3013,
+          "rate": 0.9555260537670096
+        }
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.05540740117430687,
+    "validation": {
+      "group_balanced_accuracy": 0.8622078981717806,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 4048,
+          "total": 4985,
+          "rate": 0.812036108324975
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2749,
+          "total": 3013,
+          "rate": 0.9123796880185862
+        }
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.05579867959022522,
+    "validation": {
+      "group_balanced_accuracy": 0.8073503617390505,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3420,
+          "total": 4985,
+          "rate": 0.6860581745235708
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2798,
+          "total": 3013,
+          "rate": 0.9286425489545304
+        }
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.05607545003294945,
+    "validation": {
+      "group_balanced_accuracy": 0.793484902100926,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3204,
+          "total": 4985,
+          "rate": 0.642728184553661
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2845,
+          "total": 3013,
+          "rate": 0.9442416196481912
+        }
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.05031317099928856,
+    "validation": {
+      "group_balanced_accuracy": 0.8024646458459348,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3320,
+          "total": 4985,
+          "rate": 0.6659979939819458
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2829,
+          "total": 3013,
+          "rate": 0.9389312977099237
+        }
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.0503951795399189,
+    "validation": {
+      "group_balanced_accuracy": 0.8472940560812874,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3896,
+          "total": 4985,
+          "rate": 0.7815446339017051
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2751,
+          "total": 3013,
+          "rate": 0.9130434782608695
+        }
+      }
+    }
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.05242088809609413,
+    "validation": {
+      "group_balanced_accuracy": 0.8397255823228065,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3713,
+          "total": 4985,
+          "rate": 0.7448345035105316
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2816,
+          "total": 3013,
+          "rate": 0.9346166611350814
+        }
+      }
+    }
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.051530543714761734,
+    "validation": {
+      "group_balanced_accuracy": 0.8412650164233157,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3821,
+          "total": 4985,
+          "rate": 0.7664994984954865
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2760,
+          "total": 3013,
+          "rate": 0.916030534351145
+        }
+      }
+    }
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.05311129242181778,
+    "validation": {
+      "group_balanced_accuracy": 0.7736633731263489,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 2922,
+          "total": 4985,
+          "rate": 0.5861584754262789
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2896,
+          "total": 3013,
+          "rate": 0.9611682708264189
+        }
+      }
+    }
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.05479438230395317,
+    "validation": {
+      "group_balanced_accuracy": 0.8522671233081921,
+      "per_group": {
+        "validation_flame_scene_repair_v1/Fire": {
+          "correct": 3934,
+          "total": 4985,
+          "rate": 0.7891675025075225
+        },
+        "validation_flame_scene_repair_v1/No_Fire": {
+          "correct": 2758,
+          "total": 3013,
+          "rate": 0.9153667441088617
+        }
+      }
+    }
+  }
+]

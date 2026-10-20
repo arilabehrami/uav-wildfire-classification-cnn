@@ -1,0 +1,83 @@
+{
+  "limitation": "Development validation and training diagnostics only; no independent test",
+  "models": {
+    "fire_flame_v6": {
+      "gates": {
+        "low": 0.0033,
+        "high": 0.9389
+      },
+      "validation_at_0_5": {
+        "group_balanced_accuracy": 0.859574441878573,
+        "per_group": {
+          "validation/Fire": {
+            "correct": 3987,
+            "total": 4985,
+            "rate": 0.7997993981945838
+          },
+          "validation/No_Fire": {
+            "correct": 2770,
+            "total": 3013,
+            "rate": 0.9193494855625622
+          }
+        }
+      },
+      "validation_zones": {
+        "n": 7998,
+        "fire": 4985,
+        "auto_decision_share": 0.7271817954488622,
+        "clear_share": 0.32358089522380595,
+        "alarm_share": 0.4036009002250563,
+        "alarm_precision": 0.9699504337050805,
+        "missed_fire_rate": 0.009428284854563691
+      },
+      "training_scene_zones": {
+        "n": 201,
+        "fire": 201,
+        "auto_decision_share": 0.6965174129353234,
+        "clear_share": 0.1890547263681592,
+        "alarm_share": 0.5074626865671642,
+        "alarm_precision": 1.0,
+        "missed_fire_rate": 0.1890547263681592
+      }
+    },
+    "fire_flame_scene_repair_v1": {
+      "gates": {
+        "low": 0.008799999952316284,
+        "high": 0.9368000030517578
+      },
+      "validation_at_0_5": {
+        "group_balanced_accuracy": 0.8622078981717806,
+        "per_group": {
+          "validation/Fire": {
+            "correct": 4048,
+            "total": 4985,
+            "rate": 0.812036108324975
+          },
+          "validation/No_Fire": {
+            "correct": 2749,
+            "total": 3013,
+            "rate": 0.9123796880185862
+          }
+        }
+      },
+      "validation_zones": {
+        "n": 7998,
+        "fire": 4985,
+        "auto_decision_share": 0.7100525131282821,
+        "clear_share": 0.31870467616904224,
+        "alarm_share": 0.3913478369592398,
+        "alarm_precision": 0.9690095846645368,
+        "missed_fire_rate": 0.00982948846539619
+      },
+      "training_scene_zones": {
+        "n": 201,
+        "fire": 201,
+        "auto_decision_share": 1.0,
+        "clear_share": 0.0,
+        "alarm_share": 1.0,
+        "alarm_precision": 1.0,
+        "missed_fire_rate": 0.0
+      }
+    }
+  }
+}

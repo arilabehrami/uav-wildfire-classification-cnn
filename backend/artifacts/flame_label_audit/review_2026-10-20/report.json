@@ -1,0 +1,49 @@
+{
+  "export": "C:\\Users\\Arila\\Downloads\\detektime-20261020-1130.csv",
+  "records": 500,
+  "zones": {
+    "alarm": 349,
+    "review": 92,
+    "clear": 59
+  },
+  "models": {
+    "fire_flame_v6@b80b82b06a6b": 500
+  },
+  "exported_records_in_training": 451,
+  "exported_records_in_validation": 0,
+  "unresolved_paths": 0,
+  "confirmed_corrections": [
+    {
+      "path": "Test/Fire/resized_test_fire_frame89.jpg",
+      "previous_train_label": "No_Fire",
+      "reviewed_label": "Fire",
+      "action": "relabel"
+    },
+    {
+      "path": "Test/Fire/resized_test_fire_frame94.jpg",
+      "previous_train_label": "No_Fire",
+      "reviewed_label": "Fire",
+      "action": "relabel"
+    },
+    {
+      "path": "Test/Fire/resized_test_fire_frame101.jpg",
+      "previous_train_label": "excluded",
+      "reviewed_label": "Fire",
+      "action": "review inclusion before retraining"
+    },
+    {
+      "path": "Test/Fire/resized_test_fire_frame102.jpg",
+      "previous_train_label": "excluded",
+      "reviewed_label": "Fire",
+      "action": "review inclusion before retraining"
+    }
+  ],
+  "next_steps": [
+    "Review the remaining images of the affected scene individually",
+    "Check related frames for conflicting labels and split leakage",
+    "Create versioned corrected splits before training a new model",
+    "Evaluate using reviewed, separate recordings; these examples are development diagnostics"
+  ],
+  "training_data_modified": false,
+  "model_modified": false
+}

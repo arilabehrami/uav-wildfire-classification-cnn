@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 # Modeli i flakes (Fire = flake e dukshme). final_fire_v1, modeli i tymit,
 # mbetet i disponueshem me FIRE_MODEL_RUN=final_fire_v1 per krahasim.
-DEFAULT_RUN = "fire_flame_v6"
+DEFAULT_RUN = "fire_flame_scene_repair_v1"
 DEFAULT_ORIGINS: tuple[str, ...] = (
     "http://localhost:5173",
     "http://127.0.0.1:5173",

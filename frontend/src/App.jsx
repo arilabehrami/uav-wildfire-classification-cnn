@@ -15,7 +15,7 @@ const HEALTH_EVERY_MS = 20_000;
 // Radha mban referenca te fajllave plus nga nje object URL per secilin, pra
 // kufizohet qellimisht: nje dosje e tere kuadrove do te mbante gjithçka ne
 // memorie te shfletuesit.
-const MAX_QUEUE = 50;
+const MAX_QUEUE = 500;
 const MAX_MB = Math.round(MAX_BYTES / (1024 * 1024));
 
 let counter = 0;
@@ -269,7 +269,7 @@ function App() {
           patch(next.id, { status: "error", message: failureText(problem) });
 
           if (isOffline(problem)) {
-            // Nuk ka kuptim t'i dergohen serverit te shuar edhe 49 kerkesa.
+            // Nuk ka kuptim t'i dergohen serverit te shuar kerkesat e mbetura.
             setHealth("down");
             setNotice(
               "Klasifikimi u ndal: serveri nuk përgjigjet. Fotot e mbetura janë ende në radhë.",

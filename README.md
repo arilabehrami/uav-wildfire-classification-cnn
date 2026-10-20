@@ -14,7 +14,11 @@ Modeli i parë (`final_fire_v1`) u trajnua nën politikën "flakë ose tym" dhe
 doli se kishte mësuar tymin, jo flakën: mbi `test_final` i jepte tymit pa flakë
 score mesatar më të lartë (0.918) se flakës së vërtetë (0.905), dhe flakën pa
 tym e humbiste. Etiketat u rishikuan sipas politikës së flakës dhe u trajnua
-`fire_flame_v6`, që tani është modeli i parazgjedhur. Metodologjia e plotë:
+`fire_flame_v6`. Modeli i parazgjedhur tani është varianti eksperimental
+`fire_flame_scene_repair_v1`, pas kontrollit vizual të 201 kuadrove me flakë
+dhe korrigjimit të etiketave. Ai ende nuk ka vlerësim të pavarur.
+Raporti: `backend/artifacts/fire_flame_scene_repair_v1/comparison.json`.
+Metodologjia fillestare:
 `backend/artifacts/flame_label_audit/review_2026-10-13/METODOLOGJIA.md`.
 
 ## Struktura
@@ -43,7 +47,7 @@ frontend/              React + Vite
 
 - Python 3.10 ose më i ri
 - Node.js 20 ose më i ri
-- Modeli `backend/artifacts/fire_flame_v6/model.keras` (shih më poshtë)
+- Modeli `backend/artifacts/fire_flame_scene_repair_v1/model.keras` (shih më poshtë)
 
 ## Modeli
 
@@ -51,11 +55,11 @@ Fajllat `*.keras` janë **të përjashtuar nga git** (`.gitignore`), prandaj nj�
 klonim i freskët nuk e ka modelin. Mbaje një kopje rezervë jashtë kompjuterit.
 Dy mundësi për ta pasur:
 
-1. **Kopjoje** `model.keras` në `backend/artifacts/fire_flame_v6/`.
+1. **Kopjoje** `model.keras` në `backend/artifacts/fire_flame_scene_repair_v1/`.
 2. **Ritrajnoje** nga rrënja e projektit:
    ```powershell
-   python backend/training/train_adapted.py --name fire_flame_v6
-   python backend/training/fit_flame_gates.py
+   python backend/training/train_adapted.py --train-split train_flame_scene_repair_v1 --validation-splits validation_flame_scene_repair_v1 --name fire_flame_scene_repair_v1
+   python backend/training/fit_flame_gates.py --run fire_flame_scene_repair_v1 --validation validation_flame_scene_repair_v1 --test-labels none
    ```
    Kjo kërkon `dataset/` dhe `pip install -r backend/requirements-training.txt`.
    `fit_flame_gates.py` rishkruan `inference.json` me hash-in e modelit të ri;
@@ -85,7 +89,7 @@ python -m uvicorn backend.app.main:app --reload --port 8000
 | `/api/classify` | POST   | `multipart/form-data` me fushën `file`            |
 | `/docs`         | GET    | dokumentacioni interaktiv i OpenAPI               |
 
-Në nisje, logu duhet të tregojë `modeli u ngarkua: run=fire_flame_v6` dhe
+Në nisje, logu duhet të tregojë `modeli u ngarkua: run=fire_flame_scene_repair_v1` dhe
 `Grad-CAM aktiv dhe i verifikuar`. Nëse në vend të kësaj shfaqet
 `Grad-CAM i padisponueshem`, klasifikimi punon, por pa hartë; arsyeja shkruhet
 në të njëjtin rresht.
@@ -94,7 +98,7 @@ në të njëjtin rresht.
 
 | Variabla              | Parazgjedhja                                   | Përshkrimi                           |
 | --------------------- | ---------------------------------------------- | ------------------------------------ |
-| `FIRE_MODEL_RUN`      | `fire_flame_v6`                                | dosja nën `backend/artifacts/`       |
+| `FIRE_MODEL_RUN`      | `fire_flame_scene_repair_v1`                    | dosja nën `backend/artifacts/`       |
 | `FIRE_CORS_ORIGINS`   | `http://localhost:5173,http://127.0.0.1:5173`  | origjinat e lejuara, ndarë me presje |
 | `FIRE_MAX_UPLOAD_MB`  | `10`                                           | kufiri i ngarkimit                   |
 | `FIRE_LOG_LEVEL`      | `INFO`                                         | niveli i logimit                     |
@@ -113,7 +117,7 @@ Hapet në `http://localhost:5173`. Nëse backend-i ngrihet në adresë tjetër,
 caktoje `VITE_API_BASE` në `.env`, dhe shtoje origjinën e re te
 `FIRE_CORS_ORIGINS`.
 
-Ndërfaqja pranon shumë foto njëherësh (deri 50 në radhë), i klasifikon në seri,
+Ndërfaqja pranon shumë foto njëherësh (deri 500 në radhë), i klasifikon në seri,
 tregon zonën e vendimit dhe hartën Grad-CAM, lejon shqyrtuesin të shënojë
 verdiktin për rastet e pasigurta, dhe e ruan regjistrin në `localStorage` me
 eksport në CSV ose JSON.
@@ -150,12 +154,14 @@ nga `inference.json`:
 | Për shqyrtim  | `low <= score < high`       | duhet ta shohë një njeri    |
 | Alarm         | `score >= high`             | njoftim i menjëhershëm      |
 
-Për `fire_flame_v6`: `low = 0.0033`, `high = 0.9389`.
+Për modelin aktual `fire_flame_scene_repair_v1`: `low ≈ 0.0088`, `high ≈ 0.9368`.
+Për variantin e mëparshëm `fire_flame_v6`: `low = 0.0033`, `high = 0.9389`.
 
 - `low` = pragu më i lartë që ende mban recall ≥ 99% për flakën.
 - `high` = pragu më i ulët që jep specificity ≥ 90% mbi jo-flakën.
 
-Të dyja u përshtatën mbi `validation_flame_reviewed_v1` **pa kuadrot e
+Portat e modelit aktual u përshtatën mbi `validation_flame_scene_repair_v1`;
+ato të v6 mbi `validation_flame_reviewed_v1`, **pa kuadrot e
 liqenit**. Precision nuk përdoret si cak, sepse varet nga përbërja e setit.
 Liqeni përjashtohet sepse dallohet trivialisht: 67.6% e negativave të
 validation-it janë liqen, kurse negativat e `test_final` janë pyll me mjegull
@@ -167,6 +173,11 @@ sepse me këto porta një shkallë lineare do ta bënte zonën e pastër 0.3% t�
 gjerë.
 
 ## Rezultatet dhe kufizimet
+
+Varianti aktual eksperimental ka balanced accuracy 86.22% mbi validim
+(v6: 85.96%), me pragun 0.5. Të 201 kuadrot e korrigjuara marrin alarm,
+por janë të dhëna trajnimi dhe nuk provojnë përgjithësim. Rezultatet më poshtë
+janë historike për v6 dhe `final_fire_v1`, jo për modelin aktual.
 
 Mbi `test_final` (2,367 foto pas rietiketimit, 23.7% me flakë; asnjëri model
 nuk u trajnua mbi të):

@@ -1,0 +1,5 @@
+path,previous_train_label,reviewed_label,action
+Test/Fire/resized_test_fire_frame89.jpg,No_Fire,Fire,relabel
+Test/Fire/resized_test_fire_frame94.jpg,No_Fire,Fire,relabel
+Test/Fire/resized_test_fire_frame101.jpg,excluded,Fire,review inclusion before retraining
+Test/Fire/resized_test_fire_frame102.jpg,excluded,Fire,review inclusion before retraining

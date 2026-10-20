@@ -1,37 +1,24 @@
-// Vlera rezerve per UI-ne, te kopjuara nga backend/artifacts/fire_flame_v6/
+// Vlera rezerve per UI-ne, te kopjuara nga backend/artifacts/fire_flame_scene_repair_v1/
 // inference.json. Ne ekzekutim, portat vijne me pergjigjen e API-se dhe keto
 // vlera nuk perdoren: backend-i mbetet autoritet. Ato sherbejne vetem derisa
 // te kthehet pergjigjja e pare, dhe testi backend/tests/test_contract.py
 // deshton nese largohen nga fajlli qe pretendojne te pasqyrojne.
 export const MODEL = {
-  run: "fire_flame_v6",
+  run: "fire_flame_scene_repair_v1",
   file: "model.keras",
   architecture: "MobileNetV2 + concat(avg, max) + head",
-  sha256: "b80b82b06a6b999bb49ddf1d037312b271430ebe5f61787665fcdd08e742f426",
+  sha256: "6db33f6ad7af4d6f1f890d59346b99289d0dcac3bfd4a53aabd60b25a8547c8d",
   input: "RGB 254x254, [0,1]",
   sizeLabel: "9.2 MB",
   policy: "Fire = flake e dukshme. Tym pa flake eshte No_Fire.",
 };
 
-// low dhe high jane nxjerre mbi validation_flame_reviewed_v1 pa kuadrot e
-// liqenit, dhe jane zbatuar pa ndryshim mbi test_final.
+// Portat vijne nga validation_flame_scene_repair_v1 pa kuadrot e liqenit.
+// Ky variant ende nuk ka vleresim te pavarur.
 export const GATES = {
-  low: 0.0033,
-  high: 0.9389,
+  low: 0.008799999952316284,
+  high: 0.9368000030517578,
   fittedOn: "validation pa liqen (5962 foto)",
-};
-
-// Te matura njehere mbi test_final, i rietiketuar sipas politikes se flakes
-// (2367 foto, 23.7% me flake). Saktesia e alarmit varet nga ky perqindje.
-export const MEASURED = {
-  testSet: "test_final (flake)",
-  n: 2367,
-  fire: 560,
-  autoShare: 0.5627,
-  clearShare: 0.2408,
-  alarmShare: 0.3219,
-  alarmPrecision: 0.5486,
-  missedFires: 0.0196,
 };
 
 export const ZONES = {
