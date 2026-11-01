@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="350" viewBox="0 0 1080 350" role="img" aria-labelledby="title desc">
-  <title id="title">Rezultatet në validim</title>
-  <desc id="desc">7 998 imazhe, prag 0,5. Saktësi e balancuar 86,22 për qind; ndjeshmëri 81,20 për qind; specificitet 91,24 për qind. Vlerësim gjatë zhvillimit.</desc>
+  <title id="title">Validation Results</title>
+  <desc id="desc">7,998 images, threshold 0.5. Balanced accuracy 86.22 percent; sensitivity 81.20 percent; specificity 91.24 percent. Development evaluation.</desc>
   <rect width="1080" height="350" rx="22" fill="#101d2d"/>
   <g font-family="Segoe UI, Arial, sans-serif">
-    <text x="42" y="44" fill="#77d6bb" font-size="12" letter-spacing="3">UAV · KLASIFIKIMI I FLAKËS</text>
-    <text x="42" y="88" fill="#f3f6fa" font-size="30" font-weight="700">Rezultatet në validim</text>
-    <text x="42" y="118" fill="#b4c3d3" font-size="15">7 998 imazhe · MobileNetV2 · Pragu binar 0,5</text>
+    <text x="42" y="44" fill="#77d6bb" font-size="12" letter-spacing="3">UAV · VISIBLE FLAME CLASSIFICATION</text>
+    <text x="42" y="88" fill="#f3f6fa" font-size="30" font-weight="700">Validation Results</text>
+    <text x="42" y="118" fill="#b4c3d3" font-size="15">7,998 images · MobileNetV2 · Binary threshold 0.5</text>
     <g transform="translate(42 150)">
       <rect width="316" height="128" rx="12" fill="#1d2c3e"/>
-      <text x="22" y="35" fill="#b4c3d3" font-size="16">Saktësia e balancuar</text>
-      <text x="22" y="93" fill="#77d6bb" font-size="44" font-weight="700">86,22%</text>
+      <text x="22" y="35" fill="#b4c3d3" font-size="16">Balanced accuracy</text>
+      <text x="22" y="93" fill="#77d6bb" font-size="44" font-weight="700">86.22%</text>
     </g>
     <g transform="translate(382 150)">
       <rect width="316" height="128" rx="12" fill="#1d2c3e"/>
-      <text x="22" y="35" fill="#b4c3d3" font-size="16">Ndjeshmëria për flakën</text>
-      <text x="22" y="93" fill="#f7ba78" font-size="44" font-weight="700">81,20%</text>
+      <text x="22" y="35" fill="#b4c3d3" font-size="16">Visible-flame sensitivity</text>
+      <text x="22" y="93" fill="#f7ba78" font-size="44" font-weight="700">81.20%</text>
     </g>
     <g transform="translate(722 150)">
       <rect width="316" height="128" rx="12" fill="#1d2c3e"/>
-      <text x="22" y="35" fill="#b4c3d3" font-size="16">Specificiteti</text>
-      <text x="22" y="93" fill="#91bafa" font-size="44" font-weight="700">91,24%</text>
+      <text x="22" y="35" fill="#b4c3d3" font-size="16">Specificity</text>
+      <text x="22" y="93" fill="#91bafa" font-size="44" font-weight="700">91.24%</text>
     </g>
-    <text x="42" y="317" fill="#b4c3d3" font-size="13">Vlerësim gjatë zhvillimit · Përgjithësimi në regjistrime të reja mbetet për t’u vlerësuar.</text>
+    <text x="42" y="317" fill="#b4c3d3" font-size="13">Development evaluation · Generalization to new recordings remains to be assessed.</text>
   </g>
 </svg>

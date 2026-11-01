@@ -1,128 +1,130 @@
 <div align="center">
 
-# Klasifikimi i flakës në imazhe ajrore
+# Visible Flame Classification in Aerial Images
 
-### Inteligjencë artificiale për analizën e imazheve të realizuara me dron
+### Artificial Intelligence for Drone Image Analysis
 
-**MobileNetV2 · Transferimi i të nxënit · Grad-CAM**
+**MobileNetV2 · Transfer Learning · Grad-CAM**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 
-Zhvilluar nga **Arila Behrami**
+Developed by **Arila Behrami**
 
-[Përmbledhje](#përmbledhje) · [Funksionalitetet](#funksionalitetet) · [Rezultatet](#rezultatet) · [Nisja-e-shpejtë](#nisja-e-shpejtë)
+[Overview](#overview) · [Features](#features) · [Results](#results) · [Quick Start](#quick-start)
 
 </div>
 
 ---
 
-## Përmbledhje
+## Overview
 
-Ky projekt paraqet zhvillimin dhe vlerësimin e një modeli për klasifikimin binar të imazheve ajrore të realizuara me dron, sipas pranisë ose mungesës së flakës së dukshme. Modeli mbështetet në arkitekturën **MobileNetV2**, me pesha të paratrajnuara në ImageNet, dhe integrohet në një aplikacion ueb me **React** dhe **FastAPI**.
+This project presents the development and evaluation of a binary classification model for drone-captured aerial images, based on the presence or absence of visible flames. The model uses **MobileNetV2** with ImageNet-pretrained weights and is integrated into a web application built with **React** and **FastAPI**.
 
-Zhvillimi dhe vlerësimi u kryen mbi imazhet e bashkësisë së të dhënave **FLAME**. Procesi përfshiu kontrollin dhe korrigjimin e etiketave të një pjese të imazheve, parapërpunimin, zbatimin e ndryshimeve pamore gjatë trajnimit dhe shqyrtimin e rasteve të klasifikuara gabimisht.
+Development and evaluation used images from the **FLAME** dataset. The workflow included reviewing and correcting labels for a subset of images, preprocessing, training-time data augmentation, and examining misclassified examples.
 
-> **Objekti i klasifikimit është flaka e dukshme.** Pamjet me tym pa flakë të dukshme përfshihen në klasën negative. Një përgjigje “E pastër” nuk e përjashton praninë e një zjarri të fshehur ose të padukshëm në imazh.
+> **The classification target is visible flame.** Images containing smoke without visible flames belong to the negative class. A “Clear” result does not rule out a fire that is obscured or otherwise invisible in the image.
 
-## Funksionalitetet
+## Features
 
-| Funksionaliteti | Përshkrimi |
+| Feature | Description |
 | :--- | :--- |
-| Ngarkimi i imazheve | Përzgjedhje e një ose disa imazheve për analizë, deri në 10 MB për imazh me konfigurimin fillestar. |
-| Klasifikimi automatik | Analizë e pamjes për praninë e flakës së dukshme. |
-| Tri zona vendimi | Paraqitja e rezultatit si **E pastër**, **Për shqyrtim** ose **Alarm**. |
-| Interpretimi vizual | Hartë aktivizimi përmes Grad-CAM, kur shpjegimi mund të llogaritet. |
-| Regjistri i analizave | Ruajtje lokale e regjistrit në shfletues. |
-| Gjendja e shërbimit | Kontroll periodik i lidhjes me shërbimin e klasifikimit. |
-| Gjurmueshmëria | Përgjigjja e API-së përmban versionin dhe gjurmën SHA-256 të modelit. |
+| Image upload | Select one or multiple images for analysis, with a default limit of 10 MB per image. |
+| Automatic classification | Analyze images for the presence of visible flames. |
+| Three decision zones | Present results as **Clear**, **Review**, or **Alarm**. |
+| Visual interpretation | Display a Grad-CAM activation map when an explanation can be computed. |
+| Analysis history | Store the analysis log locally in the browser. |
+| Service status | Periodically check connectivity to the classification service. |
+| Traceability | Include the model version and SHA-256 hash in API responses. |
 
-## Arkitektura e sistemit
+## System Architecture
 
 ```mermaid
 flowchart LR
-    A["Imazhi ajror"] --> B["React · Ngarkimi"]
-    B --> C["FastAPI · Kontrolli i imazhit"]
-    C --> D["Parapërpunimi · 254 × 254"]
-    D --> E["MobileNetV2 · Klasifikimi binar"]
-    E --> F["Dalja numerike · Dy pragje vendimi"]
-    F --> G["E pastër / Për shqyrtim / Alarm"]
-    E --> H["Grad-CAM · Harta e aktivizimit"]
-    G --> I["Paraqitja në aplikacion"]
+    A["Aerial image"] --> B["React · Upload"]
+    B --> C["FastAPI · Image validation"]
+    C --> D["Preprocessing · 254 × 254"]
+    D --> E["MobileNetV2 · Binary classification"]
+    E --> F["Model score · Two decision thresholds"]
+    F --> G["Clear / Review / Alarm"]
+    E --> H["Grad-CAM · Activation map"]
+    G --> I["Application interface"]
     H --> I
 ```
 
-Shërbimi ndan konfigurimin, rrugët e API-së, logjikën e klasifikimit dhe interpretimin vizual. Modeli ngarkohet gjatë nisjes së API-së; nëse Grad-CAM nuk është i disponueshëm, klasifikimi mund të vazhdojë pa hartën shpjeguese.
+The service separates configuration, API routes, classification logic, and visual interpretation. The model is loaded during API startup; classification can continue without an explanation map if Grad-CAM is unavailable.
 
-## Metodologjia
+## Methodology
 
-### Të dhënat dhe etiketimi
+### Dataset and Labeling
 
-| Klasa në skedarë | Kuptimi në këtë projekt |
+| Label in files | Meaning in this project |
 | :--- | :--- |
-| `Fire` | Me flakë të dukshme. |
-| `No_Fire` | Pa flakë të dukshme; përfshin edhe pamje vetëm me tym. |
+| `Fire` | Visible flames are present. |
+| `No_Fire` | No visible flames; includes images containing smoke only. |
 
-Ndarja e përdorur për modelin e përzgjedhur përmban **26 931 imazhe për trajnim** dhe **7 998 imazhe për validim**. Validimi përfshin 4 985 imazhe me flakë dhe 3 013 pa flakë të dukshme.
+The split used for the selected model contains **26,931 training images** and **7,998 validation images**. The validation set includes 4,985 images with visible flames and 3,013 without visible flames.
 
-Rishikimi pamor i dokumentuar mbulon **201 imazhe**: 66 u korrigjuan nga klasa negative në klasën me flakë, 75 u përfshinë rishtazi dhe 60 ishin tashmë në klasën me flakë. Ky ishte një rishikim i kufizuar; nuk përfaqëson kontroll të plotë të të gjitha etiketave.
+The documented visual review covers **201 images**: 66 were corrected from the negative class to the visible-flame class, 75 were newly included, and 60 were already labeled as containing flames. This was a limited review rather than a complete audit of all dataset labels.
 
-### Modeli dhe trajnimi
+### Model and Training
 
-- **Baza:** MobileNetV2 me pesha ImageNet dhe shtresa të ngrira.
-- **Përmbledhja e veçorive:** bashkimi i mesatares dhe maksimumit global.
-- **Kreu i klasifikimit:** Dropout 0,35 dhe një neuron me aktivizim sigmoid, me rregullarizim L2.
-- **Hyrja:** imazh RGB me madhësi 254 × 254, i ripërmasuar dhe pjesëtuar me 255 sipas konfigurimit të ruajtur.
-- **Ndryshimet gjatë trajnimit:** përmbysje horizontale e vertikale, rrotullime dhe ndryshime të ndriçimit e kontrastit.
-- **Përzgjedhja:** versioni me saktësinë më të mirë të balancuar në validim; për këtë ekzekutim u përzgjodh epoka 6.
+- **Backbone:** MobileNetV2 with ImageNet weights and frozen layers.
+- **Feature aggregation:** concatenated global average and global max pooling.
+- **Classification head:** Dropout of 0.35 and one sigmoid output neuron with L2 regularization.
+- **Input:** RGB images resized to 254 × 254 and divided by 255 according to the saved configuration.
+- **Data augmentation:** horizontal and vertical flips, rotations, and brightness and contrast adjustments.
+- **Selection:** the checkpoint with the highest validation balanced accuracy; epoch 6 was selected for this run.
 
-## Rezultatet
+## Results
 
 <p align="center">
-  <img src="docs/images/validation-results.svg" alt="Metrikat në bashkësinë e validimit: saktësi e balancuar 86,22%, ndjeshmëri 81,20% dhe specificitet 91,24%." width="900" />
+  <img src="docs/images/validation-results.svg" alt="Validation metrics: balanced accuracy 86.22%, sensitivity 81.20%, and specificity 91.24%." width="900" />
 </p>
 
-*Figura 1. Rezultatet e modelit të përzgjedhur në validim, në pragun binar 0,5. Grafiku paraqet metrika të matura, jo pamje të ndërfaqes.*
+*Figure 1. Validation results for the selected model at a binary threshold of 0.5. The figure presents measured metrics, rather than an application screenshot.*
 
-| Metrika | Vlera | Baza e llogaritjes |
+| Metric | Value | Calculation basis |
 | :--- | ---: | :--- |
-| Saktësia e balancuar | **86,22%** | Mesatarja e ndjeshmërisë dhe specificitetit. |
-| Ndjeshmëria për flakën | **81,20%** | 4 048 nga 4 985 imazhe me flakë. |
-| Specificiteti | **91,24%** | 2 749 nga 3 013 imazhe pa flakë. |
-| Specificiteti pa pamjet e liqenit | **72,98%** | Nënndarja negative pa pamjet e liqenit, në të njëjtin prag. |
+| Balanced accuracy | **86.22%** | Mean of sensitivity and specificity. |
+| Visible-flame sensitivity | **81.20%** | 4,048 of 4,985 images with visible flames. |
+| Specificity | **91.24%** | 2,749 of 3,013 images without visible flames. |
+| Specificity excluding lake frames | **72.98%** | Negative subset excluding lake frames, at the same threshold. |
 
-### Matrica e klasifikimit
+### Confusion Matrix
 
-| Klasa reale ↓ / Parashikimi → | Me flakë | Pa flakë |
+| Actual class ↓ / Prediction → | Visible flame | No visible flame |
 | :--- | ---: | ---: |
-| **Me flakë** | 4 048 | 937 |
-| **Pa flakë** | 264 | 2 749 |
+| **Visible flame** | 4,048 | 937 |
+| **No visible flame** | 264 | 2,749 |
 
-Këto rezultate i përkasin modelit `fire_flame_scene_repair_v1`. Rënia e specificitetit kur përjashtohen pamjet e liqenit tregon se rezultatet varen nga përbërja e klasës negative.
+These results correspond to `fire_flame_scene_repair_v1`. The lower specificity after excluding lake frames demonstrates the influence of negative-class composition on evaluation results.
 
-### Kufizimet e vlerësimit
+### Evaluation Limitations
 
-Bashkësia e validimit u përdor edhe për përzgjedhjen e modelit dhe përshtatjen e pragjeve të aplikacionit. Prandaj, **shifrat e raportuara janë rezultate gjatë zhvillimit dhe nuk përfaqësojnë testim të pavarur**. Kuadrot e lidhura dhe regjistrimet e përbashkëta kufizojnë përfundimet për përgjithësimin në regjistrime të reja.
+The validation set was also used for model selection and application threshold tuning. Therefore, **the reported figures are development evaluation results and do not constitute independent testing**. Correlated frames and shared recordings limit conclusions about generalization to new recordings.
 
-Dalja sigmoid nuk është probabilitet i kalibruar. Grad-CAM paraqet aktivizimin e rrjetit dhe nuk vërteton vendndodhjen e flakës; modeli është trajnuar për klasifikimin e gjithë imazhit.
+The sigmoid output is not a calibrated probability. Grad-CAM visualizes network activation and does not establish the location of a flame; the model was trained for whole-image classification.
 
-## Interpretimi i rezultatit në aplikacion
+## Interpreting Application Results
 
-| Zona | Kushti mbi daljen `s` | Interpretimi |
+The following English names translate the decision zones displayed in the application.
+
+| Zone | Condition on score `s` | Interpretation |
 | :--- | :--- | :--- |
-| 🟢 **E pastër** | `s < 0.0088` | Dalje nën pragun e poshtëm të vendimit. |
-| 🟠 **Për shqyrtim** | `0.0088 ≤ s < 0.9368` | Pamja i nënshtrohet shqyrtimit njerëzor. |
-| 🔴 **Alarm** | `s ≥ 0.9368` | Dalje që arrin pragun e alarmit. |
+| 🟢 **Clear** | `s < 0.0088` | The score is below the lower decision threshold. |
+| 🟠 **Review** | `0.0088 ≤ s < 0.9368` | The image requires human review. |
+| 🔴 **Alarm** | `s ≥ 0.9368` | The score reaches the alarm threshold. |
 
-Pragjet janë të rrumbullakosura për paraqitje; API-ja përdor vlerat e ruajtura në konfigurimin e modelit. Ato u përshtatën mbi validimin pa pamjet e liqenit. **Tri zonat janë një mënyrë paraqitjeje dhe vendimmarrjeje mbi daljen e të njëjtit model binar.** Metrikat në tabelën e rezultateve janë llogaritur në pragun 0,5, ndaj nuk duhen ngatërruar me performancën e këtyre tri zonave.
+Thresholds are rounded for presentation; the API uses the values stored in the model configuration. They were tuned on validation data excluding lake frames. **The three zones provide a decision policy over the output of the same binary model.** Metrics in the results table were calculated at a threshold of 0.5 and should not be confused with the performance of this three-zone policy.
 
-## Nisja e shpejtë
+## Quick Start
 
-Udhëzimet më poshtë përdorin PowerShell në Windows. Nevojiten Python me mbështetje për TensorFlow dhe Node.js/npm të përputhshëm me Vite 8.
+The instructions below use PowerShell on Windows. You need a Python environment compatible with TensorFlow and a Node.js/npm installation compatible with Vite 8.
 
-### 1. Merr projektin
+### 1. Get the Project
 
 ```powershell
 git clone https://github.com/arilabehrami/uav-wildfire-classification-cnn.git
@@ -131,30 +133,30 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
 ```
 
-**Peshat e modelit kërkohen veçmas.** Skedarët `.keras` përjashtohen nga Git. Para nisjes, vendos modelin përkatës në:
+**Model weights must be provided separately.** The `.keras` files are excluded from Git. Before starting the service, place the corresponding model at:
 
 ```text
 backend/artifacts/fire_flame_scene_repair_v1/model.keras
 ```
 
-Skedari duhet të përputhet me gjurmën SHA-256 në `inference.json`; një kopje e re e depos nuk përmban peshat e modelit dhe as imazhet e bashkësisë së të dhënave.
+The file must match the SHA-256 hash in `inference.json`. A fresh clone contains neither the model weights nor the dataset images.
 
-### 2. Nis shërbimin e klasifikimit
+### 2. Start the Classification Service
 
-Nga rrënja e projektit:
+From the project root:
 
 ```powershell
 cd backend
 ..\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
 ```
 
-- Shërbimi: [http://localhost:8000](http://localhost:8000)
-- Dokumentimi ndërveprues: [http://localhost:8000/docs](http://localhost:8000/docs)
-- Gjendja e modelit: [http://localhost:8000/health](http://localhost:8000/health)
+- Service: [http://localhost:8000](http://localhost:8000)
+- Interactive API documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
+- Model status: [http://localhost:8000/health](http://localhost:8000/health)
 
-### 3. Nis ndërfaqen
+### 3. Start the Frontend
 
-Në një terminal të dytë, nga rrënja e projektit:
+In a second terminal, from the project root:
 
 ```powershell
 cd frontend
@@ -162,43 +164,43 @@ npm ci
 npm run dev
 ```
 
-Hap [http://localhost:5173](http://localhost:5173), ngarko një imazh dhe shqyrto rezultatin. Për një adresë tjetër të API-së, përshtat `VITE_API_BASE` sipas shembullit në `frontend/.env.example`.
+Open [http://localhost:5173](http://localhost:5173), upload an image, and inspect the result. To use a different API address, set `VITE_API_BASE` following `frontend/.env.example`.
 
-## API-ja
+## API
 
-| Metoda | Rruga | Qëllimi |
+| Method | Endpoint | Purpose |
 | :--- | :--- | :--- |
-| `GET` | `/health` | Kontrollon nëse modeli është ngarkuar. |
-| `POST` | `/api/classify` | Pranon imazhin në fushën `file` si `multipart/form-data`. |
+| `GET` | `/health` | Check whether the model is loaded. |
+| `POST` | `/api/classify` | Accept an image in the `file` field as `multipart/form-data`. |
 
-Shembull kërkese nga PowerShell:
+Example request from PowerShell:
 
 ```powershell
-curl.exe -X POST http://localhost:8000/api/classify -F "file=@C:\imazhe\pamja.jpg"
+curl.exe -X POST http://localhost:8000/api/classify -F "file=@C:\images\sample.jpg"
 ```
 
-Përgjigjja përmban `zone`, `fire_score`, `gates`, `model_version`, `model_sha256`, `calibrated` dhe, kur është e disponueshme, `explanation`. Fusha `label` ndjek politikën e shërbimit: zona për shqyrtim gjithashtu nuk pastrohet automatikisht; për paraqitjen e tri zonave përdoret `zone`.
+The response includes `zone`, `fire_score`, `gates`, `model_version`, `model_sha256`, `calibrated`, and, when available, `explanation`. The `label` field follows the service policy: images in the review zone are also not automatically cleared. Use `zone` to display the three decision zones.
 
-## Struktura e projektit
+## Project Structure
 
 ```text
 uav-wildfire-classification-cnn/
 ├── backend/
-│   ├── app/                 # API-ja, shërbimi dhe modeli
-│   ├── artifacts/           # Konfigurimet dhe rezultatet e eksperimenteve
-│   ├── tests/               # Testet e shërbimit dhe përpunimit
-│   └── training/            # Përgatitja e të dhënave dhe trajnimi
+│   ├── app/                 # API, service, and model inference
+│   ├── artifacts/           # Experiment configurations and results
+│   ├── tests/               # Service and preprocessing tests
+│   └── training/            # Data preparation and model training
 ├── dataset/
-│   └── splits/              # Ndarjet e versionuara të të dhënave
-├── docs/images/             # Figurat e dokumentimit
+│   └── splits/              # Versioned dataset splits
+├── docs/images/             # Documentation figures
 ├── frontend/
-│   └── src/                 # Ndërfaqja React
+│   └── src/                 # React interface
 └── README.md
 ```
 
-## Verifikimi i kodit
+## Code Verification
 
-Nga rrënja e projektit:
+From the project root:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r backend\requirements-dev.txt
@@ -206,26 +208,23 @@ cd backend
 ..\.venv\Scripts\python.exe -m pytest
 ```
 
-Për ndërfaqen, nga dosja `frontend`:
+For the frontend, from the `frontend` directory:
 
 ```powershell
 npm run lint
 npm run build
 ```
 
-Disa teste të integrimit me modelin varen nga disponueshmëria e peshave përkatëse. Kalimi i testeve të softuerit nuk përbën vlerësim të pavarur të performancës së modelit.
+Some model integration tests depend on the availability of the corresponding weights. Passing software tests does not constitute an independent evaluation of model performance.
 
-## Dokumentimi i eksperimentit
+## Experiment Documentation
 
-- [Rezultatet dhe rregulli i përzgjedhjes](backend/artifacts/fire_flame_scene_repair_v1/result.json)
-- [Konfigurimi i hyrjes, pragjet dhe kufizimet](backend/artifacts/fire_flame_scene_repair_v1/inference.json)
-- [Krahasimi i modeleve gjatë zhvillimit](backend/artifacts/fire_flame_scene_repair_v1/comparison.json)
-- [Raporti i rishikimit të 201 imazheve](backend/artifacts/flame_label_audit/review_2026-10-20/scene_repair_report.json)
+- [Results and model selection rule](backend/artifacts/fire_flame_scene_repair_v1/result.json)
+- [Input configuration, thresholds, and limitations](backend/artifacts/fire_flame_scene_repair_v1/inference.json)
+- [Model comparison during development](backend/artifacts/fire_flame_scene_repair_v1/comparison.json)
+- [Visual review report for 201 images](backend/artifacts/flame_label_audit/review_2026-10-20/scene_repair_report.json)
 
 ---
 
 <div align="center">
-
-**Arila Behrami** · Projekt akademik për analizën e imazheve ajrore me rrjete nervore konvolucionale
-
 </div>
