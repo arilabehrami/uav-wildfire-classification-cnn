@@ -1,5 +1,3 @@
-"""Vendose ne backend/training/. Krijon pamje nga rezultatet e ruajtura."""
-
 import csv
 import math
 from pathlib import Path

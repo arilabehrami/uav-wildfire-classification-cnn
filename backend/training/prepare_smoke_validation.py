@@ -1,4 +1,3 @@
-"""Build a development validation panel; never a new independent final test."""
 import csv
 import json
 from collections import Counter

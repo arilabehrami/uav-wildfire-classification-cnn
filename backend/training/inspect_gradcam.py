@@ -1,32 +1,3 @@
-"""Grad-CAM mbi kuadro te vetme, me te njejten hyrje qe perdor sherbimi.
-
-Pyetja qe i pergjigjet: kur modeli e humb nje zjarr, a e sheh fare flaken?
-
-Grafi i vertete, sipas training/fire_final.py:
-
-    Input(254,254,3)  ->  Resizing(224,224)  ->  Rescaling(2.0, -1.0)
-                      ->  MobileNetV2(include_top=False, pooling="avg")
-                      ->  fire_head: Dropout(0.35) -> Dense(1, sigmoid)
-
-Dy pasoja qe e percaktojne kete skript:
-
-  * Shtylla kurrizore e ka GlobalAveragePooling BRENDA saj (pooling="avg"),
-    prandaj dalja e saj eshte (batch, 1280), jo 4D. Harta e aktivizimit
-    merret nje shtrese me heret, te 'out_relu'.
-  * Modeli e zvogelon vete 254 -> 224. Rrjeti i veçorive del 7x7, jo 8x8.
-
-Hyrja merret nga app.ml.preprocessing.prepare_batch dhe modeli nga kontrata
-inference.json, qe harta te tregoje saktesisht ate qe shikon API-ja.
-
-    cd backend
-    python training/inspect_gradcam.py --images ../dataset/Test/Fire/a.jpg ../dataset/Test/Fire/b.jpg
-
-Del ne backend/artifacts/inspection/gradcam/:
-    <emri>_cam.jpg   origjinali me harten e mbivendosur
-    <emri>_raw.jpg   vetem harta
-    summary.json     rezultati, zona dhe statistikat per secilen foto
-"""
-
 from __future__ import annotations
 
 import argparse

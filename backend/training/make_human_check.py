@@ -1,27 +1,3 @@
-"""Pergatit kontrollin e verber njerezor te etiketave mbi test_final.
-
-Pse: etiketat e flakes, si per trajnim ashtu edhe per test_final, u nxorren
-nga i njejti rregull ngjyre. Nese rregulli gabon, gabimet jane te njejta ne
-te dy anet dhe testi e shperblen modelin qe i perserit. Nje njeri qe etiketon
-me sy, pa pare as rregullin as modelin, jep etiketa te pavarura.
-
-Mostra: 100 foto te rastesishme nga secila klase ORIGJINALE e test_final
-(Fire / No_Fire te dataset-it, jo etiketat e rregullit), me fare te fiksuar,
-pra e riprodhueshme. Rendi perzihet dhe emrat e fajllave fshihen, sepse emri
-'resized_test_fire_frame...' e zbulon klasen origjinale.
-
-Krijon ne <grupi>/:
-    etiketo.html   faqja e etiketimit (fotot brenda saj)
-    key.csv        ID -> fajlli; MOS E HAP para etiketimit
-
-Ekzekuto nga rrenja e projektit:
-    python backend/training/make_human_check.py
-    python backend/training/make_human_check.py --batch human_check_2_2026-10-13 \
-        --seed 20261014 --prefix G --exclude human_check_2026-10-13
-
-Grupi i dyte perjashton fotot e te parit: rregulli v2 u zgjodh mbi grupin e
-pare, prandaj vleresimi perfundimtar kerkon pamje qe nuk jane pare.
-"""
 from __future__ import annotations
 
 import argparse

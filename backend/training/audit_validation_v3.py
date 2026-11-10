@@ -1,5 +1,3 @@
-"""Vendose ne backend/training/. Vlereson validimin; nuk ben trajnim."""
-
 import csv
 import hashlib
 import json

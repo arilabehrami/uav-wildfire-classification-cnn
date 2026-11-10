@@ -1,8 +1,3 @@
-"""Create a versioned validation split for the user-confirmed smoke segment.
-
-Only Test/No_Fire frames 1592-1913 are confirmed. Training and test_final
-are deliberately outside this correction. Original CSVs remain intact.
-"""
 import csv
 import json
 import re

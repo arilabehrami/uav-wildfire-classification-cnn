@@ -1,5 +1,3 @@
-"""Leximi i konfigurimit nga ambienti."""
-
 from __future__ import annotations
 
 import pytest

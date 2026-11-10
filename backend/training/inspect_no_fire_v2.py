@@ -1,5 +1,3 @@
-"""Vendose ne backend/training/. Lexon modelin; nuk ben trajnim."""
-
 import csv
 import math
 from pathlib import Path

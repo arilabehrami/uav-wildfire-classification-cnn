@@ -1,10 +1,3 @@
-"""Konfigurimi i sherbimit, i lexuar nga ambienti.
-
-Nje vend i vetem per çdo vlere qe ndryshon mes zhvillimit, testimit dhe
-demonstrimit. Vlerat e parazgjedhura e mbajne projektin te ekzekutueshem
-pa caktuar asnje variabel ambienti.
-"""
-
 from __future__ import annotations
 
 import os

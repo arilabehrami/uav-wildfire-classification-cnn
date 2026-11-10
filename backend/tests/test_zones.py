@@ -1,10 +1,3 @@
-"""Kufijte e zonave.
-
-Kontrata: score < low -> clear; low <= score < high -> review; score >= high
--> alarm. Testet e provojne pikerisht ne kufij, sepse ketu nje '<' kundrejt
-'<=' e ndryshon vendimin per nje kuader real.
-"""
-
 from __future__ import annotations
 
 import math

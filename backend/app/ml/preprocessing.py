@@ -1,9 +1,3 @@
-"""Kontrata e hyrjes, e lexuar nga inference.json dhe e zbatuar ne nje vend.
-
-Trajnimi, vleresimi dhe sherbimi duhet ta perpunojne imazhin njesoj. Çdo
-ndryshim ketu e prish krahasueshmerine me rezultatet e raportuara.
-"""
-
 import tensorflow as tf
 
 

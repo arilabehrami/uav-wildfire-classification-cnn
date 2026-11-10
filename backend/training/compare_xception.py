@@ -1,4 +1,3 @@
-"""Compare frozen MobileNet/Xception runs on validation, then export the winner."""
 import argparse
 import json
 import re

@@ -1,15 +1,3 @@
-"""Veçorite per çdo foto te review_manifest.csv: ngjyra e flakes dhe dHash.
-
-    n       pixela me r >= g >= b dhe r - b > 40 (portokalli/kuqerremte)
-    bright  ata prej tyre me r > 150
-    dhash   dHash 64-bit (gri 9x8, krahasim horizontal), per filtrimin e
-            fotove pothuajse te njejta mes train dhe validation
-
-E rifillueshme: fotot qe jane tashme ne fajllin dales anashkalohen, dhe
---budget e ndal pas N sekondash. Ekzekuto disa here derisa te shkruaje DONE.
-
-    python backend/training/flame_features.py
-"""
 from __future__ import annotations
 
 import argparse

@@ -1,10 +1,3 @@
-"""Prepare a review of an app export without modifying training data or models.
-
-Only the four original images inspected visually on 2026-10-20 have confirmed
-labels here. Other exported images require individual review. Export scores
-and filename labels are not ground truth. Training membership is diagnostic,
-not evidence of an independent evaluation.
-"""
 import argparse
 import csv
 import json

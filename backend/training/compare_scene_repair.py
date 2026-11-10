@@ -1,8 +1,3 @@
-"""Compare frozen-backbone models on development validation and repaired scene.
-
-Reuse features only after verifying both extractors have identical weights.
-The repaired scene is a training diagnostic, never an independent test.
-"""
 import csv
 import hashlib
 import json

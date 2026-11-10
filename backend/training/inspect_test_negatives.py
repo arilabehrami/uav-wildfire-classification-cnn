@@ -1,14 +1,3 @@
-"""Nxjerr pamje nga gabimet e ruajtura, te grupuara sipas segmentit te fluturimit.
-
-Pyetja: cfare ka ne fotot No_Fire te Test-it qe modeli i lexon si zjarr, dhe
-pse njeri segment del thuajse i pastër? Kjo skripta i ve pergjithe-perqark.
-
-Lexon vetem CSV-te e parashikimeve. Nuk ngarkon TensorFlow, nuk trajnon.
-
-    python inspect_test_negatives.py
-    python inspect_test_negatives.py --run final_fire_v1 --bands 12 --per-band 6
-"""
-
 import argparse
 import csv
 import math

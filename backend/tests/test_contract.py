@@ -1,11 +1,3 @@
-"""Kontrata e inferences dhe pershtatja e frontend-it me te.
-
-Dy gjera ruhen ketu. E para: çdo inference.json i ekzekutimeve te ruajtura
-permban fushat qe klasifikuesi i kerkon, me vlera te perdorshme. E dyta:
-vlerat e rezerves ne frontend/src/config/model.js nuk largohen pa u vene re
-nga ekzekutimi te cilin pretendojne te pasqyrojne.
-"""
-
 from __future__ import annotations
 
 import json

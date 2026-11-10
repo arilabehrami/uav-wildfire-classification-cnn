@@ -1,4 +1,3 @@
-"""Render numbered contact sheets for manual review; never assign labels."""
 import argparse
 import json
 import re

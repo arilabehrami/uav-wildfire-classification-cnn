@@ -1,16 +1,3 @@
-"""Analizon rezultatet e ruajtura: AUC, pragjet, dhe ku grumbullohen gabimet.
-
-Nuk ngarkon TensorFlow, nuk trajnon, nuk e ndryshon modelin. Lexon vetem
-CSV-te e parashikimeve qe fire_final.py i ka shkruar ne run-in e dhene.
-
-AUC e ndan pyetjen vendimtare:
-  AUC e larte + specificity e ulet  ->  problem i pragut/kalibrimit
-  AUC e ulet                        ->  modeli nuk i dallon skenat e reja
-
-    python analyze_scores.py
-    python analyze_scores.py --run final_fire_v1 --target-recall 0.95 0.98
-"""
-
 import argparse
 import csv
 import json

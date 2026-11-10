@@ -1,9 +1,3 @@
-"""Shtresa e sherbimit: klasifikim plus shpjegim, me shpjegimin si opsional.
-
-Nese Explainer nuk arrin te ndaje grafin, klasifikimi vazhdon pa harte.
-Arsyeja logohet njehere, ne nisje, qe mungesa e hartes te mos mbetet e heshtur.
-"""
-
 from __future__ import annotations
 
 import logging

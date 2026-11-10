@@ -1,28 +1,3 @@
-"""Nxjerr portat per fire_flame_v6 dhe shkruan inference.json e tij.
-
-Portat nxirren mbi validation_flame_reviewed_v1 dhe mandej zbatohen NJE HERE
-mbi test_final (i rietiketuar sipas politikes se flakes) vetem per raportim.
-Asnje porte nuk pershtatet mbi setin e raportimit.
-
-Rregulli:
-    low  = pragu ME I LARTE qe ende mban recall >= 99% per flaken
-    high = pragu me i ulet qe jep specificity >= 90% mbi jo-flaken
-
-Precision NUK perdoret si cak, ndryshe nga final_fire_v1. Precision varet nga
-sa foto me flake ka ne set: validation ka 62% flake, test_final vetem 24%.
-Nje prag i pershtatur mbi precision ne njerin set shembet ne tjetrin.
-
-Me tej: 67.6% e negativave te validation jane kuadro liqeni, nje fluturim pa
-zjarr qe dallohet trivialisht nga nje pyll me bore qe digjet. Negativat e
-test_final jane 71.2% pyll me mjegull dhe tym — detyra e vertete. Prandaj as
-specificity nuk transferohet nese llogaritet mbi te gjithe negativat.
-
-Portat pershtaten vetem mbi NEGATIVAT E VESHTIRA (pyll), dhe liqeni raportohet
-vecmas si kontroll. Kjo nuk e permireson modelin; e ndalon raportimin optimist.
-
-Ekzekuto nga rrenja e projektit:
-    python backend/training/fit_flame_gates.py
-"""
 from __future__ import annotations
 
 import argparse

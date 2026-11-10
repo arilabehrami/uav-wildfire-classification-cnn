@@ -1,4 +1,3 @@
-"""Compare the flame-only pilot with the existing app on the pilot development split."""
 import csv
 import json
 import os

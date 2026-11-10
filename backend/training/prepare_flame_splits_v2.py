@@ -1,31 +1,3 @@
-"""Etiketat dhe split-et e flakes, versioni 2.
-
-Rregulli v2, i zgjedhur mbi grupin e pare te kontrollit te verber njerezor
-(human_check_2026-10-13, 159 pamje te sigurta), mes 19 kandidateve:
-
-    Fire  =  etiketa origjinale eshte Fire  DHE  n >= 1
-             (te pakten nje piksel me r >= g >= b dhe r - b > 40)
-    No_Fire  ne çdo rast tjeter
-
-Kundrejt njeriut: recall 0.967, precision 0.952, specificity 0.969. Rregulli v1
-(bright >= 16) kishte recall 0.344: i humbi 40 nga 61 flaket qe pa njeriu.
-Meqe rregulli u zgjodh mbi ate grup, vleresimi perfundimtar behet mbi nje grup
-te dyte te verber, te pavarur.
-
-extra_raw/ mbetet i perjashtuar si ne v1: zjarr i kontrolluar me dru mbi bar,
-domen tjeter, dhe ngjyra roze e tokes e ndez statistiken.
-
-Ndarja: train_with_adapt -> train; te gjitha te tjerat -> validation (si v1).
-Pastaj hiqen nga validation fotot me dHash Hamming <= 8 ndaj ndonje foto te train.
-
-v1 nuk preket. Shkruan:
-    dataset/splits/train_flame_reviewed_v2.csv
-    dataset/splits/validation_flame_reviewed_v2.csv
-    backend/artifacts/flame_label_audit/review_v2_2026-10-13/labels_v2.csv
-    backend/artifacts/flame_label_audit/review_v2_2026-10-13/split_report_v2.json
-
-    python backend/training/prepare_flame_splits_v2.py
-"""
 from __future__ import annotations
 
 import csv

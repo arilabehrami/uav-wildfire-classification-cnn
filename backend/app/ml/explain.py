@@ -1,31 +1,3 @@
-"""Grad-CAM per modelin ne sherbim.
-
-Harta tregon se ku u aktivizua rrjeti me shume kur mori vendimin. Ajo NUK
-eshte pozicioni i zjarrit: modeli jep nje numer te vetem per gjithe foton
-dhe nuk eshte trajnuar kurre me koordinata.
-
-Grafi ndahet ne kater pjese, te gjitha te marra nga vete modeli:
-
-    stem:  Input -> Resizing -> Rescaling
-    conv:  shtylla kurrizore deri te shtresa e fundit konvolucionale (7x7)
-    pool:  pooling-u qe modeli perdor pas saj
-    head:  fire_head -> Dense(1, sigmoid)
-
-Pooling-u nuk supozohet. Dy arkitektura jane ne perdorim:
-
-    final_fire_v1:  MobileNetV2(pooling="avg") -> fire_head
-                    (mesatarja eshte brenda shtylles)
-    fire_flame_v6:  MobileNetV2 -> concat(GlobalAvgPool, GlobalMaxPool) -> fire_head
-                    (pooling-u eshte jashte, ne rendin e lexuar nga lidhjet)
-
-Ne nisje, rindertimi krahasohet me daljen e modelit te vertete mbi dy foto
-provuese. Nese nuk perputhen, Explainer mbetet i padisponueshem me arsye te
-shkruar ne log. Kjo e ndalon deshtimin e heshtur: me pare, nje mospërputhje
-ktheheshte si 'None' per çdo foto ndersa logu thoshte 'Grad-CAM aktiv'.
-
-Klasifikimi nuk preket kurre nga ky modul.
-"""
-
 from __future__ import annotations
 
 import logging

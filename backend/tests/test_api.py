@@ -1,5 +1,3 @@
-"""Rrugët HTTP, pa model dhe pa TensorFlow."""
-
 from __future__ import annotations
 
 import pytest

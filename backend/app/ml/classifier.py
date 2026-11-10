@@ -1,13 +1,3 @@
-"""Klasifikuesi ne sherbim.
-
-Modeli, kontrata e hyrjes dhe pragjet lexohen nga inference.json i ekzekutimit;
-asnje prej tyre nuk shkruhet ne kod. Keshtu nje ndryshim modeli nuk le pas nje
-prag te vjeteruar, dhe fajlli qe citohet ne punim eshte fajlli qe sherben.
-
-Logjika e zonave jeton ne app/ml/zones.py, pa TensorFlow, qe te testohet
-ne njesi pa ngarkuar modelin.
-"""
-
 from __future__ import annotations
 
 import hashlib

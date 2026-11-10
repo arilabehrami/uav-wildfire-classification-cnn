@@ -1,8 +1,3 @@
-"""Evaluate fresh Smoke (confirmed fire smoke) and Fog (no fire) image folders.
-
-Run from the project root. This evaluates a fixed model/threshold; no training
-or threshold search is performed. Use new recordings from the same camera.
-"""
 import argparse
 import csv
 import json

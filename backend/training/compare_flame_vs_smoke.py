@@ -1,13 +1,3 @@
-"""Krahason modelin e tymit (final_fire_v1) me modelin e flakes (fire_flame_v6).
-
-Terreni: dataset/splits/test_final.csv, i rietiketuar sipas politikes se flakes
-me te njejtin rregull te verifikuar (backend/artifacts/flame_label_audit/
-review_2026-10-13/). test_final nuk eshte perdorur ne trajnimin e asnjerit
-model dhe nuk mbivendoset me asnje split te ri.
-
-Ekzekuto nga rrenja e projektit:
-    python backend/training/compare_flame_vs_smoke.py
-"""
 from __future__ import annotations
 
 import argparse

@@ -1,9 +1,3 @@
-"""Kontroll i rezultateve ekzistuese, pa trajnim ose ndryshim modeli.
-
-Vendose prane fire_final.py, te backend/training, pastaj:
-    python backend/training/inspect_fire_test.py
-Krijon fire_test_review.zip me rezultate, modelin dhe shembuj imazhesh.
-"""
 import argparse
 import csv
 import json

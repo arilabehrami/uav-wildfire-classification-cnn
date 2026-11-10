@@ -1,15 +1,3 @@
-"""Mat kontaminimin mes ndarjeve te dataset-it. Vetem lexon; nuk ndryshon asgje.
-
-Kontrollon tri gjera qe SHA256 nuk i kap:
-  1. Kuazi-duplikate mes train dhe validation/holdout/Test (dHash, distanca Hamming).
-  2. Foto thuajse identike me etiketa te kunderta (etiketim i gabuar).
-  3. Afersine e numrave te frame-ve mes ndarjeve nga i njejti burim.
-
-Perdorimi:
-    python diagnose_leakage.py --root dataset
-    python diagnose_leakage.py --root dataset --max-distance 8
-"""
-
 import argparse
 import csv
 import hashlib

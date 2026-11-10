@@ -1,13 +1,3 @@
-"""Grad-CAM: rindertimi i grafit duhet te perputhet me modelin e vertete.
-
-Gabimi qe ky test e ruan: kur fire_flame_v6 kaloi ne concat(avg, max) pas
-shtylles, explain.py vazhdonte te llogariste vetem mesataren. Koka refuzonte
-formen, harta kthehej None per çdo foto, dhe logu thoshte 'Grad-CAM aktiv'.
-
-Kerkon TensorFlow. Testet me modelet e ruajtura anashkalohen kur fajlli
-.keras mungon (eshte jashte git-it).
-"""
-
 from __future__ import annotations
 
 import io

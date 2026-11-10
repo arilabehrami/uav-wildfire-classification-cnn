@@ -1,14 +1,3 @@
-"""Logjika e zonave te vendimit, pa varesi nga TensorFlow.
-
-E ndare nga klasifikuesi me qellim qe kufijte e portave te testohen ne njesi
-pa ngarkuar modelin, dhe qe i njejti rregull te mos rishkruhet ne frontend.
-
-Kufijte, ne mod eksplicit:
-    score <  low           -> clear   (kuadri pastrohet pa njeri)
-    low  <= score <  high  -> review  (duhet ta shohe njeriu)
-    score >= high          -> alarm   (njoftim i menjehershem)
-"""
-
 from __future__ import annotations
 
 CLEAR = "clear"

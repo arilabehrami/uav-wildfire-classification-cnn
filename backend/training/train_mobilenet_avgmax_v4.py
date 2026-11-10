@@ -1,9 +1,3 @@
-"""Vendose ne backend/training/, prane dataset_loader.py dhe audit_validation_v3.py.
-
-Nis nga v3; ngrin MobileNetV2 dhe trajnon vetem klasifikuesin avg+max.
-Perzgjedhja perdor validimin me prag 0.5. Kontrolli me 202 foto behet ne fund.
-"""
-
 import csv
 import hashlib
 import json

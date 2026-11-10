@@ -1,7 +1,5 @@
 # Xception dhe kombinimi me MobileNet
 
-Ekzekuto nga dosja kryesore e projektit ne PowerShell, nje komande pas tjetres.
-Kerkohet run ekzistues `final_fire_v2` i MobileNet. Perdor emra te rinj kur perserit eksperimente.
 
 ```powershell
 python backend/training/fire_final.py prepare --run xception_v1

@@ -1,9 +1,3 @@
-"""Build flame-only splits from a completed review CSV; refuse partial reviews.
-
-Usage: python backend/training/prepare_reviewed_flame_splits.py --review FILE.csv
-The review must cover the full flame_label_audit/review_manifest.csv. Uncertain
-images are excluded. Original files and test_final are never edited.
-"""
 import argparse
 import csv
 import json

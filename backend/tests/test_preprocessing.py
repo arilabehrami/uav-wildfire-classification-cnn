@@ -1,10 +1,3 @@
-"""Kontrata e hyrjes.
-
-Nje ndryshim ne preprocessing e prish krahasueshmerine me rezultatet e
-raportuara ne punim, prandaj forma dhe diapazoni fiksohen ne test.
-Kerkon TensorFlow; anashkalohet nese nuk eshte i instaluar.
-"""
-
 from __future__ import annotations
 
 import io

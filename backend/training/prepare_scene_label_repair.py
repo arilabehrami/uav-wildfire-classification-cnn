@@ -1,10 +1,3 @@
-"""Versioned repair based on visual inspection of sheets 01-09, 2026-10-20.
-
-All original Test/Fire frames 0..200 were inspected at 254x254 in contact
-sheets and show visible flames. No color heuristic assigns these labels.
-This is a scoped development repair, not a full dataset audit. These frames
-are training diagnostics and must not be reported as independent test data.
-"""
 import csv
 import hashlib
 import json

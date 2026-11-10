@@ -1,22 +1,3 @@
-"""Ndan dosjen Test ne tri pjese kohore, qe modeli te marre kundershembujt
-qe i mungojne (tym pa flake = No_Fire) pa e humbur nje test te paprekur.
-
-  test_adapt_train   ~40%  ->  shtohet ne trajnim
-  (hendek)
-  test_adapt_val     ~15%  ->  validim qe PERMBAN tym pa flake
-  (hendek)
-  test_final         ~45%  ->  nuk preket deri ne matjen perfundimtare
-
-Ndarja behet sipas numrit te frame-it, veç per Fire dhe veç per No_Fire, qe
-raporti i klasave te ruhet ne secilen pjese. Hendeqet largojne kornizat
-fqinje, qe jane thuajse identike.
-
-Nuk trajnon, nuk prek asnje foto, nuk mbishkruan asnje liste ekzistuese.
-
-    python prepare_test_split.py --dry-run
-    python prepare_test_split.py
-"""
-
 import argparse
 import csv
 import json

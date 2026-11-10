@@ -1,12 +1,3 @@
-"""Infrastruktura e testeve.
-
-Shumica e testeve nuk kerkojne TensorFlow: aplikacioni ndertohet me
-'use_lifespan=False' dhe ne 'app.state.classification_service' vendoset nje
-zevendesues qe respekton te njejten kontrate dalje si klasifikuesi i vertete.
-Vetem test_preprocessing.py kerkon TF, dhe anashkalohet nese nuk eshte i
-instaluar.
-"""
-
 from __future__ import annotations
 
 import sys

@@ -1,10 +1,3 @@
-"""Rruga e klasifikimit.
-
-Kufiri i madhesise lexohet nga konfigurimi, jo nga kodi, dhe fajlli lexohet
-vetem deri ne kufi + 1 bajt: nje ngarkese e madhe nuk hyn kurre e plote ne
-memorie.
-"""
-
 from __future__ import annotations
 
 import logging

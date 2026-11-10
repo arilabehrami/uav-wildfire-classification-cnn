@@ -1,4 +1,3 @@
-"""Build a visual label review without changing splits or reading test_final."""
 import csv
 import argparse
 import json

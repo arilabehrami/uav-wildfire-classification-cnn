@@ -1,22 +1,3 @@
-"""Trajnon modelin me kundershembujt e rinj (mjegull/re = No_Fire).
-
-Politika aktuale: vetem flake te dukshme = Fire; tym pa flake = No_Fire.
-Listat train_flame_reviewed_v1 dhe validation_flame_reviewed_v1 krijohen
-vetem pas auditimit te plote me prepare_reviewed_flame_splits.py.
-
-Ndryshimet nga v3/v4:
-  - trajnohet mbi train_flame_reviewed_v1 me etiketa te shqyrtuara
-  - validimi perdor validation_flame_reviewed_v1
-  - koka perdor average + max pooling; tani dega max ka arsye te ekzistoje,
-    sepse tymi s'mjafton me per t'i ndare klasat
-  - augmentim fotometrik me i forte, plus flip vertikal (pamje nadir)
-
-test_final NUK preket: eshte perdorur tashme dhe nuk sherben per perzgjedhje.
-
-    python train_adapted.py --dry-run
-    python train_adapted.py
-"""
-
 import argparse
 import csv
 import json

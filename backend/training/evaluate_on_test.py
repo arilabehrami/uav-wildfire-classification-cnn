@@ -1,20 +1,3 @@
-"""Vlereson modele te ruajtura mbi setin e testimit te dhene me --test-csv.
-
-Krahason drejtperdrejt v3 (vetem average pooling) me v4 (average + max), per
-te pare nese max pooling i kap flaket e vogla qe v3 i humb. Baseline-i merret
-nga CSV-ja ekzistuese e final_fire_v1, pra ai model nuk ri-ekzekutohet.
-
-Kontrata e inputit merret nga inference.json: RGB, 254x254, [0,1].
-
-Ekzekutohet nga rrenja e projektit, sepse te gjitha shtigjet ndertohen nga
---project-root (parazgjedhje: dosja aktuale).
-
-    python backend/training/evaluate_on_test.py
-    python backend/training/evaluate_on_test.py \
-        --test-csv dataset/splits/test_final.csv \
-        --models final_fire_v1/model.keras
-"""
-
 import argparse
 import csv
 import json

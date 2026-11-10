@@ -1,24 +1,3 @@
-"""Mat sa luhatet performanca nëpër segmente kohore të të njëjtit regjistrim.
-
-Një numër i vetëm mbi një ndarje të vetme nuk e mat modelin — mat ndarjen.
-Ky skript e ndan dosjen Test në segmente të njëpasnjëshme, me hendek mes tyre,
-dhe mat të njëjtin model me të njëjtat porta në secilin. Dalja është një
-shpërndarje: median dhe gamë, jo një pikë.
-
-Portat nuk ri-nxirren për segment. Ato vijnë nga inference.json dhe mbeten
-fikse — pyetja është sa ndryshon sjellja e një politike të vetme sipas kushteve
-të pamjes, jo sa mirë mund të përshtatet një politikë për çdo segment.
-
-    # nga rrënja e projektit
-    python backend/training/segment_stability.py
-    python backend/training/segment_stability.py --segments 8 --gap 200
-    python backend/training/segment_stability.py --from-csv \
-        backend/artifacts/final_fire_v1/known_test_predictions.csv
-
-Me --from-csv nuk kërkohet TensorFlow: rezultatet lexohen nga një CSV
-parashikimesh i prodhuar më parë për të njëjtin model.
-"""
-
 import argparse
 import csv
 import json

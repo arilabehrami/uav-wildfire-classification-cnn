@@ -1,4 +1,3 @@
-"""Select a development operating point from saved, freshly inferred scores."""
 import csv
 import json
 from pathlib import Path

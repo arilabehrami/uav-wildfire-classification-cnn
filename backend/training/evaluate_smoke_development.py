@@ -1,4 +1,3 @@
-"""Fresh inference on the corrected development panel, with source-specific metrics."""
 import csv
 import json
 import os

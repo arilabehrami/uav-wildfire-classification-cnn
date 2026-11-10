@@ -1,4 +1,3 @@
-"""Offline checks: preprocessing, fine-tuning and ensemble serialization."""
 import tempfile
 import unittest
 from pathlib import Path

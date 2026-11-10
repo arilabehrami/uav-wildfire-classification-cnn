@@ -1,13 +1,3 @@
-"""Pika e nisjes e API-se.
-
-TensorFlow importohet vetem brenda 'lifespan', jo ne nivel moduli. Kjo e len
-aplikacionin te ndertohet dhe te testohet pa ngarkuar modelin 9 MB, dhe
-pa pritur importin e TF-se.
-
-Ekzekutimi:
-    uvicorn app.main:app --reload
-"""
-
 from __future__ import annotations
 
 import logging

@@ -1,23 +1,3 @@
-"""Vlereson dy modelet kundrejt etiketave te kontrollit te verber njerezor.
-
-Etiketat e flakes per trajnim dhe per test_final u nxorren nga i njejti rregull
-ngjyre. Ky skript i mat modelet kundrejt nje gjykatesi te pavarur: njeriut qe
-etiketoi 200 pamje te rastesishme pa pare as rregullin as modelin.
-
-Raporton:
-  1. pajtimin e rregullit me njeriun (a eshte i besueshem rregulli?)
-  2. pajtimin e etiketes origjinale te dataset-it me njeriun
-  3. AUC i te dy modeleve mbi etiketat njerezore, me interval besimi 95%
-     per diferencen (bootstrap i ciftuar)
-  4. score-in mesatar sipas grupit: flake / skene zjarri pa flake / pa zjarr
-
-Ekzekuto nga rrenja e projektit, pasi etiketat te jene ruajtur si
-<grupi>/etiketat_njerezore.csv:
-    python backend/training/evaluate_human_labels.py
-    python backend/training/evaluate_human_labels.py --batch human_check_2_2026-10-13
-
-Krahasohen te gjitha modelet e listuara ne MODELS qe ekzistojne ne disk.
-"""
 from __future__ import annotations
 
 import argparse
